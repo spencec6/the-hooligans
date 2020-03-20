@@ -9,6 +9,7 @@ import Logo from './Logo'
 import LogoIcon from './LogoIcon'
 import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
 import MobileHeader from './MobileHeader'
+import { RandomRotate } from '../utils/helpers'
 
 const menuItems = [
   {
@@ -156,14 +157,16 @@ function Header({path}) {
             display: 'flex',
             alignItems: 'center'
           }}>
-            <Button
-              as={GatsbyLink}
-              to="/contact/"
-              from="header"
-              sx={{ display: ['none', 'none', 'initial'], ml: 4, variant: 'buttons.primary', transform: 'rotate(-1deg)'}}
-            >
-              Contact Us
-            </Button>
+            <RandomRotate sx={{ display: ['none', 'none', 'initial'], ml: 4 }}>
+              <Button
+                as={GatsbyLink}
+                to="/contact/"
+                from="header"
+                sx={{ variant: 'buttons.primary' }}
+              >
+                Contact Us
+              </Button>
+            </RandomRotate>
             <Hamburger
               isHome={isHome}
               isOpen={isOpen}

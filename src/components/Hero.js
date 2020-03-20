@@ -2,9 +2,8 @@
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import LogoMark from '../images/logo/the-hooligans-logomark.png'
-import BgSmearYellow from '../images/SVGs/BgSmearYellow.svg'
+import BgSmear from '../images/SVGs/BgSmear'
 import X1 from '../images/SVGs/X1'
-import { BlinkGlitch } from './Animations'
 
 function Hero() {
   const data = useStaticQuery(graphql`
@@ -12,13 +11,6 @@ function Hero() {
       site {
         siteMetadata {
           description
-        }
-      }
-      contentfulSite {
-        heroImage {
-          fluid {
-            ...GatsbyContentfulFluid_tracedSVG
-          }
         }
       }
     }
@@ -36,7 +28,8 @@ function Hero() {
         width: "100%",
         }}
       >
-        <img src={BgSmearYellow} sx={{
+        <BgSmear sx={{
+          color: 'secondary',
           height: '110%',
           left: '-5%',
           opacity: '0.9',

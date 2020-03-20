@@ -46,27 +46,6 @@ const options = {
   },
 }
 
-const affiliates = [
-  {
-    slug: 'affiliate1',
-    title: 'Affiliate #1',
-    url: 'https://basicincome.org',
-    image: BIEN
-  },
-  {
-    slug: 'affiliate2',
-    title: 'Affiliate #2',
-    url: 'https://basicincome.org',
-    image: BIEN
-  },
-  {
-    slug: 'affiliate3',
-    title: 'Affiliate #3',
-    url: 'https://basicincome.org',
-    image: BIEN
-  },
-]
-
 function AboutPage({ location }) {
   const data = useStaticQuery(graphql`
     query AboutQuery {
@@ -76,15 +55,9 @@ function AboutPage({ location }) {
           description
         }
       }
-      contentfulAboutPage {
-        aboutContent {
-          json
-        }
-      }
     }
   `)
   const { title, description } = data.site.siteMetadata
-  const entries = data.contentfulAboutPage.aboutContent
   return (
     <Layout path={location.pathname}>
       <SEO
@@ -93,7 +66,7 @@ function AboutPage({ location }) {
       />
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          {documentToReactComponents(entries.json, options)}
+          {/* {documentToReactComponents(entries.json, options)} */}
           <h3 sx={{ variant: 'styles.h3', mt: [6,7] }}>What We Do</h3>
           {services.map((service, index) => {
             return (
@@ -112,25 +85,6 @@ function AboutPage({ location }) {
       </div>
       <div sx={{ mt: [6,7] }}>
         <CallToAction/>
-      </div>
-      <div sx={{ px:4, mt: [6,7] }}>
-        <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h3 sx={{ variant: 'styles.h3', mt: 9, textAlign: 'center' }}>Our Affiliated Initatives</h3>
-          <p sx={{ textAlign: 'center' }}>
-            We have many friends working together for the same vision. Be sure to check them out!
-          </p>
-          <div sx={{ display: 'flex', justifyContent: 'center', mb: [8,9] }}>
-            {affiliates.map((affiliate, index) => {
-              return (
-                <Block key={affiliate.slug} width={[1,1/3]}>
-                  <Link as={OutboundLink} to={affiliate.url} target="_blank" bare={true}>
-                    <img src={affiliate.image} sx={{ display: 'block', filter: 'grayscale(0.9)', flexShrink: 0, mx: 'auto', height: "auto", opacity: 0.5, width: "200px", '&:hover': { filter: 'grayscale(0)', opacity: 1 }}}/>
-                  </Link>
-                </Block>
-              )
-            })}
-          </div>
-        </div>
       </div>
     </Layout>
   )

@@ -10,6 +10,7 @@ contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
   accessToken:
     process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+  downloadLocal: true
 }
 
 const { spaceId, accessToken } = contentfulConfig
