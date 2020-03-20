@@ -4,16 +4,11 @@ import { Input, Label } from './Forms'
 import Button from './Button'
 
 const ContactForm = () => {
-  const submitForm = () => {
-    console.log("form submitting")
-  }
-
   return (
     <form
       name="contact"
       method="post"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
+      netlify
       sx={{ mb: [8,9], width: '100%'}}
     >
       <div sx={{ }}>
@@ -53,7 +48,7 @@ const ContactForm = () => {
           }}
         />
       </div>
-      <Button onClick={(e) => console.log(e)} sx={{ variant: 'buttons.secondary', mt: 3}}>
+      <Button sx={{ variant: 'buttons.secondary', mt: 3}}>
         Get In Touch!
       </Button>
     </form>
