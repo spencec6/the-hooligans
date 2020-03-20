@@ -8,7 +8,7 @@ const ContactForm = () => {
     <form
       name="contact"
       method="post"
-      netlify
+      data-netlify="true"
       sx={{ mb: [8,9], width: '100%'}}
     >
       <div sx={{ }}>
