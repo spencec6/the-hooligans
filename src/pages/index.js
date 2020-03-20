@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import Layout from '../components/Layout'
-import Hero from '../components/Hero'
-import Portfolio from '../components/Portfolio'
-import Services from '../components/Services'
-import Testimonials from '../components/Testimonials'
-import CallToAction from '../components/CallToAction'
+import Hero from '../sections/Hero'
+import Portfolio from '../sections/Portfolio'
+import Services from '../sections/Services'
+import Testimonials from '../sections/Testimonials'
+import CallToAction from '../sections/CallToAction'
 
 
 function IndexPage({ location }) {

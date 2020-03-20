@@ -5,12 +5,12 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import BIEN from '../images/affiliates/BIEN.png'
 import Block from '../components/Block'
-import CallToAction from '../components/CallToAction'
+import CallToAction from '../sections/CallToAction'
+import { services } from '../sections/Services'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import OutboundLink from '../components/OutboundLink'
 import SEO from '../components/Seo'
-import { services } from '../components/Services'
 
 let paragraphIndex = 0
 const options = {

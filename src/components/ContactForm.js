@@ -9,12 +9,18 @@ const ContactForm = () => {
   }
 
   return (
-    <form sx={{ mb: [8,9], width: '100%'}}>
+    <form
+      name="contact"
+      method="post"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      sx={{ mb: [8,9], width: '100%'}}
+    >
       <div sx={{ }}>
         <Label to="name">Your Name</Label>
         <Input
           name="name"
-          placeholder="Your Name"
+          placeholder="Pete Townshend"
           type="text"
           autoFocus
         />

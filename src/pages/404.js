@@ -29,13 +29,11 @@ function NotFoundPage() {
       >
         <h1
           sx={{
-            margin: 0,
-            fontSize: 6,
-            fontWeight: 'normal',
             textAlign: 'center',
+            variant: 'styles.h1'
           }}
         >
-          Page not found
+          Page not found :(
         </h1>
       </div>
     </Layout>

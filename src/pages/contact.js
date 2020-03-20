@@ -25,11 +25,11 @@ function ContactPage({ location }) {
       />
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2' }}>Contact Us</h1>
+          <h1 sx={{ variant: 'styles.h2', mb: 5 }}>Contact Us</h1>
           <p sx={{ fontSize: [4,5,6], mb: 0 }}> 
             We'd love to build something amazing with you!
           </p>
-          <p sx={{ mb: 7, mt: 0 }}>
+          <p sx={{ mb: 7, mt: 4 }}>
             Please enter your name, email, and website (if you already have one) and any other helpful information in the form below. We try hard to respond to respond within 1-3 business days.
           </p>
           <ContactForm/>

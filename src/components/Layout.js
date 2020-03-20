@@ -5,8 +5,8 @@ import { node } from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import GlobalStyles from './GlobalStyles'
-import Footer from './Footer'
-import Header from './Header'
+import Footer from '../sections/Footer'
+import Header from '../sections/Header'
 
 function Layout({ children, path }) {
   const data = useStaticQuery(graphql`

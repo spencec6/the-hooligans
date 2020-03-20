@@ -153,7 +153,8 @@ export default {
     lg: '0 10px 40px 0 rgba(0,0,0,0.06), 0 5px 15px 0 rgba(0,0,0,0.04)',
     xl: '0 20px 40px 0 rgba(0,0,0,0.06), 0 25px 50px 0 rgba(0, 0, 0, 0.25)',
     inner: 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
-    outline: '0 0 0 3px #1d3fcf50',
+    outline: `0 0 0 3px ${colors.teal}`,
+    error: `0 0 0 3px ${colors.magenta}`,
     link: `inset 0 -2px ${colors.magenta}`,
     linkHover: `inset 0 -2px ${colors.yellow}`,
   },
@@ -207,12 +208,12 @@ export default {
     field: {
       appearance: 'none',
       backgroundColor: 'greys.100',
-      borderColor: 'transparent',
+      borderColor: 'greys.300',
       borderStyle: 'solid',
       borderWidth: 2,
-      borderRadius: 3,
-      boxShadow: theme => theme.shadows.default,
-      color: 'primary_dk',
+      borderRadius: 0,
+      color: 'black',
+      fontFamily: 'sans',
       fontSize: [1,2],
       p: 3,
       width: '100%',
@@ -221,7 +222,7 @@ export default {
         outline: 'none'
       },
       '&::placeholder': {
-        color: 'greys.400'
+        color: 'greys.500'
       }
     },
     input: {
