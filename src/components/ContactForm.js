@@ -7,14 +7,18 @@ const ContactForm = () => {
   return (
     <form
       name="contact"
-      method="post"
+      method="POST"
       data-netlify="true"
+      netilfy-honeypot="bot-field"
       encType="application/x-www-form-urlencoded"
       action="/thank-you"
       sx={{ mb: [8,9], width: '100%'}}
     >
+      <p sx={{display: 'none'}}>
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+      </p>
       <div sx={{ }}>
-        <Label for="name">Your Name</Label>
+        <Label htmlFor="name">Your Name</Label>
         <Input
           name="name"
           placeholder="Pete Townshend"
@@ -22,7 +26,7 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label for="email">Your Email</Label>
+        <Label htmlFor="email">Your Email</Label>
         <Input
           name="email"
           placeholder="Email"
@@ -30,7 +34,7 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label for="website">Your Website</Label>
+        <Label htmlFor="website">Your Website</Label>
         <Input
           name="website"
           placeholder="Your Website"
@@ -38,7 +42,7 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label for="message">Any other details you'd like to include:</Label>
+        <Label htmlFor="message">Any other details you'd like to include:</Label>
         <Input
           as="textarea"
           name="message"
