@@ -73,7 +73,7 @@ const Footer = ({ path, ...props }) => {
           </Link>
           <p sx={{ fontSize: 1, fontFamily: 'sans', mt: 3 }}>{year} © {title}</p>
           <div sx={{
-            alignItems: 'center',
+            justifyContent: ['center', 'flex-start'],
             display: 'flex',
             mt: 3,
             width: '100%',

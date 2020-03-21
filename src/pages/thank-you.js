@@ -32,6 +32,7 @@ function ThankYouPage({ location }) {
           <Button 
             as={GatsbyLink}
             to="/"
+            type="submit"
             from="thank-you"
             sx={{ variant: 'buttons.secondary', mt: 3}}>
             Go Home
