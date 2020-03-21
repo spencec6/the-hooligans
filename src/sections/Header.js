@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import { Link as GatsbyLink } from 'gatsby'
+import { GlitchRotate } from '../components/Animations'
 import Button from '../components/Button'
 import Hamburger from '../components/Hamburger'
 import Link from '../components/Link'
@@ -160,7 +161,13 @@ function Header({path}) {
               as={GatsbyLink}
               to="/contact/"
               from="header"
-              sx={{ display: ['none', 'none', 'initial'], ml: 4, variant: 'buttons.primary', transform: `rotate(${randomize(-1,1)}deg)`, }}
+              sx={{
+                animation: `${GlitchRotate} 20s infinite step-end`,
+                display: ['none', 'none', 'initial'],
+                ml: 4,
+                variant: 'buttons.primary',
+                transform: `rotate(${randomize(-1,1)}deg)`,
+              }}
             >
               Contact Us
             </Button>

@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { graphql } from 'gatsby'
+import { graphql, Link as GatsbyLink } from 'gatsby'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
+import Icon from '../components/Icon'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
@@ -31,17 +32,19 @@ const options = {
       )
     },
     [BLOCKS.EMBEDDED_ASSET]: node => {
-      return (
-        <img
-          alt={node.data.target.fields.title["en-US"]}
-          src={node.data.target.fields.file["en-US"].url}
-          sx={{
-            display: 'block',
-            mx: 'auto',
-            my: 4,
-          }}
-          />
-      );
+      if (node.data.target.fields) {
+        return (
+          <img
+            alt={node.data.target.fields.title["en-US"]}
+            src={node.data.target.fields.file["en-US"].url}
+            sx={{
+              display: 'block',
+              mx: 'auto',
+              my: 4,
+            }}
+            />
+        );
+      }
     }
   },
 }
@@ -57,7 +60,21 @@ export default ({ data }) => {
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
           <div sx={{ display: 'inline-block', position: 'relative' }}>
-            <h1 sx={{ variant: 'styles.h1', mt: [6,7] }}>{entry.title}</h1>
+            <Link
+              as={GatsbyLink}
+              bare={true}
+              to="/portfolio"
+              from={`portfolio-${entry.title}`}
+              sx={{ 
+                color: 'primary',
+                fontSize: [0,1],
+                mt: [6,7],
+                variant: 'text.allcaps',
+               }}>
+                 <Icon name="arrow-left" width="18px" height="18px" sx={{ mr: 2, }}/>
+                 Back to Portfolio
+              </Link>
+            <h1 sx={{ variant: 'styles.h1', mt: 2 }}>{entry.title}</h1>
             <div sx={{
               position: 'absolute',
               width: '120%',
@@ -73,7 +90,7 @@ export default ({ data }) => {
             }}>
             </div>
           </div>
-          <div sx={{ display: 'flex', flexWrap: 'wrap', my: 3, }}>
+          <div sx={{ display: 'flex', flexWrap: 'wrap', my: 5, }}>
             {entry.tags.map((tag, index) => {
               return (
                 <div key={tag.replace(" ", "_")} sx={{ 

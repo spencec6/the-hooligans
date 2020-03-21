@@ -17,6 +17,7 @@ function GlobalStyles() {
         font-family: 'Barlow', sans-serif;
         line-height: 150%;
         height: 100%;
+        overflow-x: hidden;
       }
 
       p { 

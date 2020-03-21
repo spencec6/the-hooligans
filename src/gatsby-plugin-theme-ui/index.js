@@ -113,6 +113,8 @@ export default {
     secondary: colors.yellow,
     secondary_dk: colors.lime,
     black: colors.black,
+    magenta: colors.magenta,
+    yellow: colors.yellow,
     lime: colors.lime,
     teal: colors.teal,
     error: colors.pinks[500],
