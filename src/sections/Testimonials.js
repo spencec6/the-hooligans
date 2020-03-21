@@ -79,6 +79,7 @@ const Testimonials = () => {
             {entries.map((entry, index) => {
               return (
                 <div 
+                  key={entry.author}
                   sx={{
                     display: 'flex',
                     variant: 'boxes.card',

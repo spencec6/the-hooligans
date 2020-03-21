@@ -23,10 +23,10 @@ const menuItems = [
     title: "Services",
     to: "/services/"
   },
-  // {
-  //   title: "Portfolio",
-  //   to: "/portfolio/"
-  // },
+  {
+    title: "Portfolio",
+    to: "/portfolio/"
+  },
   {
     title: "Contact Us",
     to: "/contact/"

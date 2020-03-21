@@ -51,7 +51,6 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        console.log(result)
         const entries = result.data.allContentfulPortfolio.edges
         entries.forEach((entry, index) => {
           const nextPage =

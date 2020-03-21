@@ -43,6 +43,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-remark`,
@@ -93,6 +94,16 @@ module.exports = {
           }
         ],
       },
+    },
+    { 
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true, // Print removed selectors and processed file names
+        develop: true, // Enable while using `gatsby develop`
+        // whitelist: ['whitelist'], // Don't remove this selector
+        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
+        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+      }
     },
     {
       resolve: `gatsby-plugin-sitemap`,
