@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { GlitchRotate } from '../components/Animations'
 
 const Hamburger = ({ isHome, isOpen, ...props }) => {
   return (
@@ -10,6 +11,7 @@ const Hamburger = ({ isHome, isOpen, ...props }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       sx={{
+        animation: `${GlitchRotate} 20s infinite step-end`,
         display: ['block', 'block', 'none'],
         color: 'primary',
         cursor: 'pointer',
