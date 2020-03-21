@@ -9,14 +9,12 @@ const ContactForm = () => {
       name="contact"
       method="POST"
       data-netlify="true"
-      netilfy-honeypot="bot-field"
-      encType="application/x-www-form-urlencoded"
+      data-netlify-honeypot="bot-field"
       action="/thank-you"
       sx={{ mb: [8,9], width: '100%'}}
     >
-      <p sx={{display: 'none'}}>
-        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-      </p>
+      <input type="hidden" name="bot-field" />
+      <input type="hidden" name="form-name" value="contact" />
       <div sx={{ }}>
         <Label htmlFor="name" required>Your Name</Label>
         <Input
