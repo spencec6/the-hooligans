@@ -2,13 +2,14 @@
 import { PropTypes } from 'prop-types'
 import { jsx } from 'theme-ui'
 
-const Label = ({variant, as: Component, children, ...props}) => {
+const Label = ({variant, required, as: Component, children, ...props}) => {
   return (
     <Component
       sx={{ variant: variant }}
       {...props}
     >
       {children}
+      {required ? <span sx={{ color: 'magenta' }}>*</span> : ''}
     </Component>
   )
 }

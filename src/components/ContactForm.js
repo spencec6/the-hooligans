@@ -18,19 +18,21 @@ const ContactForm = () => {
         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
       </p>
       <div sx={{ }}>
-        <Label htmlFor="name">Your Name</Label>
+        <Label htmlFor="name" required>Your Name</Label>
         <Input
           name="name"
           placeholder="Pete Townshend"
           type="text"
+          required
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label htmlFor="email">Your Email</Label>
+        <Label htmlFor="email" required>Your Email</Label>
         <Input
           name="email"
           placeholder="Email"
           type="email"
+          required
         />
       </div>
       <div sx={{ mt: 3 }}>
@@ -42,12 +44,13 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label htmlFor="message">Any other details you'd like to include:</Label>
+        <Label htmlFor="message" required>Any other details you'd like to include:</Label>
         <Input
           as="textarea"
           name="message"
           rows="3"
           placeholder="Your Message"
+          required
           sx={{
             resize: 'vertical',
           }}
