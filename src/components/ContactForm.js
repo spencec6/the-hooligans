@@ -9,6 +9,8 @@ const ContactForm = () => {
       name="contact"
       method="post"
       data-netlify="true"
+      encType="application/x-www-form-urlencoded"
+      action="/thank-you"
       sx={{ mb: [8,9], width: '100%'}}
     >
       <div sx={{ }}>
@@ -17,7 +19,6 @@ const ContactForm = () => {
           name="name"
           placeholder="Pete Townshend"
           type="text"
-          autoFocus
         />
       </div>
       <div sx={{ mt: 3 }}>

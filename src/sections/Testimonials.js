@@ -82,6 +82,7 @@ const Testimonials = () => {
                   sx={{
                     display: 'flex',
                     variant: 'boxes.card',
+                    mt: index === 0 ? 0 : 5,
                   }}
                 >
                   <div sx={{ flexShrink: 0}}>

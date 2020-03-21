@@ -32,9 +32,17 @@ function Layout({ children, path }) {
       >
       </Helmet>
       <GlobalStyles />
-      <Header path={path}/>
-      <main>{children}</main>
-      <Footer path={path}/>
+      <div sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh'
+      }}>
+        <div sx={{ flexGrow: 1 }}>
+          <Header path={path}/>
+          <main>{children}</main>
+        </div>
+        <Footer path={path} sx={{ flexShrink: 0 }}/>
+      </div>
     </React.Fragment>
   )
 }

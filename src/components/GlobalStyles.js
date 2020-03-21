@@ -8,10 +8,15 @@ function GlobalStyles() {
     <Global styles={css`
       ${emotionReset}
 
+      html {
+        height: 100%;
+      }
+
       body { 
         background-image: url(${backgroundTexture});
         font-family: 'Barlow', sans-serif;
         line-height: 150%;
+        height: 100%;
       }
 
       p { 

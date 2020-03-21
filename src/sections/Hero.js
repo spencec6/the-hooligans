@@ -1,21 +1,11 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { graphql, useStaticQuery } from 'gatsby'
 import LogoMark from '../images/logo/the-hooligans-logomark.png'
 import BgSmear from '../images/SVGs/BgSmear'
 import X1 from '../images/SVGs/X1'
 import { randomize } from '../utils/helpers'
 
 function Hero() {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          description
-        }
-      }
-    }
-  `)
   return (
     <div sx={{ px: [6,8,10], position: 'relative' }}>
       <div sx={{
@@ -43,6 +33,7 @@ function Hero() {
         />
         <img 
           src={LogoMark}
+          alt="The Hooligans"
           sx={{
             display: 'block',
             mx: 'auto',

@@ -58,6 +58,7 @@ const Portfolio = () => {
               height="315"
               src="https://www.youtube.com/embed/iJOeMDsnJWI"
               frameBorder="0"
+              title="sizzler"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               sx={{

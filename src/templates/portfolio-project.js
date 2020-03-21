@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import Layout from '../components/Layout'
@@ -34,7 +33,7 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: node => {
       return (
         <img
-          title={node.data.target.fields.title["en-US"]}
+          alt={node.data.target.fields.title["en-US"]}
           src={node.data.target.fields.file["en-US"].url}
           sx={{
             display: 'block',
@@ -77,7 +76,7 @@ export default ({ data }) => {
           <div sx={{ display: 'flex', flexWrap: 'wrap', my: 3, }}>
             {entry.tags.map((tag, index) => {
               return (
-                <div sx={{ 
+                <div key={tag.replace(" ", "_")} sx={{ 
                   bg: 'lime', 
                   color: 'black', 
                   display: 'inline-block', 

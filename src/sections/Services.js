@@ -62,7 +62,7 @@ const Services = () => {
           {services.map((service, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Block width={[1,1/3,1/3]} key={`service-${service.slug}`}>
-              <img src={service.image} sx={{ display: 'block', mx: 'auto', width: "100px"}}/>
+              <img alt={service.title} src={service.image} sx={{ display: 'block', mx: 'auto', width: "100px"}}/>
               <h3 sx={{ variant: 'styles.h4', color: 'primary', mt: 3, textAlign: 'center' }}>{service.title}</h3>
               <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.description}</p>
               <div sx={{textAlign: 'center'}}>

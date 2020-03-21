@@ -24,20 +24,13 @@ function ServicesPage({ location }) {
       />
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2' }}>Our Services</h1>
-          <p sx={{ fontSize: [4,5,6], mb: 0, variant: 'styles.p' }}> 
-            Let's move humanity forward.
+          <h1 sx={{ variant: 'styles.h2', mb: 5  }}>Our Services</h1>
+          <p sx={{ fontSize: [4,5,6], mb: 0 }}> 
+            We'd love to build something amazing with you!
           </p>
-          <p sx={{ mt: 0, variant: 'styles.p' }}>
-            {title} is a volunteer nonprofit, which means any volunteered time strengthens our vision, and reduces pressure on our volunteers. The following skills are urgently needed:
+          <p sx={{ mb: 7, mt: 4 }}>
+            We are {title}, and this is what we do.
           </p>
-          <ul>
-            <li>Web development, specifically in Frontend Development</li>
-            <li>Graphic design</li>
-            <li>Legal support (even a few hours of your time would make our lives so much easier)</li>
-            <li>Copywriting</li>
-            <li>Digital Marketing</li>
-          </ul>
         </div>
       </div>
     </Layout>
