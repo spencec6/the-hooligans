@@ -14,7 +14,7 @@ const ContactForm = () => {
       sx={{ mb: [8,9], width: '100%'}}
     >
       <div sx={{ }}>
-        <Label to="name">Your Name</Label>
+        <Label for="name">Your Name</Label>
         <Input
           name="name"
           placeholder="Pete Townshend"
@@ -22,7 +22,7 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label to="email">Your Email</Label>
+        <Label for="email">Your Email</Label>
         <Input
           name="email"
           placeholder="Email"
@@ -30,7 +30,7 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label to="website">Your Website</Label>
+        <Label for="website">Your Website</Label>
         <Input
           name="website"
           placeholder="Your Website"
@@ -38,7 +38,7 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label to="message">Any other details you'd like to include:</Label>
+        <Label for="message">Any other details you'd like to include:</Label>
         <Input
           as="textarea"
           name="message"
