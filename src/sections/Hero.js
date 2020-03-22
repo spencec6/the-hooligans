@@ -4,7 +4,7 @@ import LogoMark from '../images/logo/the-hooligans-logomark.png'
 import BgSmear from '../images/SVGs/BgSmear'
 import X1 from '../images/SVGs/X1'
 import { randomize } from '../utils/helpers'
-import { GlitchRotate } from '../components/Animations'
+// import { GlitchRotate } from '../components/Animations'
 
 function Hero() {
   return (
@@ -36,7 +36,7 @@ function Hero() {
           src={LogoMark}
           alt="The Hooligans"
           sx={{
-            animation: `${GlitchRotate} 20s infinite step-end`,
+            // animation: `${GlitchRotate} 20s infinite step-end`,
             display: 'block',
             mx: 'auto',
             maxWidth: '500px',
@@ -48,7 +48,7 @@ function Hero() {
       <X1
         fill="currentColor"
         sx={{
-          animation: `${GlitchRotate} 6s infinite step-end`,
+          // animation: `${GlitchRotate} 6s infinite step-end`,
           color: 'black',
           height: ['100px', '100px', '100px', '200px'],
           left: '-10px',
@@ -62,7 +62,7 @@ function Hero() {
       <X1
         fill="currentColor"
         sx={{
-          animation: `${GlitchRotate} 9s infinite step-end`,
+          // animation: `${GlitchRotate} 9s infinite step-end`,
           color: 'black',
           height: ['60px', '60px', '60px', '120px'],
           left: '-30px',
@@ -76,7 +76,7 @@ function Hero() {
       <X1
         fill="currentColor"
         sx={{
-          animation: `${GlitchRotate} 14s infinite step-end`,
+          // animation: `${GlitchRotate} 14s infinite step-end`,
           color: 'black',
           height: ['80px', '80px', '80px', '160px'],
           right: '20px',
