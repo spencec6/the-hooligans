@@ -54,13 +54,13 @@ module.exports = {
         siteUrl: siteUrl + pathPrefix,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: website.googleAnalyticsId,
-        anonymize: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: website.googleAnalyticsId,
+    //     anonymize: true,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
