@@ -30,12 +30,11 @@ const Footer = ({ path, ...props }) => {
     }
   `)
   const { title, email, social } = data.site.siteMetadata
-  const isHome = path === '/' ? 1 : 0
   return (
     <footer sx={{
       backgroundColor: 'black',
       color: 'white',
-      mt: isHome ? 0 : [7,8,9],
+      mt: 0,
       px: [4,3],
       py: [6, 9],
       textAlign: ['center','left'],

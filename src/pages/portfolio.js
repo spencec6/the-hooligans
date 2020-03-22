@@ -39,7 +39,7 @@ function PortfolioPage({ location }) {
         title={`Portfolio - ${title}`}
         description={description}
       />
-      <div sx={{ px:4, mt: [6,7] }}>
+      <div sx={{ px:4, mb: [9,10], mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
           <h1 sx={{ variant: 'styles.h2', mb: 5  }}>Our Portfolio</h1>
           <p sx={{ fontSize: [4,5,6], mb: 0 }}> 
@@ -69,7 +69,11 @@ function PortfolioPage({ location }) {
                         color: 'primary',
                       },
                       '&:hover > .background-smear': {
-                        color: 'lime',
+                        color: 'secondary',
+                      },
+                      '&:hover > .hero-image': {
+                        transform: 'scale(1.02)',
+                        filter: 'brightness(1.1)'
                       }
                     }}
                   >
@@ -86,7 +90,7 @@ function PortfolioPage({ location }) {
                         }}
                     />
                     <h2 sx={{ variant: 'styles.h3', color: 'currentColor' }}>{entry.title}</h2>
-                    <Img fluid={entry.heroImage.fluid} alt={entry.title}/>
+                    <Img className="hero-image" fluid={entry.heroImage.fluid} alt={entry.title} sx={{ transform: 'scale(1)', transition: 'transform 0.25s ease-in-out'}}/>
                   </Link>
                 )
               })}
