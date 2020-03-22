@@ -61,6 +61,7 @@ const Portfolio = () => {
               title="sizzler"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              loading="lazy"
               sx={{
                 height: '100%',
                 left: 0,
