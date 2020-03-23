@@ -116,7 +116,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query PortfolioEntryBySlug( $slug: String! ) {
-    project: contentfulPortfolio(slug: { eq: $slug }) {
+    project: contentfulPortfolioProject(slug: { eq: $slug }) {
       title
       slug
       tags

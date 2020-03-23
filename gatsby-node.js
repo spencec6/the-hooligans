@@ -32,7 +32,7 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allContentfulPortfolio {
+            allContentfulPortfolioProject {
               edges {
                 node {
                   slug
@@ -51,7 +51,7 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        const entries = result.data.allContentfulPortfolio.edges
+        const entries = result.data.allContentfulPortfolioProject.edges
         entries.forEach((entry, index) => {
           const nextPage =
             entry.node.displayOrder === entries.length
