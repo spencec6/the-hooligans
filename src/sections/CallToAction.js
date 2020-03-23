@@ -19,7 +19,7 @@ const CallToAction = () => {
     <section
       id="call-to-action"
       sx={{
-        bg: 'teal',
+        bg: 'primary',
         width: "100%",
         px: 4,
         py: [10,11],
@@ -41,17 +41,17 @@ const CallToAction = () => {
             textAlign: 'center'
           }}
         >
-          <h1 sx={{ variant: 'styles.h3', color: 'black', fontWeight: 'black' }}>
+          <h1 sx={{ variant: 'styles.h3', color: 'secondary', fontWeight: 'black' }}>
             Ready to put your campaign into overdrive?
           </h1>
-          <p sx={{ color: 'black', mt: 2 }}>
+          <p sx={{ color: 'white', mt: 2 }}>
             Create the campaign you've always dreamed about with {title} by your side at every step along the way.
           </p>
           <Button
               as={GatsbyLink}
               to="/contact/"
               from="header"
-              sx={{ variant: 'buttons.primary', mt: 4 }}
+              sx={{ variant: 'buttons.secondary', mt: 4 }}
             >
               Contact Us
             </Button>

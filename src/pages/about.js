@@ -3,7 +3,8 @@ import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 // import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import CallToAction from '../sections/CallToAction'
-import { services } from '../sections/Services'
+import Testimonials from '../sections/Testimonials'
+// import { services } from '../sections/Services'
 import Layout from '../components/Layout'
 // import Link from '../components/Link'
 // import OutboundLink from '../components/OutboundLink'
@@ -62,22 +63,11 @@ function AboutPage({ location }) {
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
           {/* {documentToReactComponents(entries.json, options)} */}
           <h3 sx={{ variant: 'styles.h3', mt: [6,7] }}>What We Do</h3>
-          {services.map((service, index) => {
-            return (
-              <div key={`service-${service.slug}`} id={service.slug} sx={{ display: 'flex', mt: index === 0 ? 6 : 8, }}>
-                <div sx={{ width: "100px" }}>
-                  <img alt={service.title} src={service.image} sx={{ display: 'block', flexShrink: 0, mx: 'auto', width: "100px"}}/>
-                </div>
-                <div sx={{ flexGrow: 1, pl: 5, }}>
-                  <h3 sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
-                  <p sx={{ variant: 'styles.p' }}>{service.description}</p>
-                </div>
-              </div>
-            )
-          })}
+          <p>Some thoughtful words about what we do.</p>
         </div>
       </div>
       <div sx={{ mt: [6,7] }}>
+        <Testimonials/>
         <CallToAction/>
       </div>
     </Layout>

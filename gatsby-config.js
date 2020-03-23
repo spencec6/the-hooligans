@@ -40,10 +40,11 @@ module.exports = {
     }
   },
   plugins: [
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-postcss`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-remark`,

@@ -4,24 +4,7 @@ import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
 import Img from 'gatsby-image'
 import Block from '../components/Block'
 import Link from '../components/Link'
-
-export const services = [
-  {
-    slug: 'branding',
-    title: 'Branding',
-    description: `We'll dig deep to understand and accurately represent the essence of your campaign. We'll build you a memorable brand that communicates clearly and sets you apart.`
-  },
-  {
-    slug: 'web',
-    title: 'Web',
-    description: `Your website is your digital home base. We'll craft a web presence that works great on desktop and mobile devices and make sure it's easy for you to keep up-to-date.`
-  },
-  {
-    slug: 'marketing',
-    title: 'Marketing',
-    description: `Even if you have the best policies and messaging, it doesn't matter if people don't know about you. We will help make sure your message is heard far and wide.`
-  }
-]
+import { services } from '../pages/services'
 
 const Services = () => {
   const data = useStaticQuery(graphql`
@@ -96,7 +79,7 @@ const Services = () => {
               <h3 sx={{ variant: 'styles.h4', color: 'primary', mt: 3, textAlign: 'center' }}>{service.title}</h3>
               <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.description}</p>
               <div sx={{textAlign: 'center'}}>
-                <Link as={GatsbyLink} to={`/about/#${service.slug}`} sx={{ fontSize: [1,2] }}>Find Out More...</Link>
+                <Link as={GatsbyLink} to={`/services/#${service.slug}`} sx={{ fontSize: [1,2] }}>Find Out More...</Link>
               </div>
             </Block>
           ))}
