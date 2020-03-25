@@ -90,7 +90,7 @@ function UnderConstruction() {
               mt: 5,
               textAlign: 'center',
               variant: 'text.allcaps'
-            }}>Coming soon!</div>
+            }}>Coming soon!!!</div>
         </div>
       </div>
       <div sx={{
