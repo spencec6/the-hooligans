@@ -51,6 +51,14 @@ function GlobalStyles() {
       p:first-of-type {
         margin-top: 0;
       }
+
+      i { 
+        font-style: italic;
+      }
+
+      b { 
+        font-weight: bold;
+      }
   
       *, *::after, *::before {
         box-sizing: border-box;

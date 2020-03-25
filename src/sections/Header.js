@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { useState } from 'react'
 import { jsx } from 'theme-ui'
-import { Link as GatsbyLink } from 'gatsby'
+import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby'
 import { GlitchRotate } from '../components/Animations'
 import Button from '../components/Button'
 import Hamburger from '../components/Hamburger'
@@ -11,36 +11,49 @@ import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
 import MobileHeader from '../components/MobileHeader'
 import { randomize } from '../utils/helpers'
 
-const menuItems = [
-  {
-    title: "Home",
-    to: "/"
-  },
-  {
-    title: "About",
-    to: "/about/"
-  },
-  {
-    title: "Services",
-    to: "/services/"
-  },
-  {
-    title: "Portfolio",
-    to: "/portfolio/"
-  },
-  {
-    title: "Contact Us",
-    to: "/contact/"
-  },
-]
-
 function Header({path}) {
+  const data = useStaticQuery(graphql`
+    query {
+      menu: allContentfulMenu {
+        nodes {
+          menItem {
+            ... on ContentfulAbout {
+              main
+              slug
+              title
+            }
+            ... on ContentfulBioPage {
+              main
+              slug
+              title
+            }
+            ... on ContentfulServices {
+              main
+              slug
+              title
+            }
+            ... on ContentfulContactPage {
+              main
+              slug
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const mainMenuItems = []
+  mainMenuItems.push({main: 'logo', slug: '', title: 'Home'})
+  data.menu.nodes[0].menItem.forEach((menuItem, index) => {
+    mainMenuItems.push({main: menuItem.main, slug: menuItem.slug, title: menuItem.title })
+  })
+
   const [isOpen, setIsOpen] = useState(0); 
 
   const isHome = path === '/' ? 1 : 0
-  const mainMenuItems = menuItems.filter((item) => { return item.to !== '/contact/' }) // contact is displayed in it's own button on non-mobile view.
   return (
-    <header sx={{ px: [6,7,9,11], py: 5 }}>
+    <header sx={{ px: [4,4,4,11], py: [3,5] }}>
       <div sx={{ 
         display: 'flex',
         alignItems: 'center',
@@ -62,14 +75,14 @@ function Header({path}) {
             pl: 0,
             }}
           >
-            {mainMenuItems.map((item) => {
-              if (item.to === '/') {
+            {mainMenuItems.filter((menuItem) => { return menuItem.main }).map((item) => {
+              if (item.main === 'logo') {
                 return (
                   <Link
                     as={GatsbyLink}
                     bare={true}
                     key={item.title}
-                    to={item.to}
+                    to={`/${item.slug}`}
                     from="header"
                   >
                     <LogoIcon
@@ -97,7 +110,7 @@ function Header({path}) {
                   <div 
                     key={item.title}
                     sx={{
-                      ml: item.title === 'About' ? 0 : [4,6],
+                      ml: item.slug === 'about' ? 0 : [4,6],
                       position: 'relative',
                     }}
                   >
@@ -105,7 +118,7 @@ function Header({path}) {
                       as={GatsbyLink}
                       bare={true}
                       from="header"
-                      to={item.to}
+                      to={`/${item.slug}`}
                       key={item.title}
                       activeClassName="is-active"
                       sx={{
@@ -179,7 +192,7 @@ function Header({path}) {
           </ul>
         </nav>
       </div>
-      <MobileHeader menuItems={menuItems} isHome={isHome} isOpen={isOpen}/>
+      <MobileHeader menuItems={mainMenuItems} isHome={isHome} isOpen={isOpen}/>
     </header>
   )
 }

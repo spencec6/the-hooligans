@@ -1,53 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, Link as GatsbyLink } from 'gatsby'
+import { options } from '../utils/richTextOptions'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import Icon from '../components/Icon'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
-import OutboundLink from '../components/OutboundLink'
 import SEO from '../components/Seo'
-
-const options = {
-  renderNode: {
-    [INLINES.HYPERLINK]: (node, next) => {
-      return (
-        <Link
-          as={OutboundLink}
-          from="testimonial"
-          target="_blank"
-          to={`${node.data.uri}`}
-        >
-          {next}
-        </Link>
-      )
-    },
-    [BLOCKS.PARAGRAPH]: (_node, next) => {
-      return (
-        <p sx={{ variant: 'styles.p', fontFamily: 'sans' }}>
-          {next}
-        </p>
-      )
-    },
-    [BLOCKS.EMBEDDED_ASSET]: node => {
-      if (node.data.target.fields) {
-        return (
-          <img
-            alt={node.data.target.fields.title["en-US"]}
-            src={node.data.target.fields.file["en-US"].url}
-            sx={{
-              display: 'block',
-              mx: 'auto',
-              my: 4,
-            }}
-            />
-        );
-      }
-    }
-  },
-}
 
 export default ({ data }) => {
   const entry = data.project
@@ -116,7 +76,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query PortfolioEntryBySlug( $slug: String! ) {
-    project: contentfulPortfolio(slug: { eq: $slug }) {
+    project: contentfulPortfolioProject(slug: { eq: $slug }) {
       title
       slug
       tags

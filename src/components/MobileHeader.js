@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import Link from './Link'
 
 const MobileHeader = ({ menuItems, isHome, isOpen, ...props }) => {
-  return (
+return (
     <div
       mobilemenu={isOpen}
       sx={{
@@ -24,7 +24,7 @@ const MobileHeader = ({ menuItems, isHome, isOpen, ...props }) => {
         zIndex: 99,
       }}
     >
-      <ul sx={{ listStyle: 'none', m: 0, p: 0 }}>
+      <ul sx={{ listStyle: 'none', m: 0, mt: 8, p: 0 }}>
         {menuItems.map((item, index) => {
           return (
             <li
@@ -34,7 +34,7 @@ const MobileHeader = ({ menuItems, isHome, isOpen, ...props }) => {
               sx={{
                 display: 'block',
                 mb: 0,
-                mt: index === 0 ? 0 : 5,
+                mt: index === 0 ? 0 : 4,
                 opacity: isOpen ? `1` : `0`,
                 textDecoration: 'none',
                 transform: isOpen ? `translateX(0)` : `translateX(100vw)`,
@@ -45,7 +45,7 @@ const MobileHeader = ({ menuItems, isHome, isOpen, ...props }) => {
               <Link
                 as={GatsbyLink}
                 from="header-mobile"
-                to={item.to}
+                to={`/${item.slug}`}
                 sx={{
                   variant: 'styles.h1',
                   color: 'white',

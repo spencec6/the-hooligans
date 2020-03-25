@@ -26,7 +26,9 @@ function NotFoundPage() {
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
           <h1 sx={{ variant: 'styles.h2', transform: `rotate(${randomize(-4,4)}deg)` }}>Page not found :(</h1>
-          <Button 
+          <Button
+            to='/'
+            from='404'
             as={GatsbyLink}
             sx={{ variant: 'buttons.secondary', mt: 8}}>
             Go Home

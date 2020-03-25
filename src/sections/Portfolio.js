@@ -1,24 +1,34 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import BgSmear from '../images/SVGs/BgSmear'
+import { options } from '../utils/richTextOptions'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
+// import Sizzler from '../assets/sizzler.mp4'
 
 const Portfolio = () => {
   const data = useStaticQuery(graphql`
     query {
-      site {
-        siteMetadata {
-          title
+      portfolio: contentfulPortfolio {
+        slug
+        title
+        pageContent {
+          json
+        }
+        excerpt {
+          json
         }
       }
     }
   `)
-  const title = data.site.siteMetadata.title
+  const portfolio = data.portfolio
   return (
     <section sx={{ px:4, my: [8,9,10] }}>
       <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.xl }}>
-        <h1 sx={{ variant: 'styles.h2', textAlign: 'center' }}>Our Work</h1>
-        <p
+        <h1 sx={{ variant: 'styles.h2', textAlign: 'center' }}>
+          {portfolio.title}
+        </h1>
+        <div
           sx={{ 
             variant: 'styles.p',
             mx: 'auto',
@@ -27,8 +37,8 @@ const Portfolio = () => {
             width: "100%"
           }}
         >
-          {title} has worked with some of country's most iconic political campaigns.
-        </p>
+          {documentToReactComponents(portfolio.excerpt.json, options)}
+        </div>
         <div sx={{
           position: 'relative',
           }}
@@ -53,6 +63,9 @@ const Portfolio = () => {
             position: 'relative',
             pb: '54%',
           }}>
+            {/* <video controls sx={{ height: 'auto', width: '100%' }}>
+              <source src={Sizzler} type="video/mp4" />
+            </video> */}
             <iframe
               width="560"
               height="315"

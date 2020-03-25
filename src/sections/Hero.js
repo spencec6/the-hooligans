@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import BgSmear from '../images/SVGs/BgSmear'
+import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
 import { GlitchRotate } from '../components/Animations'
 
 function Hero() {
@@ -47,11 +47,10 @@ function Hero() {
   return (
     <div sx={{ px: [6,8,10], position: 'relative' }}>
       <div sx={{
-        // bg: 'secondary',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '80vh',
+        height: ['70vh','80vh'],
         mx: 'auto',
         position: 'relative',
         width: "100%",

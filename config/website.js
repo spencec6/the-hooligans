@@ -1,7 +1,7 @@
 module.exports = {
   pathPrefix: `/`,
-  url: `https://www.the-hooligans.com`,
-  email: `hello@the-hooligans.com`,
+  url: `https://www.thehooligansagency.com`,
+  email: `info@thehooligansagency.com`,
   title: `The Hooligans`,
   description: `Mindful and creative agency`,
   // image: `/images/ubiquity-hero-temp.png`, // TO DO

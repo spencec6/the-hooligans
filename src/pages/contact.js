@@ -25,8 +25,10 @@ function ContactPage({ location }) {
       />
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2', mb: 5 }}>Contact Us</h1>
-          <p sx={{ fontSize: [4,5,6], mb: 0 }}> 
+          <h1 sx={{ variant: 'styles.h2', mb: 5 }}>
+            Contact Us
+          </h1>
+          <p sx={{ fontSize: [4,5,6], lineHeight: theme => theme.leading.tight, mb: 0 }}> 
             We'd love to build something amazing with you!
           </p>
           <p sx={{ mb: 7, mt: 4 }}>

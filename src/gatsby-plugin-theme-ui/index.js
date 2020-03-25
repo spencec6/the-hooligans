@@ -260,7 +260,7 @@ export default {
     h5: { variant: 'text.heading', fontSize: [4,5,6] },
     h6: { variant: 'text.heading', fontSize: [3,4,5] },
     p: {
-      fontFamily: 'sans',
+      fontFamily: 'inherit',
       fontSize: [1,2,3],
       lineHeight: theme => theme.leading.normal,
       '&:first-of-type': {

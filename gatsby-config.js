@@ -127,6 +127,14 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/ // See below to configure properly
+        }
+      }
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: contentfulConfig,
     },

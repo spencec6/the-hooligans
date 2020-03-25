@@ -2,8 +2,19 @@
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import { randomize } from '../utils/helpers'
+import RoundSmear1 from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.svg";
+import RoundSmear2 from "-!svg-react-loader!../images/SVGs/round-smear-2.inline.svg";
+import RoundSmear3 from "-!svg-react-loader!../images/SVGs/round-smear-3.inline.svg";
+import { GlitchRotate } from '../components/Animations'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
+
+const smearComponents = [
+  RoundSmear1,
+  RoundSmear2,
+  RoundSmear3
+]
 
 export const services = [
   {
@@ -25,75 +36,68 @@ export const services = [
 
 function ServicesPage({ location }) {
   const data = useStaticQuery(graphql`
-  query {
-    site {
-      siteMetadata {
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+        }
+      }
+      serviceContent: contentfulServices {
         title
-        description
-      }
-    }
-    branding: file(relativePath: { eq: "branding.png" }) {
-      childImageSharp {
-        fixed(
-          width: 100,
-          quality: 50,
-          traceSVG: { color: "#ef336c" }
-          ) {
-          ...GatsbyImageSharpFixed_tracedSVG
+        slug
+        introduction
+        services {
+          slug
+          title
+          excerpt
+          icon {
+            fixed(width: 150, quality: 50) {
+              ...GatsbyContentfulFixed_tracedSVG
+            }
+          }
         }
       }
     }
-    web: file(relativePath: { eq: "web.png" }) {
-      childImageSharp {
-        fixed(
-          width: 100,
-          quality: 50,
-          traceSVG: { color: "#ef336c" }
-          ) {
-          ...GatsbyImageSharpFixed_tracedSVG
-        }
-      }
-    }
-    marketing: file(relativePath: { eq: "marketing.png" }) {
-      childImageSharp {
-        fixed(
-          width: 100,
-          quality: 50,
-          traceSVG: { color: "#ef336c" }
-          ) {
-          ...GatsbyImageSharpFixed_tracedSVG
-        }
-      }
-    }
-  }
 `)
   const { title, description } = data.site.siteMetadata
+  const serviceContent = data.serviceContent
   return (
     <Layout path={location.pathname}>
       <SEO
-        title={`Services - ${title}`}
+        title={`${serviceContent.title} - ${title}`}
         description={description}
       />
-      <div sx={{ px:4, my: [6,7] }}>
+      <div sx={{ px:4, mb: [10,11], mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2', mb: 5  }}>Our Services</h1>
-          <p sx={{ fontSize: [4,5,6], mb: 0 }}> 
-            We'd love to build something amazing with you!
+          <h1 sx={{ variant: 'styles.h2', color: 'primary', mb: 5  }}>
+            {serviceContent.title}
+          </h1>
+          <p sx={{ fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, mb: [9,10] }}> 
+            {serviceContent.introduction}
           </p>
-          <p sx={{ mb: 7, mt: 4 }}>
-            We are {title}, and this is what we do.
-          </p>
-          {services.map((service, index) => {
+          {serviceContent.services.map((service, index) => {
+            const RoundSmear = smearComponents[Math.round(randomize(-0.5,2.5))];
             return (
               <div key={`service-${service.slug}`} id={service.slug} sx={{ display: 'flex', mt: index === 0 ? 6 : 8, }}>
-                <div sx={{ width: "100px" }}>
-                  <div sx={{ display: 'block', flexShrink: 0, mx: 'auto', width: "100px"}}>
-                    <Img alt={service.title} fixed={data[service.slug].childImageSharp.fixed}/>
+                <div sx={{ width: "170px" }}>
+                  <div sx={{ display: 'block', flexShrink: 0, mx: 'auto',  position: 'relative', width: "100%"}}>
+                    <RoundSmear
+                      sx={{
+                        color: 'secondary',
+                        height: '100%',
+                        position: 'absolute',
+                        transform: `rotate(${randomize(0,360)}deg)`,
+                        width: '100%',
+                        zIndex: 0,
+                      }}
+                    />
+                    <Img alt={service.title} fixed={service.icon.fixed} sx={{ animation: `${GlitchRotate} ${(index+1) * randomize(3,15)}s infinite step-end` }}/>
                   </div>
                 </div>
                 <div sx={{ flexGrow: 1, pl: 5, }}>
                   <h3 sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
-                  <p sx={{ variant: 'styles.p' }}>{service.description}</p>
+                  <p sx={{ variant: 'styles.p' }}>{service.excerpt}</p>
                 </div>
               </div>
             )

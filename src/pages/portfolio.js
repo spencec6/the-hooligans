@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import SEO from '../components/Seo'
-import BgSmear from '../images/SVGs/BgSmear'
+import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
 
 function PortfolioPage({ location }) {
   const data = useStaticQuery(graphql`
@@ -16,7 +16,7 @@ function PortfolioPage({ location }) {
           description
         }
       }
-      allContentfulPortfolio (limit: 4, sort: {fields: createdAt, order: DESC}) {
+      allContentfulPortfolioProject (limit: 4, sort: {fields: createdAt, order: DESC}) {
         nodes {
           slug
           title
@@ -32,7 +32,7 @@ function PortfolioPage({ location }) {
     }
   `)
   const { title, description } = data.site.siteMetadata
-  const entries = data.allContentfulPortfolio.nodes
+  const entries = data.allContentfulPortfolioProject.nodes
   return (
     <Layout path={location.pathname}>
       <SEO

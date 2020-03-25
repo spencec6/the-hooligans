@@ -13,6 +13,20 @@ const year = new Date().getFullYear()
 const Footer = ({ path, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
+      mobileBg: file(relativePath: { eq: "background-texture.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 768, quality: 60) {
+            src
+          }
+        }
+      }
+      desktopBg: file(relativePath: { eq: "background-texture.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1024, quality: 60) {
+            src
+          }
+        }
+      }
       site {
         siteMetadata {
           title
@@ -29,23 +43,28 @@ const Footer = ({ path, ...props }) => {
       }
     }
   `)
+  const { mobileBg, desktopBg } = data
   const { title, email, social } = data.site.siteMetadata
   return (
     <footer sx={{
+      backgroundBlendMode: 'color-burn',
       backgroundColor: 'black',
+      backgroundImage: [`url(${mobileBg.childImageSharp.fluid.src})`, `url(${desktopBg.childImageSharp.fluid.src})`],
       color: 'white',
       mt: 0,
-      px: [4,3],
-      py: [6, 9],
+      px: 4,
+      py: [9, 10],
       textAlign: ['center','left'],
     }}
     {...props}>
+      <div sx={{
+        variant: 'boxes.cell',
+        }}>
       <div sx={{
         display: 'flex',
         justifyContent: 'space-between',
         flexWrap: ["wrap", "nowrap"],
         mx: -4,
-        variant: 'boxes.cell',
       }}>
         <Block width={[1,1/2]}>
           <Link
@@ -53,6 +72,7 @@ const Footer = ({ path, ...props }) => {
             bare={true}
             to="/"
             from="footer"
+            sx={{ display: 'inline-block' }}
           >
             <Logo
               fill="currentColor"
@@ -112,7 +132,11 @@ const Footer = ({ path, ...props }) => {
           >
             {email}
           </Link>
+          <div sx={{ color: 'white', mt: 2 }}>
+            825 16th St NW, 4th Floor, Washington, DC 20009 
+          </div>
         </Block>
+      </div>
       </div>
     </footer>
   )
