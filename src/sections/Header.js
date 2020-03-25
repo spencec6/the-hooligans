@@ -6,6 +6,7 @@ import { GlitchRotate } from '../components/Animations'
 import Button from '../components/Button'
 import Hamburger from '../components/Hamburger'
 import Link from '../components/Link'
+import Logo from "-!svg-react-loader!../images/SVGs/TheHooligans-Logo.inline.svg";
 import LogoIcon from '../components/LogoIcon'
 import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
 import MobileHeader from '../components/MobileHeader'
@@ -53,12 +54,13 @@ function Header({path}) {
 
   const isHome = path === '/' ? 1 : 0
   return (
-    <header sx={{ px: [4,4,4,11], py: [3,5] }}>
+    <header sx={{ px: [4,4,4,11], py: [3,5] }} id="header">
       <div sx={{ 
         display: 'flex',
         alignItems: 'center',
         zIndex: 100,
         variant: 'boxes.cell',
+        maxWidth: [theme => theme.maxWidths.xl, theme => theme.maxWidths.xxl]
         }}
       >
         <nav
@@ -85,11 +87,31 @@ function Header({path}) {
                     to={`/${item.slug}`}
                     from="header"
                   >
+                    <Logo
+                      fill="currentColor"
+                      sx={{
+                        cursor: 'pointer',
+                        color: 'black',
+                        display: ['none','none','block'],
+                        height: '60px',
+                        mb: 0,
+                        mr: 7,
+                        textDecoration: 'none',
+                        transitionDuration: '0.25s',
+                        transitionProperty: 'opacity',
+                        transitionTimingFunction: 'ease-in-out',
+                        width: '197px',
+                        '&:hover': {
+                          color: `primary`
+                        }
+                      }}
+                    />
                     <LogoIcon
                       fill="currentColor"
                       sx={{
                         cursor: 'pointer',
                         color: isOpen ? `white` : `black`,
+                        display: ['block','block','none'],
                         height: '60px',
                         mb: 0,
                         mr: 7,

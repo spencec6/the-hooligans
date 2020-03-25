@@ -162,9 +162,11 @@ export default {
   },
   breakpoints: ['576px', '768px', '992px', '1200px'],
   maxWidths: {
+    none: 'none',
     md: '540px',
     lg: '720px',
-    xl: '1080px'
+    xl: '1080px',
+    xxl: '1400px'
   },
   boxes: {
     card: {

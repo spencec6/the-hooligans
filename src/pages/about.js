@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
+import { randomize } from '../utils/helpers'
 import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
@@ -9,24 +10,39 @@ import Testimonials from '../sections/Testimonials'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 
-let paragraphIndex = 0
-const options = {
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (_node, next) => {
-      paragraphIndex++;
-      return (
-        <p sx={{
-          variant: 'styles.p',
-          fontSize: paragraphIndex === 1 ? [3,4,5] : 'inherit',
-          lineHeight: paragraphIndex === 1 ? theme => theme.leading.tight : theme => theme.leading.loose,
-          mb: paragraphIndex === 1 ? 6 : 'inherit',
-          transform: paragraphIndex === 1 ? 'rotate(-0.5deg)' : ''
-        }}>
-          {next}
-        </p>
-      )
-    },
+const getOptions = () => {
+  let paragraphIndex = 0
+  const introOptions = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (_node, next) => {
+        paragraphIndex++
+        if(paragraphIndex > 1) {
+          return <p sx={{ variant: 'styles.p' }}>{next}</p>
+        } else {
+          return (
+            <p sx={{
+              variant: 'styles.p',
+              display: 'inline-block',
+              fontSize:[4,5,6],
+              fontWeight: 'bold',
+              lineHeight: theme => theme.leading.tight,
+              mb: 3,
+              px: 2,
+              transform: `rotate(${randomize(-1.2,0.3)}deg) translateX(-10px)`
+            }}>
+              <span sx={{
+                bg: 'lime',
+                color: 'primary',
+               }}>
+                 {next}
+              </span>
+            </p>
+          )
+        }
+      },
+    }
   }
+  return introOptions
 }
 
 function AboutPage({ location }) {
@@ -77,10 +93,10 @@ function AboutPage({ location }) {
           </div>
         </div>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2', color: 'primary', mt: [6,7], mb: 5 }}>
+          <h1 sx={{ variant: 'styles.h2', mt: [6,7], mb: 5 }}>
             {about.title}
           </h1>
-          {documentToReactComponents(about.pageContent.json, options)}
+          {documentToReactComponents(about.pageContent.json, getOptions())}
         </div>
       </div>
       <div sx={{ mt: [6,7] }}>

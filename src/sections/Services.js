@@ -57,32 +57,89 @@ const Services = () => {
         <div sx={{
           display: 'flex',
           flexWrap: 'wrap',
+          mx: -1,
         }}>
           {services.map((service, index) => {
             const RoundSmear = smearComponents[Math.round(randomize(-0.5,2.5))];
             return (
               // eslint-disable-next-line react/no-array-index-key
-              <Block width={(index > 3) ? [1,1/3,1/3] : [1,1/4,1/4]} key={`service-${service.slug}`} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', mt: 7 }}>
-                <div sx={{ alignItems: 'center', display: 'inline-flex', justifyContent: 'center', position: 'relative', width: "100%"}}>
-                  <RoundSmear
+              <Block
+                width={(index > 3) ? [1,1/3,1/3] : [1,1/2,1/4]}
+                key={`service-${service.slug}`}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  mt: 4,
+                  px: 1,
+                }}
+              >
+                <Link
+                  bare={true}
+                  as={GatsbyLink}
+                  to={`/${slug}/#${service.slug}`}
+                  sx={{
+                    color: 'inherit',
+                    display: 'block',
+                    fontWeight: 'inherit',
+                    px: 2,
+                    py: 6,
+                    whiteSpace: 'inherit',
+                    '&:hover': {
+                      bg: 'white',
+                      boxShadow: theme => theme.shadows.lg,
+                      color: 'inherit',
+                    },
+                    '&:hover .service-bgSmear': {
+                      color: 'lime'
+                    },
+                    '&:hover .service-icon': {
+                      transform: `scale(1.1) rotate(${randomize(-20,20)}deg)`
+                    },
+                    '&:hover .service-link': {
+                      bg: 'lime',
+                      color: 'primary'
+                    }
+                  }}
+                >
+                  <div 
+                    className="service-icon"
                     sx={{
-                      color: 'secondary',
-                      height: '100%',
-                      position: 'absolute',
-                      transform: `rotate(${randomize(0,360)}deg)`,
-                      width: '100%',
-                      zIndex: 0,
-                    }}
-                  />
-                  <Img alt={service.title} fixed={service.icon.fixed} sx={{ animation: `${GlitchRotate} ${(index+1) * randomize(3,15)}s infinite step-end`,}}/>
-                </div>
-                <h3 sx={{ variant: 'styles.h6', color: 'primary', mt: 3, textAlign: 'center' }}>{service.title}</h3>
-                <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.excerpt}</p>
-                <div sx={{textAlign: 'center', mt: 4, variant: 'text.allcaps' }}>
-                  <Link as={GatsbyLink} to={`/${slug}/#${service.slug}`} sx={{ fontSize: [1,2] }}>
-                    Read More...
-                  </Link>
-                </div>
+                      alignItems: 'center',
+                      display: 'inline-flex',
+                      justifyContent: 'center',
+                      position: 'relative',
+                      width: "100%"
+                    }}>
+                    <RoundSmear
+                      className="service-bgSmear"
+                      sx={{
+                        color: 'secondary',
+                        cursor: 'pointer',
+                        height: '100%',
+                        position: 'absolute',
+                        transform: `rotate(${randomize(0,360)}deg)`,
+                        width: '100%',
+                        zIndex: 0,
+                      }}
+                    />
+                    <Img
+                      alt={service.title}
+                      fixed={service.icon.fixed}
+                      sx={{
+                        animation: `${GlitchRotate} ${(index+1) * randomize(3,15)}s infinite step-end`,
+                        pointerEvents: 'none'
+                        }}
+                      />
+                  </div>
+                  <h3 sx={{ variant: 'styles.h6', color: 'primary', mt: 3, textAlign: 'center' }}>{service.title}</h3>
+                  <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.excerpt}</p>
+                  <div sx={{textAlign: 'center', mt: 4, variant: 'text.allcaps' }}>
+                    <div className="service-link" sx={{ fontSize: [1,2], variant: 'styles.links.link', display: 'inline-block' }}>
+                      Read More...
+                    </div>
+                  </div>
+                </Link>
               </Block>
             )
           })}

@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import { Link as GatsbyLink } from 'gatsby-link'
+import { Link as GatsbyLink, navigate } from 'gatsby-link'
 import Block from '../components/Block'
 import Icon from '../components/Icon'
 import Link from '../components/Link'
-import Logo from '../components/Logo'
+import Logo from "-!svg-react-loader!../images/SVGs/TheHooligans-Logo.inline.svg";
 import OutboundLink from '../components/OutboundLink'
 
 const year = new Date().getFullYear()
@@ -76,14 +76,17 @@ const Footer = ({ path, ...props }) => {
           >
             <Logo
               fill="currentColor"
+              onClick={(e) => { navigate('/#header')}}
               sx={{
                 cursor: 'pointer',
                 color: 'primary',
+                height: '65px',
                 my: 0,
                 textDecoration: 'none',
                 transitionDuration: '0.25s',
                 transitionProperty: 'opacity',
                 transitionTimingFunction: 'ease-in-out',
+                width: '160px',
                 '&:hover': {
                   color: 'secondary'
                 }

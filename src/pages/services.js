@@ -70,12 +70,26 @@ function ServicesPage({ location }) {
       />
       <div sx={{ px:4, mb: [10,11], mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2', color: 'primary', mb: 5  }}>
+          <h1 sx={{ variant: 'styles.h2', mb: 5  }}>
             {serviceContent.title}
           </h1>
-          <p sx={{ fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, mb: [9,10] }}> 
-            {serviceContent.introduction}
-          </p>
+          <p sx={{
+              variant: 'styles.p',
+              display: 'inline-block',
+              fontSize:[4,5,6],
+              fontWeight: 'bold',
+              lineHeight: theme => theme.leading.tight,
+              mb: [4,5],
+              px: 2,
+              transform: `rotate(${randomize(-1.2,0.3)}deg) translateX(-10px)`
+            }}>
+              <span sx={{
+                bg: 'lime',
+                color: 'primary',
+               }}>
+                 {serviceContent.introduction}
+              </span>
+            </p>
           {serviceContent.services.map((service, index) => {
             const RoundSmear = smearComponents[Math.round(randomize(-0.5,2.5))];
             return (
