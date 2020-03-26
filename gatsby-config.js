@@ -23,8 +23,14 @@ if (!spaceId || !accessToken) {
 
 const website = require('./config/website')
 
-const siteUrl =
-  process.env.URL || process.env.DEPLOY_URL || website.url
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = website.url + website.pathPrefix,
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV
+} = process.env;
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 const pathPrefix = website.pathPrefix === `/` ? `` : website.pathPrefix
 
@@ -43,7 +49,6 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-remark`,
@@ -124,6 +129,27 @@ module.exports = {
           }
         }`,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*' }]
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          }
+        }
+      }
     },
     {
       resolve: "gatsby-plugin-react-svg",

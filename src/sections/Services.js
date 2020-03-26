@@ -57,7 +57,6 @@ const Services = () => {
         <div sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          mx: -1,
         }}>
           {services.map((service, index) => {
             const RoundSmear = smearComponents[Math.round(randomize(-0.5,2.5))];
@@ -71,7 +70,7 @@ const Services = () => {
                   flexDirection: 'column',
                   justifyContent: 'center',
                   mt: 4,
-                  px: 1,
+                  px: 0,
                 }}
               >
                 <Link
@@ -82,7 +81,7 @@ const Services = () => {
                     color: 'inherit',
                     display: 'block',
                     fontWeight: 'inherit',
-                    px: 2,
+                    px: 6,
                     py: 6,
                     whiteSpace: 'inherit',
                     '&:hover': {
