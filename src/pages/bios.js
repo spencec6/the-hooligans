@@ -161,7 +161,7 @@ function BiosPage({ location }) {
                       />
                     </div>
                     <div sx={{ variant: 'styles.h6', fontWeight: 'black', mb: 1, mt: 4, }}>{bio.name}</div>
-                    <div sx={{ variant: 'text.allcaps', display: 'inline-block', bg: 'lime', color: 'primary', fontWeight: 'bold', px: 3, }}>{bio.title}</div>
+                    <div sx={{ display: 'inline-block', bg: 'lime', color: 'primary', fontWeight: 'bold', px: 3, textTransform: 'uppercase' }}>{bio.title}</div>
                   </Block>
                   <Block width={[1,1/2, 2/3]} sx={{ px: 6 }}>
                     {documentToReactComponents(bio.biography.json, options)}
