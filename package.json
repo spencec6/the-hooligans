@@ -41,6 +41,7 @@
     "gatsby-plugin-sharp": "^2.5.1",
     "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-plugin-theme-ui": "^0.2.43",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-images-contentful": "^2.2.1",
     "gatsby-source-contentful": "^2.1.89",
     "gatsby-source-filesystem": "^2.2.1",

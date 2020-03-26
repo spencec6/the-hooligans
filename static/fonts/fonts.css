@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "All Rights Reserved";
+  src: url('all-rights-reserved.otf') format('opentype'),
+    url('all-rights-reserved.ttf') format('truetype'),
+    url('all-rights-reserved.woff') format('woff');
+}

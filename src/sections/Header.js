@@ -157,6 +157,8 @@ function Header({path}) {
                           transform: 'rotate(0deg)',
                         },
                         '&:hover': {
+                          fontFamily: 'ransom',
+                          fontSize: 6,
                           color: 'black',
                           transform: 'translateY(-1px)',
                         },

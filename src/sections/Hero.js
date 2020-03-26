@@ -100,17 +100,17 @@ function Hero() {
               <h2 sx={{
                 display: 'inline',
                 width: ['100%','100%','100%','80%'],
-                variant: 'styles.h3',
+                variant: 'styles.h1',
                 color: 'black',
                 letterSpacing: -1,
-                lineHeight: 1.15,
+                lineHeight: 0.8,
                 // textAlign: 'center',
-                fontWeight: 'black',
+                fontFamily: 'ransom',
                 mt: 6,
               }}>
-                <span sx={{ bg: 'white' }}>
                   Uniquely poised to meet the challenges and demands of the moment
-                </span>
+                {/* <span sx={{ bg: 'white' }}>
+                </span> */}
               </h2>
             </div>
           </Block>

@@ -125,6 +125,8 @@ export default {
   fonts: {
     sans:
       "'Barlow', sans-serif",
+    ransom: 
+      '"All Rights Reserved", Consolas, "Liberation Mono", Menlo, Courier, monospace',
     serif:
       '"Eczar", serif',
     monospace:
