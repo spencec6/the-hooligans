@@ -3,6 +3,7 @@ import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { randomize } from '../utils/helpers'
 import ContactForm from '../components/ContactForm'
+import Heading from '../components/Heading'
 import Icon from '../components/Icon'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
@@ -42,9 +43,9 @@ function ContactPage({ location }) {
       />
       <div sx={{ px:4, mb: [8,9], mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2', mb: 5 }}>
+          <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ color: 'black', mb: 5, }}>
             Contact Us
-          </h1>
+          </Heading>
           <p sx={{
             variant: 'styles.p',
             display: 'inline-block',
