@@ -132,7 +132,7 @@ const Services = () => {
                         }}
                       />
                   </div>
-                  <Heading as="h3" variant="styles.h6" smear={0} smearColor="secondary" sx={{ justifyContent: 'center', width: '100%', textAlign: 'center' }}>
+                  <Heading as="h3" variant="styles.h6" smear={false} smearColor="secondary" sx={{ justifyContent: 'center', width: '100%', textAlign: 'center' }}>
                     {service.title}
                   </Heading>
                   <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.excerpt}</p>
