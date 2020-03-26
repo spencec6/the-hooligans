@@ -87,7 +87,7 @@ function Header({path}) {
             pl: 0,
             }}
           >
-            {mainMenuItems.filter((menuItem) => { return menuItem.main }).map((item) => {
+            {mainMenuItems.filter((menuItem) => { return menuItem.main }).map((item, index) => {
               if (item.main === 'logo') {
                 return (
                   <li key={item.title}>
@@ -102,7 +102,7 @@ function Header({path}) {
                         fill="currentColor"
                         sx={{
                           cursor: 'pointer',
-                          color: isOpen ? ['white','white','primary'] : 'primary',
+                          color: isOpen ? ['white','white','black'] : 'black',
                           display: 'block',
                           height: '60px',
                           mb: 0,
@@ -117,7 +117,7 @@ function Header({path}) {
                             width: '140px',
                           },
                           '&:hover': {
-                            color: `black`
+                            color: `primary`
                           }
                         }}
                       />
@@ -129,6 +129,7 @@ function Header({path}) {
                   <li 
                     key={item.title}
                     sx={{
+                      animation: `${GlitchRotate} 40s ${(index+1) * randomize(3,7)}s infinite step-end`,
                       ml: item.slug === 'about' ? 0 : [3,3,6],
                       position: 'relative',
                       transform: `rotate(${randomize(-4,4)}deg) translate(${randomize(-2,2)}px, ${randomize(-2,2)}px)`,
