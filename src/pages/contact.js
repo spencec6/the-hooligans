@@ -22,6 +22,9 @@ function ContactPage({ location }) {
             facebook {
               url
             }
+            twitter {
+              url
+            }
             instagram {
               url
             }
@@ -100,7 +103,7 @@ function ContactPage({ location }) {
                     target="_blank" 
                     bare={true} 
                     sx={{
-                      mr: 2,
+                      mr: 3,
                       '&:last-of-type': {
                         mr: 0
                       }

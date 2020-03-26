@@ -18,13 +18,13 @@ module.exports = {
   googleAnalyticsId: `UA-XXXXX`, // Google Analytics ID
   socialMedia: {
     facebook: {
-      url: `the_hooligans_an_agency`,
+      url: `thehooligansagency`,
      },
      instagram: {
-      url: `the_hooligans_an_agency`,
+      url: `thehooligansagency`,
      },
      twitter: {
-      url: `the_hooligans_an_agency`,
+      url: `thehooligansagency`,
      }
   }
 }

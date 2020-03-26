@@ -8,6 +8,7 @@ import RoundSmear2 from "-!svg-react-loader!../images/SVGs/round-smear-2.inline.
 import RoundSmear3 from "-!svg-react-loader!../images/SVGs/round-smear-3.inline.svg";
 import { GlitchRotate } from '../components/Animations'
 import Block from '../components/Block'
+import Heading from '../components/Heading'
 import Link from '../components/Link'
 
 const smearComponents = [
@@ -40,9 +41,9 @@ const Services = () => {
   return (
     <section sx={{ px:4, my: [8,9,10] }}>
       <div sx={{ variant: 'boxes.cell' }}>
-        <h1 sx={{ variant: 'styles.h2', textAlign: 'center' }}>
+        <Heading as="h2" variant="styles.h2" smearColor="secondary" sx={{ justifyContent: 'center', width: '100%' }}>
           {title}
-        </h1>
+        </Heading>
         <p
           sx={{ 
             variant: 'styles.p',
@@ -131,7 +132,9 @@ const Services = () => {
                         }}
                       />
                   </div>
-                  <h3 sx={{ variant: 'styles.h6', color: 'primary', mt: 3, textAlign: 'center' }}>{service.title}</h3>
+                  <Heading as="h3" variant="styles.h6" smear={0} smearColor="secondary" sx={{ justifyContent: 'center', width: '100%', textAlign: 'center' }}>
+                    {service.title}
+                  </Heading>
                   <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.excerpt}</p>
                   <div sx={{textAlign: 'center', mt: 4, variant: 'text.allcaps' }}>
                     <div className="service-link" sx={{ fontSize: [1,2], variant: 'styles.links.link', display: 'inline-block' }}>

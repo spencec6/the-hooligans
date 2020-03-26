@@ -202,6 +202,15 @@ export default {
         backgroundColor: 'secondary_dk',
       },
     },
+    black: {
+      color: 'white',
+      backgroundColor: 'black',
+      fontWeight: 'black',
+      variant: 'text.allcaps',
+      '&:hover': {
+        backgroundColor: 'primary',
+      },
+    },
   },
   forms: {
     label: {
@@ -263,7 +272,7 @@ export default {
     h6: { variant: 'text.heading', fontSize: [3,4,5] },
     p: {
       fontFamily: 'inherit',
-      fontSize: [1,2,3],
+      fontSize: [2,3],
       lineHeight: theme => theme.leading.normal,
       '&:first-of-type': {
         mt: 0,
@@ -280,16 +289,12 @@ export default {
         whiteSpace: 'nowrap',
       },
       nav: {
-        color: 'black',
+        color: 'primary',
         fontFamily: 'sans',
         fontSize: 4,
         fontWeight: 'black',
         lineHeight: theme => `${theme.leading.loose}`,
         variant: 'text.allcaps',
-        '&:hover': {
-          color: 'black',
-          textDecoration: 'none',
-        }
       },
     }
   }

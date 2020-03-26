@@ -37,6 +37,9 @@ const Footer = ({ path, ...props }) => {
             facebook {
               url
             }
+            twitter {
+              url
+            }
             instagram {
               url
             }
@@ -112,7 +115,7 @@ const Footer = ({ path, ...props }) => {
                   target="_blank" 
                   bare={true} 
                   sx={{
-                    mr: 2,
+                    mr: 3,
                     '&:last-of-type': {
                       mr: 0
                     }

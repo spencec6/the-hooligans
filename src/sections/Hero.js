@@ -3,7 +3,9 @@ import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
+import Block from '../components/Block'
 import { GlitchRotate } from '../components/Animations'
+import { randomize } from '../utils/helpers'
 
 function Hero() {
   const data = useStaticQuery(graphql`
@@ -67,17 +69,52 @@ function Hero() {
           zIndex: -1,
           }}
         />
-        <Img 
-          fluid={logoMark.childImageSharp.fluid}
-          alt="The Hooligans"
-          sx={{
-            animation: `${GlitchRotate} 20s infinite step-end`,
-            display: 'block',
-            mx: 'auto',
-            maxWidth: '500px',
-            width: "60vw",
-            zIndex: 1
-          }}/>
+        <div sx={{
+          alignItems: 'center',
+          display: 'flex',
+          flexWrap: 'wrap',
+          // flexDirection: 'row-reverse',
+          mx: [6,6,6,11],
+          mt: -5,
+        }}>
+          <Block width={[1,1,1,1/2]}>
+            <Img 
+              fluid={logoMark.childImageSharp.fluid}
+              alt="The Hooligans"
+              sx={{
+                animation: `${GlitchRotate} 20s infinite step-end`,
+                display: 'block',
+                mx: 'auto',
+                mt: 5,
+                maxWidth: '500px',
+                width: "100%",
+                zIndex: 1
+              }}/>
+          </Block>
+          <Block width={[1,1,1,1/2]}>
+            <div sx={{
+              animation: `${GlitchRotate} 30s infinite step-end`,
+              transform: `rotate(${randomize(-4,4)}deg) translate(${randomize(-2,2)}px, ${randomize(-2,2)}px)`,
+              mt: 5,
+              }}>
+              <h2 sx={{
+                display: 'inline',
+                width: ['100%','100%','100%','80%'],
+                variant: 'styles.h3',
+                color: 'black',
+                letterSpacing: -1,
+                lineHeight: 1.15,
+                // textAlign: 'center',
+                fontWeight: 'black',
+                mt: 6,
+              }}>
+                <span sx={{ bg: 'white' }}>
+                  Uniquely poised to meet the challenges and demands of the moment
+                </span>
+              </h2>
+            </div>
+          </Block>
+        </div>
       </div>
       <div sx={{
         animation: `${GlitchRotate} 6s infinite step-end`,

@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import { Link as GatsbyLink } from 'gatsby'
 import Link from './Link'
+import { randomize } from '../utils/helpers'
 
 const MobileHeader = ({ menuItems, isHome, isOpen, ...props }) => {
 return (
@@ -37,7 +38,7 @@ return (
                 mt: index === 0 ? 0 : 4,
                 opacity: isOpen ? `1` : `0`,
                 textDecoration: 'none',
-                transform: isOpen ? `translateX(0)` : `translateX(100vw)`,
+                transform: isOpen ? `rotate(${randomize(-2,2)}deg) translate(${randomize(-3,3)}px, ${randomize(-3,3)}px)` : `translateX(100vw)`,
                 transition: 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out',
                 transitionDelay: isOpen ? `${index*0.1}s` : '',
               }}

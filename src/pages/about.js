@@ -6,7 +6,8 @@ import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import CallToAction from '../sections/CallToAction'
-import Testimonials from '../sections/Testimonials'
+// import Testimonials from '../sections/Testimonials'
+import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 
@@ -86,21 +87,20 @@ function AboutPage({ location }) {
         title={`${about.title} - ${title}`}
         description={description}
       />
-      <div sx={{ px:4, mt: [6,7], position: 'relative' }}>
+      <div sx={{ px:4, mb: [9,10], mt: [6,7], position: 'relative' }}>
         <div sx={{ alignItems: 'center', display: 'flex', height: '100%', justifyContent: 'center', left: 0, position: 'absolute', top: 0, width: '100%', zIndex: -1 }}>
           <div sx={{ maxWidth: theme => theme.maxWidths.md, opacity: 0.1, width: '100%' }}>
             <Img fluid={bgLogo} alt={title}/>
           </div>
         </div>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2', mt: [6,7], mb: 5 }}>
+          <Heading as="h1" variant="styles.h2" smearColor="secondary" sx={{ color: 'black', mb: 5, mt: [6,7], }}>
             {about.title}
-          </h1>
+          </Heading>
           {documentToReactComponents(about.pageContent.json, getOptions())}
         </div>
       </div>
       <div sx={{ mt: [6,7] }}>
-        <Testimonials/>
         <CallToAction/>
       </div>
     </Layout>

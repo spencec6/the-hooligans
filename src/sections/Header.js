@@ -7,7 +7,6 @@ import Button from '../components/Button'
 import Hamburger from '../components/Hamburger'
 import Link from '../components/Link'
 import Logo from "-!svg-react-loader!../images/SVGs/TheHooligans-Logo.inline.svg";
-import LogoIcon from '../components/LogoIcon'
 import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
 import MobileHeader from '../components/MobileHeader'
 import { randomize } from '../utils/helpers'
@@ -19,6 +18,11 @@ function Header({path}) {
         nodes {
           menItem {
             ... on ContentfulAbout {
+              main
+              slug
+              title
+            }
+            ... on ContentfulPortfolio {
               main
               slug
               title
@@ -54,7 +58,13 @@ function Header({path}) {
 
   const isHome = path === '/' ? 1 : 0
   return (
-    <header sx={{ px: [4,4,4,11], py: [3,5] }} id="header">
+    <header sx={{
+      px: [4,4,4,11],
+      py: [3,5],
+      '@media only screen and (max-width: 1060px)': {
+        px: 4,
+      },
+    }} id="header">
       <div sx={{ 
         display: 'flex',
         alignItems: 'center',
@@ -92,37 +102,22 @@ function Header({path}) {
                         fill="currentColor"
                         sx={{
                           cursor: 'pointer',
-                          color: 'black',
-                          display: ['none','none','block'],
+                          color: isOpen ? ['white','white','primary'] : 'primary',
+                          display: 'block',
                           height: '60px',
                           mb: 0,
-                          mr: 7,
+                          mr: [3,5],
                           textDecoration: 'none',
                           transitionDuration: '0.25s',
                           transitionProperty: 'opacity',
                           transitionTimingFunction: 'ease-in-out',
                           width: '197px',
+                          '@media only screen and (max-width: 1060px)': {
+                            mr: 3,
+                            width: '140px',
+                          },
                           '&:hover': {
-                            color: `primary`
-                          }
-                        }}
-                      />
-                      <LogoIcon
-                        fill="currentColor"
-                        sx={{
-                          cursor: 'pointer',
-                          color: isOpen ? `white` : `black`,
-                          display: ['block','block','none'],
-                          height: '60px',
-                          mb: 0,
-                          mr: 7,
-                          textDecoration: 'none',
-                          transitionDuration: '0.25s',
-                          transitionProperty: 'opacity',
-                          transitionTimingFunction: 'ease-in-out',
-                          width: '60px',
-                          '&:hover': {
-                            color: isOpen ? `yellow` : `primary`
+                            color: `black`
                           }
                         }}
                       />
@@ -134,8 +129,12 @@ function Header({path}) {
                   <li 
                     key={item.title}
                     sx={{
-                      ml: item.slug === 'about' ? 0 : [4,6],
+                      ml: item.slug === 'about' ? 0 : [3,3,6],
                       position: 'relative',
+                      transform: `rotate(${randomize(-4,4)}deg) translate(${randomize(-2,2)}px, ${randomize(-2,2)}px)`,
+                      '@media only screen and (max-width: 1060px)': {
+                        ml: 4,
+                      },
                     }}
                   >
                     <Link
@@ -151,14 +150,13 @@ function Header({path}) {
                         mb: 0,
                         textDeocration: 'none',
                         variant: 'styles.links.nav',
-                        color: 'black',
                         transition: 'transform 0.25s ease-in-out',
                         '&.is-active ~ .linkSmear': {
                           opacity: 1,
                           transform: 'rotate(0deg)',
                         },
                         '&:hover': {
-                          color: 'primary',
+                          color: 'black',
                           transform: 'translateY(-1px)',
                         },
                         '&:hover ~ .linkSmear': {
@@ -194,18 +192,20 @@ function Header({path}) {
             display: 'flex',
             alignItems: 'center'
           }}>
-            <li>
+            <li
+              sx={{animation: `${GlitchRotate} 20s infinite step-end`,}}
+            >
               <Button
                 as={GatsbyLink}
                 aria-label="Home"
                 to="/contact/"
                 from="header"
                 sx={{
-                  animation: `${GlitchRotate} 20s infinite step-end`,
                   display: ['none', 'none', 'initial'],
                   ml: 4,
-                  variant: 'buttons.primary',
+                  variant: 'buttons.black',
                   transform: `rotate(${randomize(-1,1)}deg)`,
+                  px: [4,4,4,5]
                 }}
               >
                 Contact Us

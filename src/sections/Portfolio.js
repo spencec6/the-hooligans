@@ -4,9 +4,9 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { options } from '../utils/richTextOptions'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
-// import Sizzler from '../assets/sizzler.mp4'
+import Heading from '../components/Heading'
 
-const Portfolio = () => {
+const Portfolio = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
       portfolio: contentfulPortfolio {
@@ -22,23 +22,37 @@ const Portfolio = () => {
     }
   `)
   const portfolio = data.portfolio
+  const isHome = location === '/';
   return (
     <section sx={{ px:4, my: [8,9,10] }}>
       <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.xl }}>
-        <h1 sx={{ variant: 'styles.h2', textAlign: 'center' }}>
-          {portfolio.title}
-        </h1>
-        <div
-          sx={{ 
-            variant: 'styles.p',
-            mx: 'auto',
-            textAlign: 'center',
-            maxWidth: theme => theme.maxWidths.lg,
-            width: "100%"
-          }}
-        >
-          {documentToReactComponents(portfolio.excerpt.json, options)}
-        </div>
+        {(isHome) ?
+          <div>
+            <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ justifyContent: 'center', width: '100%' }}>
+              {portfolio.title}
+            </Heading>
+            <div
+              sx={{ 
+                variant: 'styles.p',
+                mx: 'auto',
+                textAlign: isHome ? 'center' : 'left',
+                maxWidth: theme => theme.maxWidths.lg,
+                width: "100%"
+              }}
+            >
+              {documentToReactComponents(portfolio.excerpt.json, options)}
+            </div>
+          </div>
+        :
+          <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
+            <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ color: 'black' }}>
+              {portfolio.title}
+            </Heading>
+            <div sx={{ variant: 'styles.p' }}>
+              {documentToReactComponents(portfolio.excerpt.json, options)}
+            </div>
+          </div>
+        }
         <div sx={{
           position: 'relative',
           }}

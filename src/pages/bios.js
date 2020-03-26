@@ -8,11 +8,13 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import { options } from '../utils/richTextOptions'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import CallToAction from '../sections/CallToAction'
-import Testimonials from '../sections/Testimonials'
+// import Testimonials from '../sections/Testimonials'
 import { GlitchRotate } from '../components/Animations'
 import Block from '../components/Block'
+import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
+import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg"
 
 const getOptions = () => {
   let paragraphIndex = 0
@@ -65,7 +67,7 @@ function BiosPage({ location }) {
           json
         }
       }
-      bios: allContentfulBios(sort: {fields: createdAt, order: ASC}) {
+      bios: allContentfulBios(sort: {fields: displayOrder, order: ASC}) {
         nodes {
           title
           name
@@ -101,6 +103,8 @@ function BiosPage({ location }) {
 
   const [isHovering, setIsHovering] = useState(0); 
 
+  const colors = ['primary', 'secondary', 'teal', 'lime', 'black']
+
   return (
     <Layout path={location.pathname}>
       <SEO
@@ -109,9 +113,9 @@ function BiosPage({ location }) {
       />
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <h1 sx={{ variant: 'styles.h2', mt: [6,7], mb: 5 }}>
+          <Heading as="h1" variant="styles.h2" smearColor="teal" sx={{ color: 'black', mb: 5, mt: [6,7], }}>
             {bioPage.title}
-          </h1>
+          </Heading>
             {documentToReactComponents(bioPage.introduction.json, getOptions())}
         </div>
       </div>
@@ -121,8 +125,8 @@ function BiosPage({ location }) {
           return (
             <div key={bio.name} sx={{ px:4, py: [3,5], }}>
               <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-                <div sx={{ display: 'flex', flexWrap: 'wrap', mx: -4, my: [5,6] }}>
-                  <Block width={[1,1/2, 1/3]}>
+                <div sx={{ display: 'flex', flexWrap: 'wrap', mx: -5, my: [5,6] }}>
+                  <Block width={[1,1/2, 1/3]} sx={{ px: 6 }}>
                     <div
                       role="button"
                       onMouseOver={() => {setIsHovering(bio.id)}}
@@ -130,17 +134,36 @@ function BiosPage({ location }) {
                       onFocus={() => {setIsHovering(bio.id)}}
                       onBlur={() => {setIsHovering(0)}}
                       tabIndex={0}
-                      sx={{ animation: `${GlitchRotate} ${(index+1) * 15}s infinite step-end`, }}
+                      sx={{position: 'relative'}}
                     >
                       <Img
+                        loading="eager"
                         fluid={bioPortrait}
                         alt={bio.name}
+                        sx={{
+                          animation: `${GlitchRotate} ${(index+1) * 15}s infinite step-end`,
+                          opacity: 0.9,
+                          '&:hover': {
+                            opacity: 1
+                          }
+                        }}
+                      />
+                      <BgSmear sx={{
+                        color: colors[index+1],
+                        height: '130%',
+                        left: '-15%',
+                        position: 'absolute',
+                        top: '-15%',
+                        transform: `rotate(${randomize(-4,4)}deg)`,
+                        width: '130%',
+                        zIndex: -1,
+                        }}
                       />
                     </div>
                     <div sx={{ variant: 'styles.h6', fontWeight: 'black', mb: 1, mt: 4, }}>{bio.name}</div>
                     <div sx={{ variant: 'text.allcaps', display: 'inline-block', bg: 'lime', color: 'primary', fontWeight: 'bold', px: 3, }}>{bio.title}</div>
                   </Block>
-                  <Block width={[1,1/2, 2/3]} sx={{ }}>
+                  <Block width={[1,1/2, 2/3]} sx={{ px: 6 }}>
                     {documentToReactComponents(bio.biography.json, options)}
                   </Block>
                 </div>
@@ -150,7 +173,6 @@ function BiosPage({ location }) {
         })}
       </div>
       <div sx={{ mt: [6,7] }}>
-        <Testimonials/>
         <CallToAction/>
       </div>
     </Layout>
