@@ -50,6 +50,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
@@ -103,32 +104,6 @@ module.exports = {
         // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
       }
-    },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        output: `/sitemap.xml`,
-        // Exclude specific pages or groups of pages using glob parameters
-        // See: https://github.com/isaacs/minimatch
-        // The example below will exclude the single `path/to/page` and all routes beginning with `category`
-        exclude: ['/category/*', `/tag/*`],
-        query: `
-        {
-          site {
-            siteMetadata {
-              siteUrl
-            }
-          }
-
-          allSitePage {
-            edges {
-              node {
-                path
-              }
-            }
-          }
-        }`,
-      },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',

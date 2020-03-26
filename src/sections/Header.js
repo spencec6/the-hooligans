@@ -80,56 +80,58 @@ function Header({path}) {
             {mainMenuItems.filter((menuItem) => { return menuItem.main }).map((item) => {
               if (item.main === 'logo') {
                 return (
-                  <Link
-                    as={GatsbyLink}
-                    bare={true}
-                    key={item.title}
-                    to={`/${item.slug}`}
-                    from="header"
-                  >
-                    <Logo
-                      fill="currentColor"
-                      sx={{
-                        cursor: 'pointer',
-                        color: 'black',
-                        display: ['none','none','block'],
-                        height: '60px',
-                        mb: 0,
-                        mr: 7,
-                        textDecoration: 'none',
-                        transitionDuration: '0.25s',
-                        transitionProperty: 'opacity',
-                        transitionTimingFunction: 'ease-in-out',
-                        width: '197px',
-                        '&:hover': {
-                          color: `primary`
-                        }
-                      }}
-                    />
-                    <LogoIcon
-                      fill="currentColor"
-                      sx={{
-                        cursor: 'pointer',
-                        color: isOpen ? `white` : `black`,
-                        display: ['block','block','none'],
-                        height: '60px',
-                        mb: 0,
-                        mr: 7,
-                        textDecoration: 'none',
-                        transitionDuration: '0.25s',
-                        transitionProperty: 'opacity',
-                        transitionTimingFunction: 'ease-in-out',
-                        width: '60px',
-                        '&:hover': {
-                          color: isOpen ? `yellow` : `primary`
-                        }
-                      }}
-                    />
-                  </Link>
+                  <li key={item.title}>
+                    <Link
+                      as={GatsbyLink}
+                      aria-label="Home"
+                      bare={true}
+                      to={`/${item.slug}`}
+                      from="header"
+                    >
+                      <Logo
+                        fill="currentColor"
+                        sx={{
+                          cursor: 'pointer',
+                          color: 'black',
+                          display: ['none','none','block'],
+                          height: '60px',
+                          mb: 0,
+                          mr: 7,
+                          textDecoration: 'none',
+                          transitionDuration: '0.25s',
+                          transitionProperty: 'opacity',
+                          transitionTimingFunction: 'ease-in-out',
+                          width: '197px',
+                          '&:hover': {
+                            color: `primary`
+                          }
+                        }}
+                      />
+                      <LogoIcon
+                        fill="currentColor"
+                        sx={{
+                          cursor: 'pointer',
+                          color: isOpen ? `white` : `black`,
+                          display: ['block','block','none'],
+                          height: '60px',
+                          mb: 0,
+                          mr: 7,
+                          textDecoration: 'none',
+                          transitionDuration: '0.25s',
+                          transitionProperty: 'opacity',
+                          transitionTimingFunction: 'ease-in-out',
+                          width: '60px',
+                          '&:hover': {
+                            color: isOpen ? `yellow` : `primary`
+                          }
+                        }}
+                      />
+                    </Link>
+                  </li>
                 )
               } else {
                 return (
-                  <div 
+                  <li 
                     key={item.title}
                     sx={{
                       ml: item.slug === 'about' ? 0 : [4,6],
@@ -183,7 +185,7 @@ function Header({path}) {
                       zIndex: -1,
                     }}>
                     </div>
-                  </div>
+                  </li>
                 )
               }
             })}
@@ -192,25 +194,30 @@ function Header({path}) {
             display: 'flex',
             alignItems: 'center'
           }}>
-            <Button
-              as={GatsbyLink}
-              to="/contact/"
-              from="header"
-              sx={{
-                animation: `${GlitchRotate} 20s infinite step-end`,
-                display: ['none', 'none', 'initial'],
-                ml: 4,
-                variant: 'buttons.primary',
-                transform: `rotate(${randomize(-1,1)}deg)`,
-              }}
-            >
-              Contact Us
-            </Button>
-            <Hamburger
-              isHome={isHome}
-              isOpen={isOpen}
-              onClick={() => setIsOpen(isOpen ? 0 : 1)}
-            />
+            <li>
+              <Button
+                as={GatsbyLink}
+                aria-label="Home"
+                to="/contact/"
+                from="header"
+                sx={{
+                  animation: `${GlitchRotate} 20s infinite step-end`,
+                  display: ['none', 'none', 'initial'],
+                  ml: 4,
+                  variant: 'buttons.primary',
+                  transform: `rotate(${randomize(-1,1)}deg)`,
+                }}
+              >
+                Contact Us
+              </Button>
+            </li>
+            <li>
+              <Hamburger
+                isHome={isHome}
+                isOpen={isOpen}
+                onClick={() => setIsOpen(isOpen ? 0 : 1)}
+              />
+            </li>
           </ul>
         </nav>
       </div>
