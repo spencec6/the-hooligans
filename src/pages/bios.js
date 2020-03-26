@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { useState } from 'react'
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { randomize } from '../utils/helpers'
@@ -64,12 +65,23 @@ function BiosPage({ location }) {
           json
         }
       }
-      bios: allContentfulBios {
+      bios: allContentfulBios(sort: {fields: createdAt, order: ASC}) {
         nodes {
           title
           name
+          id
           portrait {
             fluid(
+              maxHeight: 385,
+              maxWidth: 385,
+              quality: 50,
+              ) {
+              ...GatsbyContentfulFluid_tracedSVG
+            }
+          }
+          teenPortrait {
+            fluid(
+              maxHeight: 385,
               maxWidth: 385,
               quality: 50,
               ) {
@@ -86,6 +98,9 @@ function BiosPage({ location }) {
   const { title, description } = data.site.siteMetadata
   const bioPage = data.bioPage
   const bios = data.bios.nodes
+
+  const [isHovering, setIsHovering] = useState(0); 
+
   return (
     <Layout path={location.pathname}>
       <SEO
@@ -102,13 +117,25 @@ function BiosPage({ location }) {
       </div>
       <div sx={{ mt: [6,7] }}>
         {bios.map((bio, index) => {
+          const bioPortrait = isHovering === bio.id && bio.teenPortrait ? bio.teenPortrait.fluid : bio.portrait.fluid
           return (
             <div key={bio.name} sx={{ px:4, py: [3,5], }}>
               <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
                 <div sx={{ display: 'flex', flexWrap: 'wrap', mx: -4, my: [5,6] }}>
                   <Block width={[1,1/2, 1/3]}>
-                    <div sx={{ animation: `${GlitchRotate} ${(index+1) * 15}s infinite step-end`, }}>
-                      <Img fluid={bio.portrait.fluid} alt={bio.name}/>
+                    <div
+                      role="button"
+                      onMouseOver={() => {setIsHovering(bio.id)}}
+                      onMouseOut={() => {setIsHovering(0)}}
+                      onFocus={() => {setIsHovering(bio.id)}}
+                      onBlur={() => {setIsHovering(0)}}
+                      tabIndex={0}
+                      sx={{ animation: `${GlitchRotate} ${(index+1) * 15}s infinite step-end`, }}
+                    >
+                      <Img
+                        fluid={bioPortrait}
+                        alt={bio.name}
+                      />
                     </div>
                     <div sx={{ variant: 'styles.h6', fontWeight: 'black', mb: 1, mt: 4, }}>{bio.name}</div>
                     <div sx={{ variant: 'text.allcaps', display: 'inline-block', bg: 'lime', color: 'primary', fontWeight: 'bold', px: 3, }}>{bio.title}</div>

@@ -15,12 +15,13 @@ function Layout({ children, path }) {
         siteMetadata {
           title
           description
+          siteLanguage
         }
       }
     }
   `)
 
-  const { title, description } = data.site.siteMetadata
+  const { title, description, siteLanguage } = data.site.siteMetadata
 
   return (
     <React.Fragment>
@@ -30,6 +31,7 @@ function Layout({ children, path }) {
           { name: 'description', content: description }
         ]}
       >
+        <html lang={siteLanguage} />
       </Helmet>
       <GlobalStyles />
       <div sx={{

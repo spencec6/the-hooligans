@@ -11,7 +11,7 @@ const ContactForm = () => {
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       action="/thank-you"
-      sx={{ mb: [8,9], width: '100%'}}
+      sx={{ width: '100%'}}
     >
       <input type="hidden" name="bot-field" />
       <input type="hidden" name="form-name" value="contact" />

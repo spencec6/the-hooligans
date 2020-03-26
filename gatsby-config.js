@@ -38,9 +38,11 @@ module.exports = {
   siteMetadata: {
     pathPrefix: pathPrefix,
     siteUrl: siteUrl + pathPrefix,
+    siteLanguage: website.siteLanguage,
     title: website.title,
     description: website.description,
     email: website.email,
+    address: website.address,
     social: {
       ...website.socialMedia
     }

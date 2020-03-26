@@ -4,7 +4,8 @@ module.exports = {
   email: `info@thehooligansagency.com`,
   title: `The Hooligans`,
   description: `Mindful and creative agency`,
-  // image: `/images/ubiquity-hero-temp.png`, // TO DO
+  address: `825 16th St NW, 4th Floor, Washington, DC 20009`,
+  image: `/images/og-hooligans-hero.jpg`,
   siteLanguage: `en`, // Language tag on <html> element
 
   // // Web App Manifest

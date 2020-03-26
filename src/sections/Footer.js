@@ -3,6 +3,7 @@ import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Link as GatsbyLink, navigate } from 'gatsby-link'
 import Block from '../components/Block'
+import Button from '../components/Button'
 import Icon from '../components/Icon'
 import Link from '../components/Link'
 import Logo from "-!svg-react-loader!../images/SVGs/TheHooligans-Logo.inline.svg";
@@ -30,6 +31,7 @@ const Footer = ({ path, ...props }) => {
       site {
         siteMetadata {
           title
+          address
           email
           social {
             facebook {
@@ -44,7 +46,7 @@ const Footer = ({ path, ...props }) => {
     }
   `)
   const { mobileBg, desktopBg } = data
-  const { title, email, social } = data.site.siteMetadata
+  const { title, address, email, social } = data.site.siteMetadata
   return (
     <footer sx={{
       backgroundBlendMode: 'color-burn',
@@ -137,8 +139,16 @@ const Footer = ({ path, ...props }) => {
             {email}
           </Link>
           <div sx={{ color: 'white', mt: 2 }}>
-            825 16th St NW, 4th Floor, Washington, DC 20009 
+            {address}
           </div>
+          <Button
+            as={GatsbyLink}
+            to="/contact"
+            from="footer"
+            sx={{ variant: 'buttons.secondary', mt: 3, px: 4, py: 2, }}
+          >
+            Contact Us
+          </Button>
         </Block>
       </div>
       </div>
