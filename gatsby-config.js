@@ -83,16 +83,21 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Beth Ellen`,
+        ],
+        display: 'swap'
+      },
+    },
+    {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
           {
-            family: `Eczar`,
-            variants: [`500`, `700`],
-          },
-          {
             family: `Barlow`,
-            variants: [`300`, `500`, `700`, `900`],
+            variants: [`300`, `500`, `700`, `900`], // For some reason, barlow's variants weren't loading with the above plugin
           }
         ],
       },
@@ -135,15 +140,6 @@ module.exports = {
           include: /\.inline\.svg$/ // See below to configure properly
         }
       }
-    },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        custom: {
-          families: ["All Rights Reserved"],
-          urls: ["/fonts/fonts.css"],
-        },
-      },
     },
     {
       resolve: `gatsby-source-contentful`,

@@ -21,23 +21,21 @@ const getOptions = () => {
           return <p sx={{ variant: 'styles.p' }}>{next}</p>
         } else {
           return (
-            <p sx={{
-              variant: 'styles.p',
-              display: 'inline-block',
-              fontSize:[4,5,6],
-              fontWeight: 'bold',
-              lineHeight: theme => theme.leading.tight,
-              mb: 3,
-              px: 2,
-              transform: `rotate(${randomize(-1.2,0.3)}deg) translateX(-10px)`
-            }}>
-              <span sx={{
-                bg: 'lime',
-                color: 'primary',
-               }}>
-                 {next}
-              </span>
-            </p>
+            <Heading
+              as="p"
+              smearColor="lime"
+              smearHeight="100%"
+              smearLeft="-10%"
+              smearTop="10%"
+              sx={{
+                fontFamily: 'cursive',
+                fontSize:[4,5,6],
+                lineHeight: theme => theme.leading.tight,
+                mb: 6,
+                transform: `rotate(${randomize(-2,0.3)}deg) translateX(-10px)`
+              }}>
+              {next}
+            </Heading>
           )
         }
       },

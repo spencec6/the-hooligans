@@ -50,10 +50,13 @@ return (
                 sx={{
                   variant: 'styles.h1',
                   color: 'white',
+                  display: 'inline-block',
                   textDecoration: 'none',
                   '&:hover': {
                     color: 'yellow',
+                    fontFamily: 'cursive',
                     textDecoration: 'none',
+                    textTransform: 'lowercase'
                   }
                 }}
               >

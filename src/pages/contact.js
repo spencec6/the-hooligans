@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import { randomize } from '../utils/helpers'
 import ContactForm from '../components/ContactForm'
 import Heading from '../components/Heading'
 import Icon from '../components/Icon'
@@ -46,26 +45,9 @@ function ContactPage({ location }) {
           <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ color: 'black', mb: 5, }}>
             Contact Us
           </Heading>
-          <p sx={{
-            variant: 'styles.p',
-            display: 'inline-block',
-            fontSize:[4,5,6],
-            fontWeight: 'bold',
-            lineHeight: theme => theme.leading.tight,
-            mb: 2,
-            px: 2,
-            transform: `rotate(${randomize(-1.2,0.3)}deg) translateX(-10px)`
-          }}>
-            <span sx={{
-              bg: 'lime',
-              color: 'primary',
-              }}>
-                We'd love to build something amazing with you!
-            </span>
-          </p>
-          {/* <p sx={{ fontSize: [4,5,6], lineHeight: theme => theme.leading.tight, mb: 0 }}> 
+          <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, my: 4 }}>
             We'd love to build something amazing with you!
-          </p> */}
+          </div>
           <p sx={{ my: 4 }}>
             Please enter your name, email, and website (if you already have one) and any other helpful information in the form below. We try hard to respond to respond within 1-3 business days.
           </p>

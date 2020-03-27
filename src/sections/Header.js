@@ -160,6 +160,8 @@ function Header({path}) {
                           fontFamily: 'ransom',
                           fontSize: 6,
                           color: 'black',
+                          fontFamily: 'cursive',
+                          textTransform: 'lowercase',
                           transform: 'translateY(-1px)',
                         },
                         '&:hover ~ .linkSmear': {

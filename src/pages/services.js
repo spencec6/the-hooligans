@@ -74,7 +74,7 @@ function ServicesPage({ location }) {
           <Heading as="h1" variant="styles.h2" smearColor="secondary" sx={{ color: 'black', mb: 5  }}>
             {serviceContent.title}
           </Heading>
-          <p sx={{
+          {/* <p sx={{
               variant: 'styles.p',
               display: 'inline-block',
               fontSize:[4,5,6],
@@ -90,14 +90,32 @@ function ServicesPage({ location }) {
                }}>
                  {serviceContent.introduction}
               </span>
-            </p>
+            </p> */}
+            <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, my: 4 }}>
+              {serviceContent.introduction}
+            </div>
           {serviceContent.services.map((service, index) => {
             const RoundSmear = smearComponents[Math.round(randomize(-0.5,2.5))];
             return (
-              <div key={`service-${service.slug}`} id={service.slug} sx={{ display: 'flex', mt: index === 0 ? 6 : 8, }}>
+              <div
+                key={`service-${service.slug}`}
+                id={service.slug}
+                sx={{
+                  display: 'flex',
+                  mt: index === 0 ? 6 : 8,
+                  '&:hover .service-bgSmear': {
+                    color: 'lime'
+                  },
+                  '&:hover .service-heading': {
+                    fontFamily: 'cursive',
+                    textTransform: 'lowercase',
+                  },
+                }}
+              >
                 <div sx={{ width: "170px" }}>
                   <div sx={{ display: 'block', flexShrink: 0, mx: 'auto',  position: 'relative', width: "100%"}}>
                     <RoundSmear
+                      className="service-bgSmear"
                       sx={{
                         color: 'secondary',
                         height: '100%',
@@ -111,7 +129,7 @@ function ServicesPage({ location }) {
                   </div>
                 </div>
                 <div sx={{ flexGrow: 1, pl: 5, }}>
-                  <h3 sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
+                  <h3 className="service-heading" sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
                   <p sx={{ variant: 'styles.p' }}>{service.excerpt}</p>
                 </div>
               </div>

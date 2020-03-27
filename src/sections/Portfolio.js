@@ -48,7 +48,7 @@ const Portfolio = ({ location }) => {
             <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ color: 'black' }}>
               {portfolio.title}
             </Heading>
-            <div sx={{ variant: 'styles.p' }}>
+            <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, my: 4 }}>
               {documentToReactComponents(portfolio.excerpt.json, options)}
             </div>
           </div>

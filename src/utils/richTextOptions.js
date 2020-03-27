@@ -20,7 +20,7 @@ export const options = {
     },
     [BLOCKS.PARAGRAPH]: (_node, next) => {
       return (
-        <p sx={{ variant: 'styles.p' }}>
+        <p sx={{ }}>
           {next}
         </p>
       )

@@ -125,10 +125,10 @@ export default {
   fonts: {
     sans:
       "'Barlow', sans-serif",
-    ransom: 
-      '"All Rights Reserved", Consolas, "Liberation Mono", Menlo, Courier, monospace',
+    cursive:
+      "'Beth Ellen', cursive",
     serif:
-      '"Eczar", serif',
+      '"Georgia", serif',
     monospace:
       'SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace',
   },
@@ -294,7 +294,7 @@ export default {
         color: 'primary',
         fontFamily: 'sans',
         fontSize: 4,
-        fontWeight: 'black',
+        fontWeight: 'bold',
         lineHeight: theme => `${theme.leading.loose}`,
         variant: 'text.allcaps',
       },

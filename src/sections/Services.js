@@ -93,12 +93,18 @@ const Services = () => {
                     '&:hover .service-bgSmear': {
                       color: 'lime'
                     },
+                    '&:hover .service-heading': {
+                      fontFamily: 'cursive',
+                      textTransform: 'lowercase',
+                    },
                     '&:hover .service-icon': {
                       transform: `scale(1.1) rotate(${randomize(-20,20)}deg)`
                     },
                     '&:hover .service-link': {
                       bg: 'lime',
-                      color: 'primary'
+                      color: 'primary',
+                      fontFamily: 'cursive',
+                      textTransform: 'lowercase',
                     }
                   }}
                 >
@@ -132,7 +138,7 @@ const Services = () => {
                         }}
                       />
                   </div>
-                  <Heading as="h3" variant="styles.h6" smear={false} smearColor="secondary" sx={{ justifyContent: 'center', width: '100%', textAlign: 'center' }}>
+                  <Heading classes="service-heading" as="h3" variant="styles.h6" smear={false} smearColor="secondary" sx={{ justifyContent: 'center', width: '100%', textAlign: 'center' }}>
                     {service.title}
                   </Heading>
                   <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.excerpt}</p>
