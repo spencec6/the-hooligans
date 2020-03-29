@@ -1,5 +1,13 @@
 import { keyframes } from '@emotion/core'
 
+export const Blink = keyframes`
+  0%, 3%, 7%, 12%, 38%, 100% {
+    opacity: 0;
+  }
+  5%, 10%, 15%, 35% {
+    opacity: 1;
+  }
+`
 
 export const GlitchIn = keyframes`
   0%, 3%, 7%, 10%, 15%, 25%, 50%, 80% {

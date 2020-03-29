@@ -130,7 +130,7 @@ function ServicesPage({ location }) {
                 </div>
                 <div sx={{ flexGrow: 1, pl: 5, }}>
                   <h3 className="service-heading" sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
-                  <p sx={{ variant: 'styles.p' }}>{service.excerpt}</p>
+                  <p sx={{ variant: 'styles.p', fontFamily: 'sans', transform: `rotate(${randomize(-1,1)}deg)`, }}>{service.excerpt}</p>
                 </div>
               </div>
             )

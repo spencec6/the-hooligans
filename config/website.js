@@ -3,7 +3,7 @@ module.exports = {
   url: `https://www.thehooligansagency.com`,
   email: `info@thehooligansagency.com`,
   title: `The Hooligans`,
-  description: `Mindful and creative agency`,
+  description: `Uniquely poised to meet the moment`,
   address: `825 16th St NW, 4th Floor, Washington, DC 20009`,
   image: `/images/og-hooligans-hero.jpg`,
   siteLanguage: `en`, // Language tag on <html> element
@@ -24,7 +24,7 @@ module.exports = {
       url: `thehooligansagency`,
      },
      twitter: {
-      url: `thehooligansagency`,
+      url: `HooligansAgency`,
      }
   }
 }

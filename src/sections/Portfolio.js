@@ -4,7 +4,10 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { options } from '../utils/richTextOptions'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
+import BorderSmear from "-!svg-react-loader!../images/SVGs/border-smear-1.inline.svg";
+import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
 import Heading from '../components/Heading'
+import { randomize } from '../utils/helpers'
 
 const Portfolio = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -12,9 +15,6 @@ const Portfolio = ({ location }) => {
       portfolio: contentfulPortfolio {
         slug
         title
-        pageContent {
-          json
-        }
         excerpt {
           json
         }
@@ -48,7 +48,7 @@ const Portfolio = ({ location }) => {
             <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ color: 'black' }}>
               {portfolio.title}
             </Heading>
-            <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, my: 4 }}>
+            <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, mb: 7, mt: 4 }}>
               {documentToReactComponents(portfolio.excerpt.json, options)}
             </div>
           </div>
@@ -77,9 +77,6 @@ const Portfolio = ({ location }) => {
             position: 'relative',
             pb: '54%',
           }}>
-            {/* <video controls sx={{ height: 'auto', width: '100%' }}>
-              <source src={Sizzler} type="video/mp4" />
-            </video> */}
             <iframe
               width="560"
               height="315"
@@ -94,9 +91,93 @@ const Portfolio = ({ location }) => {
                 left: 0,
                 position: 'absolute',
                 top: 0,
+                transform: `rotate(${randomize(-1,1)}deg)`,
                 width: '100%',
               }}
             ></iframe>
+          <BorderSmear sx={{
+            color: 'lime',
+            height: '100%',
+            right: '-1%',
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: '-2%',
+            transform: 'rotate(0deg)',
+            width: '20px',
+            zIndex: 1,
+            }}
+          />
+          <BorderSmear sx={{
+            color: 'lime',
+            height: '185%', // inverse of 54% ratio
+            left: '-1%',
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: '1%',
+            transform: 'rotate(270deg)',
+            transformOrigin: 'top left',
+            width: '20px',
+            zIndex: 1,
+            }}
+          />
+          <BorderSmear sx={{
+            color: 'lime',
+            height: '100%',
+            left: '-1%',
+            pointerEvents: 'none',
+            position: 'absolute',
+            bottom: '-2%',
+            transform: 'rotate(180deg)',
+            width: '20px',
+            zIndex: 1,
+            }}
+          />
+          <BorderSmear sx={{
+            color: 'lime',
+            height: '185%', // inverse of 54% ratio
+            right: '50%',
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: '7.5%',
+            transform: 'rotate(90deg)',
+            transformOrigin: '50%',
+            width: '20px',
+            zIndex: 1,
+            }}
+          />
+          <X1 sx={{
+            color: 'primary',
+            height: '150px',
+            left: '-10%',
+            position: 'absolute',
+            bottom: '5%',
+            transform: 'rotate(0deg)',
+            width: '140px',
+            zIndex: 2,
+            }}
+          />
+          <X1 sx={{
+            color: 'primary',
+            height: '130px',
+            right: '-8%',
+            position: 'absolute',
+            bottom: '42%',
+            transform: 'rotate(90deg)',
+            width: '110px',
+            zIndex: 2,
+            }}
+          />
+          <X1 sx={{
+            color: 'teal',
+            height: '60px',
+            right: '3%',
+            position: 'absolute',
+            bottom: '65%',
+            transform: 'rotate(270deg)',
+            width: '70px',
+            zIndex: 2,
+            }}
+          />
           </div>
         </div>
       </div>

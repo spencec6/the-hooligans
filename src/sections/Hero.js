@@ -9,6 +9,11 @@ import { GlitchIn, GlitchRotate } from '../components/Animations'
 function Hero() {
   const data = useStaticQuery(graphql`
     query {
+      site {
+        siteMetadata {
+          description
+        }
+      }
       logoMark: file(relativePath: { eq: "logo/the-hooligans-logomark.png" }) {
         childImageSharp {
           fluid(
@@ -113,7 +118,7 @@ function Hero() {
                   textTransform: 'lowercase',
                 }}
               >
-                uniquely poised to meet the challenges and demands of the moment
+                {data.site.siteMetadata.description}
               </Heading>
             </div>
         </div>

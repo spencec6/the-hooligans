@@ -16,7 +16,7 @@ function Header({path}) {
     query {
       menu: allContentfulMenu {
         nodes {
-          menItem {
+          menuItem {
             ... on ContentfulAbout {
               main
               slug
@@ -27,12 +27,12 @@ function Header({path}) {
               slug
               title
             }
-            ... on ContentfulBioPage {
+            ... on ContentfulServices {
               main
               slug
               title
             }
-            ... on ContentfulServices {
+            ... on ContentfulRepresentationPage {
               main
               slug
               title
@@ -50,7 +50,7 @@ function Header({path}) {
 
   const mainMenuItems = []
   mainMenuItems.push({main: 'logo', slug: '', title: 'Home'})
-  data.menu.nodes[0].menItem.forEach((menuItem, index) => {
+  data.menu.nodes[0].menuItem.forEach((menuItem, index) => {
     mainMenuItems.push({main: menuItem.main, slug: menuItem.slug, title: menuItem.title })
   })
 
@@ -102,7 +102,7 @@ function Header({path}) {
                         fill="currentColor"
                         sx={{
                           cursor: 'pointer',
-                          color: isOpen ? ['white','white','black'] : 'black',
+                          color: isOpen ? ['white','white','white','white','black'] : 'black',
                           display: 'block',
                           height: '60px',
                           mb: 0,
@@ -112,12 +112,8 @@ function Header({path}) {
                           transitionProperty: 'opacity',
                           transitionTimingFunction: 'ease-in-out',
                           width: '197px',
-                          '@media only screen and (max-width: 1060px)': {
-                            mr: 3,
-                            width: '140px',
-                          },
                           '&:hover': {
-                            color: `primary`
+                            color: isOpen ? ['secondary','secondary','secondary','secondary','primary'] : 'primary',
                           }
                         }}
                       />
@@ -146,28 +142,8 @@ function Header({path}) {
                       key={item.title}
                       activeClassName="is-active"
                       sx={{
-                        cursor: 'pointer',
-                        display: ['none', 'none', 'block'],
-                        mb: 0,
-                        textDeocration: 'none',
+                        display: ['none', 'none', 'none', 'none', 'block'],
                         variant: 'styles.links.nav',
-                        transition: 'transform 0.25s ease-in-out',
-                        '&.is-active ~ .linkSmear': {
-                          opacity: 1,
-                          transform: 'rotate(0deg)',
-                        },
-                        '&:hover': {
-                          fontFamily: 'ransom',
-                          fontSize: 6,
-                          color: 'black',
-                          fontFamily: 'cursive',
-                          textTransform: 'lowercase',
-                          transform: 'translateY(-1px)',
-                        },
-                        '&:hover ~ .linkSmear': {
-                          opacity: 1,
-                          transform: 'rotate(0deg)',
-                        }
                       }}
                     >
                       {item.title}
@@ -206,11 +182,11 @@ function Header({path}) {
                 to="/contact/"
                 from="header"
                 sx={{
-                  display: ['none', 'none', 'initial'],
+                  display: ['none', 'none', 'none', 'none', 'block'],
                   ml: 4,
-                  variant: 'buttons.black',
                   transform: `rotate(${randomize(-1,1)}deg)`,
-                  px: [4,4,4,5]
+                  px: [4,4,4,5],
+                  variant: 'buttons.primary'
                 }}
               >
                 Contact Us

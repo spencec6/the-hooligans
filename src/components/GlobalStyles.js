@@ -35,7 +35,7 @@ function GlobalStyles() {
 
       body { 
         background-image: url(${mobileBg.childImageSharp.fluid.src});
-        font-family: 'Barlow', sans-serif;
+        font-family: 'Beth Ellen', cursive;
         line-height: 150%;
         height: 100%;
         overflow-x: hidden;

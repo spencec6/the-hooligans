@@ -2,10 +2,38 @@
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { options } from '../utils/richTextOptions'
+import { BLOCKS } from '@contentful/rich-text-types'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
+import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
 import Block from '../components/Block'
 import Button from '../components/Button'
+
+const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (_node, next) => {
+      return (
+        <p
+          sx={{
+            color: 'white',
+            fontFamily: 'cursive',
+            fontSize:[3,3,4],
+            fontWeight: 'book',
+            lineHeight: theme => theme.leading.tight,
+            textTransform: 'lowercase',
+            '& b': {
+              color: 'secondary',
+              fontFamily: 'sans',
+              fontSize:[5,6,7],
+              fontWeight: 'black',
+              variant: 'text.allcaps'
+            }
+          }}>
+          {next}
+        </p>
+      )
+    }
+  }
+}
 
 const CallToAction = () => {
   const data = useStaticQuery(graphql`
@@ -25,10 +53,10 @@ const CallToAction = () => {
         }
       }
       callToAction: contentfulCallToAction {
-        title
-        description {
+        title {
           json
         }
+        subhead
         buttonLink {
           slug
           title
@@ -62,6 +90,28 @@ const CallToAction = () => {
         zIndex: 1,
         }}
       />
+      <X1 sx={{
+        color: 'black',
+        height: '60px',
+        right: '10%',
+        position: 'absolute',
+        top: '-15%',
+        transform: 'rotate(270deg)',
+        width: '60px',
+        zIndex: 2,
+        }}
+      />
+      <X1 sx={{
+        color: 'lime',
+        height: '130px',
+        left: '3%',
+        position: 'absolute',
+        bottom: '-15%',
+        transform: 'rotate(0deg)',
+        width: '110px',
+        zIndex: 2,
+        }}
+      />
       <div 
         sx={{
           display: 'flex',
@@ -79,19 +129,16 @@ const CallToAction = () => {
             textAlign: 'center'
           }}
         >
-          <h1 sx={{ variant: 'styles.h3', color: 'secondary', fontWeight: 'black' }}>
-            {callToAction.title}
+          <h1 sx={{ variant: 'styles.h4', color: 'secondary', fontWeight: 'black' }}>
+            {documentToReactComponents(callToAction.title.json, options)}
           </h1>
-          <div sx={{ color: 'white', mt: 2 }}>
-            {documentToReactComponents(callToAction.description.json, options)}
-          </div>
           <Button
               as={GatsbyLink}
               to={`/${callToAction.buttonLink.slug}/`}
               from="header"
               sx={{ variant: 'buttons.secondary', mt: 4 }}
             >
-              {callToAction.buttonLink.title}
+              {callToAction.subhead}
             </Button>
         </Block>
       </div>

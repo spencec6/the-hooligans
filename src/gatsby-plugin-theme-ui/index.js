@@ -157,7 +157,7 @@ export default {
     lg: '0 10px 40px 0 rgba(0,0,0,0.06), 0 5px 15px 0 rgba(0,0,0,0.04)',
     xl: '0 20px 40px 0 rgba(0,0,0,0.06), 0 25px 50px 0 rgba(0, 0, 0, 0.25)',
     inner: 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
-    outline: `0 0 0 3px ${colors.teal}`,
+    outline: `0 0 0 1px ${colors.teal}`,
     error: `0 0 0 3px ${colors.magenta}`,
     link: `inset 0 -2px ${colors.magenta}`,
     linkHover: `inset 0 -2px ${colors.yellow}`,
@@ -188,29 +188,26 @@ export default {
   buttons: {
     primary: {
       color: 'white',
-      backgroundColor: 'primary',
-      fontWeight: 'black',
-      variant: 'text.allcaps',
+      '& .button-bgSmear': {
+        color: 'black'
+      },
       '&:hover': {
-        backgroundColor: 'black',
+        color: 'white',
+      },
+      '&:hover .button-bgSmear': {
+        color: 'primary',
       },
     },
     secondary: {
       color: 'primary',
-      backgroundColor: 'secondary',
-      fontWeight: 'black',
-      variant: 'text.allcaps',
-      '&:hover': {
-        backgroundColor: 'secondary_dk',
+      '& .button-bgSmear': {
+        color: 'secondary'
       },
-    },
-    black: {
-      color: 'white',
-      backgroundColor: 'black',
-      fontWeight: 'black',
-      variant: 'text.allcaps',
       '&:hover': {
-        backgroundColor: 'primary',
+        color: 'primary',
+      },
+      '&:hover .button-bgSmear': {
+        color: 'lime',
       },
     },
   },
@@ -218,12 +215,14 @@ export default {
     label: {
       fontFamily: 'sans',
       fontSize: 1,
+      fontWeight: 'bold',
       mb: 1,
+      variant: 'text.allcaps'
     },
     field: {
       appearance: 'none',
       backgroundColor: 'greys.100',
-      borderColor: 'greys.300',
+      borderColor: 'secondary',
       borderStyle: 'solid',
       borderWidth: 2,
       borderRadius: 0,
@@ -232,9 +231,16 @@ export default {
       fontSize: [1,2],
       p: 3,
       width: '100%',
+      '& ~ .input-bgSmear': {
+        color: 'secondary'
+      },
       '&:focus': {
+        borderColor: 'teal',
         boxShadow: theme => theme.shadows.outline,
         outline: 'none'
+      },
+      '&:focus ~ .input-bgSmear': {
+        color: 'teal'
       },
       '&::placeholder': {
         color: 'greys.500'
@@ -292,11 +298,29 @@ export default {
       },
       nav: {
         color: 'primary',
+        cursor: 'pointer',
         fontFamily: 'sans',
         fontSize: 4,
         fontWeight: 'bold',
-        lineHeight: theme => `${theme.leading.loose}`,
+        mb: 0,
+        textDeocration: 'none',
+        transition: 'transform 0.25s ease-in-out',
         variant: 'text.allcaps',
+        '&.is-active ~ .linkSmear': {
+          opacity: 1,
+          transform: 'rotate(0deg)',
+        },
+        '&:hover': {
+          fontSize: 4,
+          color: 'black',
+          fontFamily: 'cursive',
+          transform: 'translateY(-1px)',
+          textTransform: 'lowercase',
+        },
+        '&:hover ~ .linkSmear': {
+          opacity: 1,
+          transform: 'rotate(0deg)',
+        }
       },
     }
   }

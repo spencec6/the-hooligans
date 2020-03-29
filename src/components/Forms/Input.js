@@ -1,15 +1,34 @@
 /** @jsx jsx */
 import { PropTypes } from 'prop-types'
 import { jsx } from 'theme-ui'
+import BgSmear from "-!svg-react-loader!../../images/SVGs/smear.inline.svg";
+import { randomize } from "../../utils/helpers";
 
 const Input = ({variant, as: Component, children, ...props}) => {
   return (
-    <Component
-      sx={{
-        variant: variant,
-      }}
-      {...props}
-    />
+    <div sx={{ position: 'relative' }}>
+      <Component
+        sx={{
+          variant: variant,
+        }}
+        {...props}
+      >
+        {children}
+      </Component>
+      <BgSmear
+        className="input-bgSmear"
+        sx={{
+          display: 'block',
+          height: '110%',
+          left: '-5%',
+          position: 'absolute',
+          top: '-2%',
+          transform: `rotate(${Math.round(randomize(0,1))*180}deg)`,
+          width: '110%',
+          zIndex: -1,
+          }}
+      />
+    </div>
   )
 }
 

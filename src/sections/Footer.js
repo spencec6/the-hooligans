@@ -128,7 +128,7 @@ const Footer = ({ path, ...props }) => {
           </div>
         </Block>
         <Block width={[1,1/2]}>
-          <h2 sx={{ variant: 'styles.h6', color: 'white' }}>Contact Us</h2>
+          <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', textTransform: 'lowercase', color: 'white' }}>Contact Us</h2>
           <Link
             as={OutboundLink}
             title={`Send us an e-mail`}
@@ -141,13 +141,14 @@ const Footer = ({ path, ...props }) => {
           >
             {email}
           </Link>
-          <div sx={{ color: 'white', mt: 2 }}>
+          <div sx={{ color: 'white', fontFamily: 'sans', mt: 2 }}>
             {address}
           </div>
           <Button
             as={GatsbyLink}
             to="/contact"
             from="footer"
+            onClick={() => { navigate('/contact') }}
             sx={{ variant: 'buttons.secondary', mt: 3, px: 4, py: 2, }}
           >
             Contact Us

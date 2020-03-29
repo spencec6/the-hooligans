@@ -53,7 +53,7 @@ function ContactPage({ location }) {
           </p>
           <ContactForm/>
           <div sx={{ mt: 7 }}>
-            <h2 sx={{ variant: 'styles.h5', mb: 3, }}>Contact Information</h2>
+            <h2 sx={{ variant: 'styles.h5', fontFamily: 'cursive', textTransform: 'lowercase', mb: 3, }}>Contact Information</h2>
             <Link
               as={OutboundLink}
               title={`Send us an e-mail`}
@@ -67,7 +67,7 @@ function ContactPage({ location }) {
             >
               {email}
             </Link>
-            <div sx={{ color: 'greys.600', mt: 1, }}>
+            <div sx={{ color: 'greys.600', fontFamily: 'sans', mt: 1, }}>
               {address}
             </div>
             <div sx={{

@@ -5,6 +5,8 @@ import { randomize } from '../utils/helpers'
 import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
+import RoundSmear from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.svg";
+import Bios from '../sections/Bios'
 import CallToAction from '../sections/CallToAction'
 // import Testimonials from '../sections/Testimonials'
 import Heading from '../components/Heading'
@@ -39,6 +41,40 @@ const getOptions = () => {
           )
         }
       },
+      [BLOCKS.UL_LIST]: (_node, next) => {
+        return (
+          <ul sx={{ mt: 4, }}>
+            {next}
+          </ul>
+        )
+      },
+      [BLOCKS.LIST_ITEM]: (_node, next) => {
+        return (
+          <div sx={{
+            alignItems: 'center',
+            display: 'flex',
+          }}>
+            <RoundSmear
+              className="about-bulletSmear"
+              sx={{
+                color: 'primary',
+                height: '10px',
+                ml: 3,
+                transform: `rotate(${randomize(0,360)}deg)`,
+                width: '10px',
+              }}
+            />
+            <li
+              sx={{
+                color: 'primary',
+                pl: 3,
+              }}
+            >
+              {next}
+            </li>
+          </div>
+        )
+      }
     }
   }
   return introOptions
@@ -101,6 +137,7 @@ function AboutPage({ location }) {
       <div sx={{ mt: [6,7] }}>
         <CallToAction/>
       </div>
+      <Bios/>
     </Layout>
   )
 }

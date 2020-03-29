@@ -4,10 +4,10 @@ import { Input, Label } from './Forms'
 import Button from './Button'
 import { randomize } from '../utils/helpers'
 
-const ContactForm = () => {
+const RepresentationForm = () => {
   return (
     <form
-      name="contact"
+      name="representation"
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
@@ -15,7 +15,7 @@ const ContactForm = () => {
       sx={{ width: '100%'}}
     >
       <input type="hidden" name="bot-field" />
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="representation" />
       <div sx={{ }}>
         <Label htmlFor="name" required>Your Name</Label>
         <Input
@@ -35,18 +35,10 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label htmlFor="website">Your Website</Label>
-        <Input
-          name="website"
-          type="text"
-          sx={{ transform: `rotate(${randomize(-0.75,0.75)}deg)` }}
-        />
-      </div>
-      <div sx={{ mt: 3 }}>
-        <Label htmlFor="obstacles">What is your biggest challenge or obstacle?</Label>
+        <Label htmlFor="why">Why do you want to become a Hoolgain?</Label>
         <Input
           as="textarea"
-          name="obstacles"
+          name="why"
           rows="3"
           sx={{
             resize: 'vertical',
@@ -55,37 +47,12 @@ const ContactForm = () => {
         />
       </div>
       <div sx={{ mt: 3 }}>
-        <Label htmlFor="methods">What methods have you already tried to solve the problem?</Label>
+        <Label required htmlFor="resume">Upload Your Resume</Label>
         <Input
-          as="textarea"
-          name="methods"
-          rows="3"
+          type="file"
+          name="resume"
+          required
           sx={{
-            resize: 'vertical',
-            transform: `rotate(${randomize(-0.75,0.75)}deg)`
-          }}
-        />
-      </div>
-      <div sx={{ mt: 3 }}>
-        <Label htmlFor="missing">What’s been missing in your past experiences working with creative teams?</Label>
-        <Input
-          as="textarea"
-          name="missing"
-          rows="3"
-          sx={{
-            resize: 'vertical',
-            transform: `rotate(${randomize(-0.75,0.75)}deg)`
-          }}
-        />
-      </div>
-      <div sx={{ mt: 3 }}>
-        <Label htmlFor="message">Any other details you'd like to include:</Label>
-        <Input
-          as="textarea"
-          name="message"
-          rows="3"
-          sx={{
-            resize: 'vertical',
             transform: `rotate(${randomize(-0.75,0.75)}deg)`
           }}
         />
@@ -97,4 +64,4 @@ const ContactForm = () => {
   )
 }
 
-export default ContactForm
+export default RepresentationForm
