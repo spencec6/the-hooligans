@@ -96,7 +96,7 @@ export default class RepresentationForm extends React.Component {
           <Input
             type="file"
             name="resume"
-            accept=".pdf,.png,.jpg,.jpeg"
+            // accept=".pdf,.png,.jpg,.jpeg"
             onChange={this.handleAttachment}
             required
             sx={{
