@@ -34,13 +34,13 @@ function GlobalStyles() {
       }
 
       body { 
-        background-image: url(${mobileBg.childImageSharp.fluid.src});
+        /* background-image: url(${mobileBg.childImageSharp.fluid.src}); */
         font-family: 'Beth Ellen', cursive;
         line-height: 150%;
         height: 100%;
         overflow-x: hidden;
         @media only screen and (min-width: 768px) {
-          background-image: url(${desktopBg.childImageSharp.fluid.src});
+          /* background-image: url(${desktopBg.childImageSharp.fluid.src}); */
         }
       }
 
