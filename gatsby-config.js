@@ -69,19 +69,19 @@ module.exports = {
     //     anonymize: true,
     //   },
     // },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: website.title,
-    //     short_name: website.shortName,
-    //     description: website.description,
-    //     start_url: `/`,
-    //     background_color: website.backgroundColor,
-    //     theme_color: website.themeColor,
-    //     display: `standalone`,
-    //     icon: website.favicon,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: website.title,
+        short_name: website.shortName,
+        description: website.description,
+        start_url: `/`,
+        background_color: website.backgroundColor,
+        theme_color: website.themeColor,
+        display: `standalone`,
+        icon: website.favicon,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
