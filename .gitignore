@@ -11,3 +11,5 @@ public
 .env.*
 !.env.example
 reduxcache*
+# Local Netlify folder
+.netlify

@@ -5,7 +5,9 @@ import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby'
 import { GlitchRotate } from '../components/Animations'
 import Button from '../components/Button'
 import Hamburger from '../components/Hamburger'
+import Icon from '../components/Icon'
 import Link from '../components/Link'
+import OutboundLink from '../components/OutboundLink'
 import Logo from "-!svg-react-loader!../images/SVGs/TheHooligans-Logo.inline.svg";
 import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
 import MobileHeader from '../components/MobileHeader'
@@ -14,6 +16,21 @@ import { randomize } from '../utils/helpers'
 function Header({path}) {
   const data = useStaticQuery(graphql`
     query {
+      site {
+        siteMetadata {
+          social {
+            facebook {
+              url
+            }
+            instagram {
+              url
+            }
+            twitter {
+              url
+            }
+          }
+        }
+      }
       menu: allContentfulMenu {
         nodes {
           menuItem {
@@ -47,6 +64,7 @@ function Header({path}) {
       }
     }
   `)
+  const social = data.site.siteMetadata.social
 
   const mainMenuItems = []
   mainMenuItems.push({main: 'logo', slug: '', title: 'Home'})
@@ -102,7 +120,7 @@ function Header({path}) {
                         fill="currentColor"
                         sx={{
                           cursor: 'pointer',
-                          color: isOpen ? ['white','white','white','white','black'] : 'black',
+                          color: isOpen ? 'white' : 'black',
                           display: 'block',
                           height: '60px',
                           mb: 0,
@@ -142,7 +160,7 @@ function Header({path}) {
                       key={item.title}
                       activeClassName="is-active"
                       sx={{
-                        display: ['none', 'none', 'none', 'none', 'block'],
+                        display: 'none',
                         variant: 'styles.links.nav',
                       }}
                     >
@@ -173,6 +191,30 @@ function Header({path}) {
             display: 'flex',
             alignItems: 'center'
           }}>
+            {Object.keys(social).map((service, index) => {
+              return (
+                <li
+                  key={service}
+                  sx={{
+                    display: ['none', 'none', 'block'],
+                    ml: index === 0 ? 0 : 4,
+                  }}
+                >
+                  <Link 
+                    aria-label={service}
+                    as={OutboundLink} 
+                    to={`https://www.${service}.com/${social[service].url}`} 
+                    target="_blank" 
+                    bare={true} 
+                    sx={{
+                      color: isOpen ? 'secondary' : 'primary',
+                    }}
+                  >
+                    <Icon name={service}></Icon>
+                  </Link>
+                </li>
+              )
+            })}
             <li
               sx={{animation: `${GlitchRotate} 20s infinite step-end`,}}
             >
@@ -182,11 +224,11 @@ function Header({path}) {
                 to="/contact/"
                 from="header"
                 sx={{
-                  display: ['none', 'none', 'none', 'none', 'block'],
-                  ml: 4,
+                  display: ['none', 'block', 'block'],
+                  ml: 5,
                   transform: `rotate(${randomize(-1,1)}deg)`,
                   px: [4,4,4,5],
-                  variant: 'buttons.primary'
+                  variant: isOpen ? 'buttons.secondary' : 'buttons.primary'
                 }}
               >
                 Contact Us
@@ -197,6 +239,7 @@ function Header({path}) {
                 isHome={isHome}
                 isOpen={isOpen}
                 onClick={() => setIsOpen(isOpen ? 0 : 1)}
+                sx={{ ml: 5 }}
               />
             </li>
           </ul>

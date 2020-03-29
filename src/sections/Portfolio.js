@@ -147,34 +147,34 @@ const Portfolio = ({ location }) => {
           />
           <X1 sx={{
             color: 'primary',
-            height: '150px',
+            height: ['75px', '150px'],
             left: '-10%',
             position: 'absolute',
             bottom: '5%',
             transform: 'rotate(0deg)',
-            width: '140px',
+            width: ['70px', '140px'],
             zIndex: 2,
             }}
           />
           <X1 sx={{
             color: 'primary',
-            height: '130px',
+            height: ['65px', '130px'],
             right: '-8%',
             position: 'absolute',
             bottom: '42%',
             transform: 'rotate(90deg)',
-            width: '110px',
+            width: ['56px', '110px'],
             zIndex: 2,
             }}
           />
           <X1 sx={{
             color: 'teal',
-            height: '60px',
+            height: ['30px', '60px'],
             right: '3%',
             position: 'absolute',
             bottom: '65%',
             transform: 'rotate(270deg)',
-            width: '70px',
+            width: ['35px', '70px'],
             zIndex: 2,
             }}
           />

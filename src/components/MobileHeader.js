@@ -26,7 +26,7 @@ const MenuItem = (props) => {
           from="header-mobile"
           to={`/${props.item.slug}`}
           sx={{
-            variant: 'styles.h1',
+            variant: 'styles.h2',
             color: 'white',
             display: 'inline-block',
             textDecoration: 'none',
@@ -61,7 +61,7 @@ const MobileHeader = ({ menuItems, isHome, isOpen, ...props }) => {
         transition: isOpen ? 'transform 0.12s ease-in-out' : '',
         width: "100vw",
         pointerEvents: isOpen ? `all` : `none`,
-        display: ['flex', 'flex', 'flex', 'flex', 'none'],
+        display: 'flex',
         justifyContent: 'center',
         position: 'fixed',
         zIndex: 99,
