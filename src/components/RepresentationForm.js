@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react";
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby-link'
 import { jsx } from 'theme-ui'
 import { Input, Label } from './Forms'
 import Button from './Button'
@@ -28,6 +28,7 @@ export default class RepresentationForm extends React.Component {
 
   handleAttachment = e => {
     this.setState({ [e.target.name]: e.target.files[0] });
+    console.log(this.state)
   };
 
   handleSubmit = e => {
@@ -40,7 +41,7 @@ export default class RepresentationForm extends React.Component {
         ...this.state
       })
     })
-      .then(() => navigateTo(form.getAttribute("action")))
+      .then(() => navigate(form.getAttribute("action")))
       .catch(error => alert(error));
   };
 
@@ -52,6 +53,7 @@ export default class RepresentationForm extends React.Component {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         action="/thank-you"
+        onSubmit={this.handleSubmit}
         sx={{ width: '100%'}}
       >
         <input type="hidden" name="bot-field" />
