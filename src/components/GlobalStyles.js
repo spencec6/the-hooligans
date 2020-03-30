@@ -1,6 +1,7 @@
 import React from 'react'
 import emotionReset from 'emotion-reset';
 import {Global, css} from '@emotion/core';
+// import backgroundTexture from '../images/background-texture.jpg'
 import { useStaticQuery, graphql } from 'gatsby';
 
 function GlobalStyles() {

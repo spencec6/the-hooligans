@@ -77,7 +77,7 @@ function Header({path}) {
   const isHome = path === '/' ? 1 : 0
   return (
     <header sx={{
-      px: [4,4,4,7],
+      px: [4,4,4,11],
       py: [3,5],
       '@media only screen and (max-width: 1060px)': {
         px: 4,
@@ -122,14 +122,14 @@ function Header({path}) {
                           cursor: 'pointer',
                           color: isOpen ? 'white' : 'black',
                           display: 'block',
-                          height: 'auto',
+                          height: '60px',
                           mb: 0,
-                          mr: 3,
+                          mr: [3,5],
                           textDecoration: 'none',
                           transitionDuration: '0.25s',
                           transitionProperty: 'opacity',
                           transitionTimingFunction: 'ease-in-out',
-                          width: ['130px','197px'],
+                          width: '197px',
                           '&:hover': {
                             color: isOpen ? ['secondary','secondary','secondary','secondary','primary'] : 'primary',
                           }
@@ -144,11 +144,10 @@ function Header({path}) {
                     key={item.title}
                     sx={{
                       animation: `${GlitchRotate} 40s ${(index+1) * randomize(3,7)}s infinite step-end`,
-                      display: ['none','none','none','block'],
                       ml: item.slug === 'about' ? 0 : [3,3,6],
                       position: 'relative',
                       transform: `rotate(${randomize(-4,4)}deg) translate(${randomize(-2,2)}px, ${randomize(-2,2)}px)`,
-                      '@media only screen and (max-width: 1170px)': {
+                      '@media only screen and (max-width: 1060px)': {
                         ml: 4,
                       },
                     }}
@@ -161,6 +160,7 @@ function Header({path}) {
                       key={item.title}
                       activeClassName="is-active"
                       sx={{
+                        display: 'none',
                         variant: 'styles.links.nav',
                       }}
                     >
@@ -196,11 +196,8 @@ function Header({path}) {
                 <li
                   key={service}
                   sx={{
-                    display: ['block','block','block','none'],
+                    display: ['none', 'none', 'block'],
                     ml: index === 0 ? 0 : 4,
-                    '@media only screen and (min-width: 1280px)': {
-                      display: 'block'
-                    }
                   }}
                 >
                   <Link 
