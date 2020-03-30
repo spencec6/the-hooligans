@@ -48,7 +48,7 @@ const RepresentationForm = () => {
         ...formState
       })
     })
-      .then(() => setIsSending(0), navigate(form.getAttribute("action")), console.log(formState))
+      .then(() => setIsSending(0), navigate(form.getAttribute("action")))
       .catch(error => alert(error));
   };
 
