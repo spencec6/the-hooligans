@@ -21,6 +21,7 @@ const ContactForm = () => {
         <Input
           name="name"
           type="text"
+          index={1}
           required
           sx={{ transform: `rotate(${randomize(-0.75,0.75)}deg)` }}
         />
@@ -30,6 +31,7 @@ const ContactForm = () => {
         <Input
           name="email"
           type="email"
+          index={2}
           required
           sx={{ transform: `rotate(${randomize(-0.75,0.75)}deg)` }}
         />
@@ -39,6 +41,7 @@ const ContactForm = () => {
         <Input
           name="website"
           type="text"
+          index={3}
           sx={{ transform: `rotate(${randomize(-0.75,0.75)}deg)` }}
         />
       </div>
@@ -47,6 +50,7 @@ const ContactForm = () => {
         <Input
           as="textarea"
           name="obstacles"
+          index={4}
           rows="3"
           sx={{
             resize: 'vertical',
@@ -59,6 +63,7 @@ const ContactForm = () => {
         <Input
           as="textarea"
           name="methods"
+          index={5}
           rows="3"
           sx={{
             resize: 'vertical',
@@ -71,6 +76,7 @@ const ContactForm = () => {
         <Input
           as="textarea"
           name="missing"
+          index={6}
           rows="3"
           sx={{
             resize: 'vertical',
@@ -83,6 +89,7 @@ const ContactForm = () => {
         <Input
           as="textarea"
           name="message"
+          index={7}
           rows="3"
           sx={{
             resize: 'vertical',

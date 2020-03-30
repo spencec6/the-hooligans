@@ -129,7 +129,7 @@ function Header({path}) {
                           transitionDuration: '0.25s',
                           transitionProperty: 'opacity',
                           transitionTimingFunction: 'ease-in-out',
-                          width: ['130px','197px'],
+                          width: ['130px','130px','130px','130px','197px'],
                           '&:hover': {
                             color: isOpen ? ['secondary','secondary','secondary','secondary','primary'] : 'primary',
                           }

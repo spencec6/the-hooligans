@@ -5,7 +5,6 @@ import Link from './Link'
 import { randomize } from '../utils/helpers'
 
 const MenuItem = (props) => {
-  // console.log(props)
   return (
     <li
         mobilemenu={props.isOpen}

@@ -44,7 +44,7 @@ const getOptions = (color) => {
               smearColor="lime"
               smearHeight="100%"
               smearLeft="-10%"
-              smearTop="10%"
+              smearTop="5%"
               sx={{
                 fontFamily: 'cursive',
                 fontSize:[4,5,6],

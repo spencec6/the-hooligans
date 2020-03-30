@@ -2,9 +2,8 @@
 import { PropTypes } from 'prop-types'
 import { jsx } from 'theme-ui'
 import BgSmear from "-!svg-react-loader!../../images/SVGs/smear.inline.svg";
-import { randomize } from "../../utils/helpers";
 
-const Input = ({variant, as: Component, children, ...props}) => {
+const Input = ({index, variant, as: Component, children, ...props}) => {
   return (
     <div sx={{ position: 'relative' }}>
       <Component
@@ -23,7 +22,7 @@ const Input = ({variant, as: Component, children, ...props}) => {
           left: '-5%',
           position: 'absolute',
           top: '-2%',
-          transform: `rotate(${Math.round(randomize(0,1))*180}deg)`,
+          transform: index % 2 === 0 ? `rotate(180deg)` : `rotate(0deg)`,
           width: '110%',
           zIndex: -1,
           }}
@@ -40,6 +39,7 @@ Input.propTypes = {
 Input.defaultProps = {
   as: 'input',
   variant: 'forms.input',
+  index: 1
 }
 
 export default Input

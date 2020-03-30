@@ -67,6 +67,7 @@ export default class RepresentationForm extends React.Component {
           <Input
             name="name"
             type="text"
+            index={1}
             required
             onChange={this.handleChange}
             sx={{ transform: `rotate(${-0.5}deg)` }}
@@ -77,6 +78,7 @@ export default class RepresentationForm extends React.Component {
           <Input
             name="email"
             type="email"
+            index={2}
             required
             onChange={this.handleChange}
             sx={{ transform: `rotate(${0.7}deg)` }}
@@ -87,6 +89,7 @@ export default class RepresentationForm extends React.Component {
           <Input
             as="textarea"
             name="why"
+            index={3}
             rows="3"
             onChange={this.handleChange}
             sx={{
@@ -96,15 +99,35 @@ export default class RepresentationForm extends React.Component {
           />
         </div>
         <div sx={{ mt: 3 }}>
-          <Label required htmlFor="resume">Upload Your Resume</Label>
+          <Label required htmlFor="resume">
+            Upload Your Resume
+            <span sx={{ color: 'greys.600', fontSize: 0, fontWeight: 'book', letterSpacing: 0, pl: 1, textTransform: 'lowercase' }}>(.jpg, .jpeg, .png, .pdf)</span>
+          </Label>
           <Input
             type="file"
             name="resume"
+            index={4}
             required
             accept=".jpg,.png,.pdf,.jpeg"
             onChange={this.handleAttachment}
             sx={{
               transform: `rotate(${0.4}deg)`
+            }}
+          />
+        </div>
+        <div sx={{ mt: 3 }}>
+          <Label htmlFor="resume">
+            Upload Your Reel
+            <span sx={{ color: 'greys.600', fontSize: 0, fontWeight: 'book', letterSpacing: 0, pl: 1, textTransform: 'lowercase' }}>(.mp4, .mov, .mpeg)</span>
+            </Label>
+          <Input
+            type="file"
+            name="resume"
+            index={5}
+            accept=".mp4,.mov,.mpeg"
+            onChange={this.handleAttachment}
+            sx={{
+              transform: `rotate(${-0.6}deg)`
             }}
           />
         </div>
@@ -140,7 +163,7 @@ export default class RepresentationForm extends React.Component {
               </div>
             </div>
           ) : 
-            "Get In Touch!"
+            "Show Us Your Stuff"
           }
         </Button>
       </form>
