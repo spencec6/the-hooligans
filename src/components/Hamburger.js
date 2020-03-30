@@ -12,7 +12,7 @@ const Hamburger = ({ isHome, isOpen, ...props }) => {
       xmlns="http://www.w3.org/2000/svg"
       sx={{
         animation: `${GlitchRotate} 20s infinite step-end`,
-        // display: ['block', 'block', 'block', 'block', 'none'],
+        display: isOpen ? 'block' : ['block', 'block', 'block', 'none', 'none'],
         color: 'primary',
         cursor: 'pointer',
         fill: isOpen ? `white` : `black`,
