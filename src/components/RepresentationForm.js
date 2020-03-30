@@ -2,6 +2,8 @@
 import React from "react";
 import { navigate } from "gatsby-link";
 import { jsx } from 'theme-ui'
+import RoundSmear from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.svg";
+import { FadeInOut } from './../components/Animations'
 import { Input, Label } from './Forms'
 import Button from './Button'
 import { randomize } from '../utils/helpers'
@@ -19,7 +21,9 @@ function encode(data) {
 export default class RepresentationForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      sending: false
+    };
   }
 
   handleChange = e => {
@@ -33,6 +37,7 @@ export default class RepresentationForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
+    this.setState({ sending: true })
     fetch("/", {
       method: "POST",
       body: encode({
@@ -40,7 +45,7 @@ export default class RepresentationForm extends React.Component {
         ...this.state
       })
     })
-      .then(() => navigate(form.getAttribute("action")))
+      .then(() => this.setState({ sending: false }), navigate(form.getAttribute("action")))
       .catch(error => alert(error));
   };
 
@@ -64,7 +69,7 @@ export default class RepresentationForm extends React.Component {
             type="text"
             required
             onChange={this.handleChange}
-            sx={{ transform: `rotate(${randomize(-0.75,0.75)}deg)` }}
+            sx={{ transform: `rotate(${-0.5}deg)` }}
           />
         </div>
         <div sx={{ mt: 3 }}>
@@ -74,7 +79,7 @@ export default class RepresentationForm extends React.Component {
             type="email"
             required
             onChange={this.handleChange}
-            sx={{ transform: `rotate(${randomize(-0.75,0.75)}deg)` }}
+            sx={{ transform: `rotate(${0.7}deg)` }}
           />
         </div>
         <div sx={{ mt: 3 }}>
@@ -86,7 +91,7 @@ export default class RepresentationForm extends React.Component {
             onChange={this.handleChange}
             sx={{
               resize: 'vertical',
-              transform: `rotate(${randomize(-0.75,0.75)}deg)`
+              transform: `rotate(${-0.3}deg)`
             }}
           />
         </div>
@@ -99,12 +104,44 @@ export default class RepresentationForm extends React.Component {
             accept=".jpg,.png,.pdf,.jpeg"
             onChange={this.handleAttachment}
             sx={{
-              transform: `rotate(${randomize(-0.75,0.75)}deg)`
+              transform: `rotate(${0.4}deg)`
             }}
           />
         </div>
         <Button type="submit" sx={{ variant: 'buttons.secondary', mt: 3}}>
-          Get In Touch!
+          {this.state.sending ? (
+            <div sx={{
+              alignItems: 'center',
+              display: 'flex',
+            }}>
+              {Array.from({ length: 3}).map((_node, index) => {
+                return (
+                  <RoundSmear
+                    key={`dot-${index}`}
+                    className="about-bulletSmear"
+                    sx={{
+                      animation: `${FadeInOut} 1s ${index * 0.25}s infinite`,
+                      color: 'primary',
+                      height: '5px',
+                      ml: index === 0 ? 0 : 3,
+                      transform: `rotate(${randomize(0,360)}deg)`,
+                      width: '5px',
+                    }}
+                  />
+                )
+              })}
+              <div
+                sx={{
+                  color: 'primary',
+                  pl: 3,
+                }}
+              >
+                Sending
+              </div>
+            </div>
+          ) : 
+            "Get In Touch!"
+          }
         </Button>
       </form>
     )

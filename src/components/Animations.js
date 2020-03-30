@@ -9,6 +9,15 @@ export const Blink = keyframes`
   }
 `
 
+export const FadeInOut = keyframes`
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+`
+
 export const GlitchIn = keyframes`
   0%, 3%, 7%, 10%, 15%, 25%, 50%, 80% {
     opacity: 0;
