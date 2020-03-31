@@ -39,7 +39,7 @@ function Hero() {
       exclamation: file(relativePath: { eq: "exclamation-mark.png" }) {
         childImageSharp {
           fluid(
-            maxWidth: 200,
+            maxWidth: 81,
             quality: 20,
             traceSVG: { color: "#252627" }
             ) {
