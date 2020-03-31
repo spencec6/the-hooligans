@@ -128,7 +128,9 @@ const Footer = ({ path, ...props }) => {
           </div>
         </Block>
         <Block width={[1,1/2]}>
-          <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', textTransform: 'lowercase', color: 'white' }}>Contact Us</h2>
+          <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', textTransform: 'lowercase', color: 'white' }}>
+            Contact Information
+          </h2>
           <Link
             as={OutboundLink}
             title={`Send us an e-mail`}

@@ -49,11 +49,6 @@ function Header({path}) {
               slug
               title
             }
-            ... on ContentfulRepresentationPage {
-              main
-              slug
-              title
-            }
             ... on ContentfulContactPage {
               main
               slug

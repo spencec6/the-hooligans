@@ -83,21 +83,16 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Beth Ellen`,
-        ],
-        display: 'swap'
-      },
-    },
-    {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
           {
             family: `Barlow`,
-            variants: [`300`, `500`, `700`, `900`], // For some reason, barlow's variants weren't loading with the above plugin
+            variants: [`300`, `500`, `700`, `900`],
+          },
+          {
+            family: `Beth Ellen`,
+            variants: [`400`],
           }
         ],
       },

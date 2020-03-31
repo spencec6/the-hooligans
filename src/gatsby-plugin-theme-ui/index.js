@@ -139,10 +139,10 @@ export default {
     black: 900
   },
   leading: {
-    none: 1,
-    tight: 1.25,
-    normal: 1.75,
-    loose: 2,
+    none: "100%",
+    tight: "125%",
+    normal: "175%",
+    loose: "200%",
   },
   tracking: {
     tight: '0.5px',
@@ -228,6 +228,7 @@ export default {
       fontFamily: 'sans',
       fontSize: 1,
       fontWeight: 'bold',
+      lineHeight: "100%",
       mb: 1,
       variant: 'text.allcaps'
     },

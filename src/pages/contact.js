@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import { navigate } from 'gatsby-link'
+// import { navigate } from 'gatsby-link'
 import Block from '../components/Block'
-import Button from '../components/Button'
+// import Button from '../components/Button'
 import ContactForm from '../components/ContactForm'
 import Heading from '../components/Heading'
 import Icon from '../components/Icon'
@@ -11,8 +11,38 @@ import Layout from '../components/Layout'
 import Link from '../components/Link'
 import OutboundLink from '../components/OutboundLink'
 import SEO from '../components/Seo'
-import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg"
+// import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg"
 import { randomize } from "../utils/helpers"
+
+function ContactGroup({ title, email }) {
+  return (
+    <div sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      mb: 3,
+      mt: 7,
+    }}>
+      <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', fontWeight: 'book', textTransform: 'lowercase' }}>
+        {title}
+      </h2>
+      <div>
+        <Link
+          as={OutboundLink}
+          title={title}
+          href={`mailto:${email}`}
+          from={`contact`}
+          target={`_blank`}
+          sx={{
+            variant: 'styles.links.link',
+            fontSize: [2,3]
+          }}
+        >
+          {email}
+        </Link>
+      </div>
+    </div>
+  )
+}
 
 function ContactPage({ location }) {
   const data = useStaticQuery(graphql`
@@ -106,114 +136,41 @@ function ContactPage({ location }) {
                   )
                 })}
               </div>
-              <div sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                mb: 3,
-                mt: 7,
-              }}>
-                <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', fontWeight: 'book', textTransform: 'lowercase' }}>
-                  Media Requests
-                </h2>
+              <ContactGroup title={`Media Requests`} email={`media@thehooligansagency.com`}/>
+              <ContactGroup title={`General Inquiries`} email={email}/>
+              <ContactGroup title={`Careers`} email={`careers@thehooligansagency.com`}/>
+              {/* <div sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+                <p sx={{ display: 'inline-block', fontFamily: 'sans', fontSize: [1,2], mb: 1 }}>
+                  Psst. We're always looking for new Hooligans.
+                </p>
                 <div>
-                  <Link
-                    as={OutboundLink}
-                    title={`Media Requests`}
-                    href={`mailto:media@thehooligansagency.com?subject=The Hooligans Media Request`}
-                    from={`contact`}
-                    target={`_blank`}
+                  <Button
+                    as="button"
+                    from={'contact'}
+                    onClick={() => navigate('/careers')}
                     sx={{
-                      variant: 'styles.links.link',
-                      fontSize: [2,3]
+                      variant: 'buttons.primary',
+  
+                      fontSize: [0,1],
+                      mb: 3,
+                      px: 3,
+                      py: 1,
                     }}
                   >
-                    media@thehooligansagency.com
-                  </Link>
+                    See Careers
+                  </Button>
                 </div>
-              </div>
-              <div sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                mb: 3,
-                mt: 7,
-              }}>
-                <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', fontWeight: 'book', textTransform: 'lowercase' }}>
-                  General Inquiries
-                </h2>
-                <div>
-                  <Link
-                    as={OutboundLink}
-                    title={`General Inquiries`}
-                    href={`mailto:${email}`}
-                    from={`contact`}
-                    target={`_blank`}
-                    sx={{
-                      variant: 'styles.links.link',
-                      fontSize: [2,3]
-                    }}
-                  >
-                    {email}
-                  </Link>
-                </div>
-              </div>
-              <div sx={{
-                mb: 3,
-                mt: 7,
-                // position: 'relative',
-              }}>
-                <div sx={{  }}>
-                  <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', fontWeight: 'book', textTransform: 'lowercase' }}>
-                    Careers
-                  </h2>
-                  <div sx={{ mb: 4 }}>
-                    <Link
-                      as={OutboundLink}
-                      title={`Careers`}
-                      href={`mailto:careers@thehooligansagency.com`}
-                      from={`contact`}
-                      target={`_blank`}
-                      sx={{
-                        variant: 'styles.links.link',
-                        fontSize: [2,3]
-                      }}
-                    >
-                      careers@thehooligansagency.com
-                    </Link>
-                  </div>
-                  <div sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
-                    <p sx={{ display: 'inline-block', fontFamily: 'sans', fontSize: [1,2], mb: 1 }}>
-                      Psst. We're always looking for new Hooligans.
-                    </p>
-                    <div>
-                      <Button
-                        as="button"
-                        from={'contact'}
-                        onClick={() => navigate('/careers')}
-                        sx={{
-                          variant: 'buttons.primary',
-      
-                          fontSize: [0,1],
-                          mb: 3,
-                          px: 3,
-                          py: 1,
-                        }}
-                      >
-                        See Careers
-                      </Button>
-                    </div>
-                    <BgSmear sx={{
-                      color: 'secondary',
-                      height: '120%',
-                      left: `-10%`,
-                      position: 'absolute',
-                      top: '-9%',
-                      width: `120%`,
-                      zIndex: -1,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
+                <BgSmear sx={{
+                  color: 'secondary',
+                  height: '120%',
+                  left: `-10%`,
+                  position: 'absolute',
+                  top: '-9%',
+                  width: `120%`,
+                  zIndex: -1,
+                  }}
+                />
+              </div> */}
             </Block>
           </div>
         </div>

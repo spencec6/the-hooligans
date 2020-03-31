@@ -65,6 +65,7 @@ const MobileHeader = ({ menuItems, isHome, isOpen, ...props }) => {
         position: 'fixed',
         zIndex: 99,
       }}
+      {...props}
     >
       <ul sx={{ listStyle: 'none', m: 0, mt: -3, p: 0 }}>
         <MenuItem isFake={true} isOpen={isOpen} item={longest} />

@@ -7,11 +7,11 @@ import Img from 'gatsby-image'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 // import Testimonials from '../sections/Testimonials'
-import { Blink, GlitchRotate } from '../components/Animations'
+import { GlitchRotate } from '../components/Animations'
 import Block from '../components/Block'
 import Heading from '../components/Heading'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg"
-import HoverArrow from "-!svg-react-loader!../images/SVGs/bio-hover-arrow.svg"
+// import HoverArrow from "-!svg-react-loader!../images/SVGs/bio-hover-arrow.svg"
 
 const getOptions = (color) => {
   let paragraphIndex = 0
@@ -178,7 +178,7 @@ function BioImage({bio, image, index, ...props}) {
         zIndex: -1,
         }}
       />
-      <HoverArrow sx={{
+      {/* <HoverArrow sx={{
         animation: isHovering ? null : `${Blink} 12s ${(index+1) * 0.2}s infinite linear forwards`,
         height: 'auto',
         left: '-45%',
@@ -188,7 +188,7 @@ function BioImage({bio, image, index, ...props}) {
         transform: `rotate(${randomize(-15,15)}deg)`,
         width: '82px',
         }}
-      />
+      /> */}
     </div>
   )
 }
