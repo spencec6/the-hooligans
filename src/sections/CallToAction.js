@@ -4,7 +4,9 @@ import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
-import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
+// import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
+import Exclamation from "-!svg-react-loader!../images/SVGs/exclamation-mark.inline.svg";
+import Question from "-!svg-react-loader!../images/SVGs/question-mark.inline.svg";
 import Block from '../components/Block'
 import Button from '../components/Button'
 
@@ -90,25 +92,25 @@ const CallToAction = () => {
         zIndex: 1,
         }}
       />
-      <X1 sx={{
+      <Question sx={{
         color: 'black',
         height: '60px',
         right: '10%',
         position: 'absolute',
         top: '-15%',
-        transform: 'rotate(270deg)',
-        width: '60px',
+        transform: 'rotate(8deg)',
+        width: '40px',
         zIndex: 2,
         }}
       />
-      <X1 sx={{
+      <Exclamation sx={{
         color: 'lime',
         height: '130px',
         left: '3%',
         position: 'absolute',
         bottom: '-15%',
-        transform: 'rotate(0deg)',
-        width: '110px',
+        transform: 'rotate(-4deg)',
+        width: '30px',
         zIndex: 2,
         }}
       />

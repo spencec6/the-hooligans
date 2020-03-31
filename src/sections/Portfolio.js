@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import { options } from '../utils/richTextOptions'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
 import BorderSmear from "-!svg-react-loader!../images/SVGs/border-smear-1.inline.svg";
 import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
+import Exclamation from "-!svg-react-loader!../images/SVGs/exclamation-mark.inline.svg";
+// import Question from "-!svg-react-loader!../images/SVGs/question-mark.inline.svg";
 import Heading from '../components/Heading'
 import { randomize } from '../utils/helpers'
 
@@ -15,9 +15,7 @@ const Portfolio = ({ location }) => {
       portfolio: contentfulPortfolio {
         slug
         title
-        excerpt {
-          json
-        }
+        excerpt
       }
     }
   `)
@@ -40,17 +38,29 @@ const Portfolio = ({ location }) => {
                 width: "100%"
               }}
             >
-              {documentToReactComponents(portfolio.excerpt.json, options)}
+              {portfolio.excerpt}
             </div>
           </div>
         :
           <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-            <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ color: 'black' }}>
+            <Heading as="h1" variant="styles.h2" smearColor="secondary" sx={{ color: 'black', mb: 3 }}>
               {portfolio.title}
             </Heading>
-            <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, mb: 7, mt: 4 }}>
-              {documentToReactComponents(portfolio.excerpt.json, options)}
-            </div>
+            <Heading
+              smearColor="lime"
+              smearHeight="100%"
+              smearLeft="-10%"
+              smearTop="10%"
+              sx={{
+                fontFamily: 'cursive',
+                fontSize:[4,5,5],
+                lineHeight: theme => theme.leading.tight,
+                mb: 8,
+                transform: `rotate(${randomize(-2,0.3)}deg) translateX(-10px)`
+              }}
+            >
+              {portfolio.excerpt}
+            </Heading>
           </div>
         }
         <div sx={{
@@ -145,36 +155,36 @@ const Portfolio = ({ location }) => {
             zIndex: 1,
             }}
           />
-          <X1 sx={{
+          <Exclamation sx={{
             color: 'primary',
             height: ['75px', '150px'],
-            left: '-10%',
+            left: ['1%','1%','1%','1%','-3%'],
             position: 'absolute',
             bottom: '5%',
             transform: 'rotate(0deg)',
-            width: ['70px', '140px'],
+            width: ['25px', '50px'],
             zIndex: 2,
             }}
           />
           <X1 sx={{
             color: 'primary',
             height: ['65px', '130px'],
-            right: '-8%',
+            right: ['-5%','-5%','-5%','-4%','-8%'],
             position: 'absolute',
-            bottom: '42%',
-            transform: 'rotate(90deg)',
+            bottom: '36%',
+            transform: 'rotate(273deg)',
             width: ['56px', '110px'],
             zIndex: 2,
             }}
           />
-          <X1 sx={{
+          <Exclamation sx={{
             color: 'teal',
-            height: ['30px', '60px'],
+            height: ['50px', '100px'],
             right: '3%',
             position: 'absolute',
             bottom: '65%',
-            transform: 'rotate(270deg)',
-            width: ['35px', '70px'],
+            transform: 'rotate(7deg)',
+            width: ['17px', '35px'],
             zIndex: 2,
             }}
           />

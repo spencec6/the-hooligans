@@ -58,13 +58,14 @@ const Services = () => {
         <div sx={{
           display: 'flex',
           flexWrap: 'wrap',
+          justifyContent: 'center',
         }}>
           {services.map((service, index) => {
             const RoundSmear = smearComponents[Math.round(randomize(-0.5,2.5))];
             return (
               // eslint-disable-next-line react/no-array-index-key
               <Block
-                width={(index > 3) ? [1,1/3,1/3] : [1,1/2,1/4]}
+                width={[1,1/2,1/3]}
                 key={`service-${service.slug}`}
                 sx={{
                   display: 'flex',
@@ -94,6 +95,7 @@ const Services = () => {
                       color: 'lime'
                     },
                     '&:hover .service-heading': {
+                      color: 'black',
                       fontFamily: 'cursive',
                       textTransform: 'lowercase',
                     },
@@ -133,7 +135,7 @@ const Services = () => {
                       alt={service.title}
                       fixed={service.icon.fixed}
                       sx={{
-                        animation: `${GlitchRotate} ${(index+1) * randomize(3,15)}s infinite step-end`,
+                        animation: `${GlitchRotate} ${(index+1) * randomize(5,15)}s infinite step-end`,
                         pointerEvents: 'none'
                         }}
                       />

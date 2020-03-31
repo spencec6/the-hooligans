@@ -210,6 +210,18 @@ export default {
         color: 'lime',
       },
     },
+    tertiary: {
+      color: 'primary',
+      '& .button-bgSmear': {
+        color: 'teal'
+      },
+      '&:hover': {
+        color: 'primary',
+      },
+      '&:hover .button-bgSmear': {
+        color: 'secondary',
+      },
+    },
   },
   forms: {
     label: {

@@ -10,6 +10,7 @@ import { GlitchRotate } from '../components/Animations'
 import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
+import CallToAction from '../sections/CallToAction'
 
 const smearComponents = [
   RoundSmear1,
@@ -74,26 +75,21 @@ function ServicesPage({ location }) {
           <Heading as="h1" variant="styles.h2" smearColor="secondary" sx={{ color: 'black', mb: 5  }}>
             {serviceContent.title}
           </Heading>
-          {/* <p sx={{
-              variant: 'styles.p',
-              display: 'inline-block',
-              fontSize:[4,5,6],
-              fontWeight: 'bold',
+          <Heading
+            smearColor="lime"
+            smearHeight="100%"
+            smearLeft="-10%"
+            smearTop="10%"
+            sx={{
+              fontFamily: 'cursive',
+              fontSize:[4,5,5],
               lineHeight: theme => theme.leading.tight,
-              mb: [4,5],
-              px: 2,
-              transform: `rotate(${randomize(-1.2,0.3)}deg) translateX(-10px)`
-            }}>
-              <span sx={{
-                bg: 'lime',
-                color: 'primary',
-               }}>
-                 {serviceContent.introduction}
-              </span>
-            </p> */}
-            <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, my: 4 }}>
-              {serviceContent.introduction}
-            </div>
+              mb: 8,
+              transform: `rotate(${randomize(-2,0.3)}deg) translateX(-10px)`
+            }}
+          >
+            {serviceContent.introduction}
+          </Heading>
           {serviceContent.services.map((service, index) => {
             const RoundSmear = smearComponents[Math.round(randomize(-0.5,2.5))];
             return (
@@ -107,6 +103,7 @@ function ServicesPage({ location }) {
                     color: 'lime'
                   },
                   '&:hover .service-heading': {
+                    color: 'black',
                     fontFamily: 'cursive',
                     textTransform: 'lowercase',
                   },
@@ -125,7 +122,7 @@ function ServicesPage({ location }) {
                         zIndex: 0,
                       }}
                     />
-                    <Img alt={service.title} fixed={service.icon.fixed} sx={{ animation: `${GlitchRotate} ${(index+1) * randomize(3,15)}s infinite step-end` }}/>
+                    <Img alt={service.title} fixed={service.icon.fixed} sx={{ animation: `${GlitchRotate} ${(index+1) * randomize(5,15)}s infinite step-end` }}/>
                   </div>
                 </div>
                 <div sx={{ flexGrow: 1, pl: 5, }}>
@@ -136,6 +133,9 @@ function ServicesPage({ location }) {
             )
           })}
         </div>
+      </div>
+      <div sx={{ mt: [6,7] }}>
+        <CallToAction/>
       </div>
     </Layout>
   )

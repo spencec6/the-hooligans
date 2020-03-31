@@ -5,6 +5,7 @@ import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 import RepresentationForm from '../components/RepresentationForm'
 import SEO from '../components/Seo'
+import { randomize } from "../utils/helpers"
 
 function RepresentationPage({ location }) {
   const data = useStaticQuery(graphql`
@@ -36,12 +37,24 @@ function RepresentationPage({ location }) {
       />
       <div sx={{ px:4, mb: [8,9], mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <Heading as="h1" variant="styles.h2" smearColor="lime" sx={{ color: 'black', mb: 5, }}>
+          <Heading as="h1" variant="styles.h2" smearColor="secondary" sx={{ color: 'black', mb: 5, }}>
             {representation.title}
           </Heading>
-          <div sx={{ fontWeight: 'bold', fontFamily: 'cursive', fontSize: [3,4,5], lineHeight: theme => theme.leading.tight, my: 4 }}>
+          <Heading
+            as="p"
+            smearColor="lime"
+            smearHeight="100%"
+            smearLeft="-10%"
+            smearTop="10%"
+            sx={{
+              fontFamily: 'cursive',
+              fontSize:[4,5,5],
+              lineHeight: theme => theme.leading.tight,
+              mb: 6,
+              transform: `rotate(${randomize(-2,0.3)}deg) translateX(-10px)`
+            }}>
             {representation.introduction}
-          </div>
+          </Heading>
           <p sx={{ my: 4 }}>
             Please enter your name, email, and website (if you already have one) and any other helpful information in the form below. We try hard to respond to respond within 1-3 business days.
           </p>

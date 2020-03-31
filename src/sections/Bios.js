@@ -24,10 +24,10 @@ const getOptions = (color) => {
             <BgSmear sx={{
               color: color,
               height: '120%',
-              left: '-10%',
+              left: `${randomize(-12,-7)}%`,
               position: 'absolute',
               top: '-5%',
-              width: '110%',
+              width: `${randomize(115,120)}%`,
               transform: `rotate(${Math.round(randomize(0,1))*180}deg)`,
               zIndex: -1,
               }}
@@ -47,7 +47,7 @@ const getOptions = (color) => {
               smearTop="5%"
               sx={{
                 fontFamily: 'cursive',
-                fontSize:[4,5,6],
+                fontSize:[4,5,5],
                 lineHeight: theme => theme.leading.tight,
                 mb: 6,
                 transform: `rotate(${randomize(-2,0.3)}deg) translateX(-10px)`
@@ -111,7 +111,7 @@ function BiosPage({ location }) {
     <div>
       <div sx={{ px:4, mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
-          <Heading as="h1" variant="styles.h2" smearColor="teal" sx={{ color: 'black', mb: 5, mt: [6,7], }}>
+          <Heading as="h1" variant="styles.h2" smearColor="secondary" sx={{ color: 'black', mb: 5, mt: [6,7], }}>
             {bioPage.title}
           </Heading>
           {documentToReactComponents(bioPage.introduction.json, getOptions())}

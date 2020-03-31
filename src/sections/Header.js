@@ -124,7 +124,7 @@ function Header({path}) {
                           display: 'block',
                           height: 'auto',
                           mb: 0,
-                          mr: 3,
+                          mr: [3,6],
                           textDecoration: 'none',
                           transitionDuration: '0.25s',
                           transitionProperty: 'opacity',
@@ -144,7 +144,7 @@ function Header({path}) {
                     key={item.title}
                     sx={{
                       animation: `${GlitchRotate} 40s ${(index+1) * randomize(3,7)}s infinite step-end`,
-                      display: ['none','none','none','block'],
+                      display: isOpen ? 'none' : ['none','none','none','block'],
                       ml: item.slug === 'about' ? 0 : [3,3,6],
                       position: 'relative',
                       transform: `rotate(${randomize(-4,4)}deg) translate(${randomize(-2,2)}px, ${randomize(-2,2)}px)`,
@@ -196,11 +196,7 @@ function Header({path}) {
                 <li
                   key={service}
                   sx={{
-                    display: ['block','block','block','none'],
                     ml: index === 0 ? 0 : 4,
-                    '@media only screen and (min-width: 1280px)': {
-                      display: 'block'
-                    }
                   }}
                 >
                   <Link 

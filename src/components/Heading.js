@@ -12,6 +12,7 @@ function Heading({
     smearHeight,
     smearLeft,
     smearTop,
+    smearWidth,
     as: Component,
     children,
     ...props
@@ -34,12 +35,12 @@ function Heading({
             sx={{
               color: smearColor,
               position: 'absolute',
-              width: '120%',
               height: smearHeight,
               left: smearLeft,
               top: smearTop,
               transition: 'opacity 0.25s ease-in-out, transform 0.25s ease-in-out',
               transform: `rotate(${randomize(-3,3)}deg)`,
+              width: smearWidth,
               zIndex: -1,
             }}
           /> :
@@ -57,6 +58,7 @@ Heading.propTypes = {
   smearHeight: PropTypes.string,
   smearLeft: PropTypes.string,
   smearTop: PropTypes.string,
+  smearWidth: PropTypes.string,
 }
 
 Heading.defaultProps = {
@@ -67,6 +69,7 @@ Heading.defaultProps = {
   smearHeight: `${randomize(35,80)}%`,
   smearLeft: `${randomize(-20,0)}%`,
   smearTop: `${randomize(40,50)}%`,
+  smearWidth: `${randomize(120,130)}%`,
 }
 
 export default Heading

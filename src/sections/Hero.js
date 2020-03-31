@@ -36,7 +36,7 @@ function Hero() {
           }
         }
       }
-      xMark2: file(relativePath: { eq: "x2.png" }) {
+      exclamation: file(relativePath: { eq: "exclamation-mark.png" }) {
         childImageSharp {
           fluid(
             maxWidth: 200,
@@ -49,7 +49,7 @@ function Hero() {
       }
     }
   `)
-  const { logoMark, xMark1, xMark2 } = data
+  const { logoMark, xMark1, exclamation } = data
   return (
     <div sx={{ px: [6,8,10], position: 'relative' }}>
       <div sx={{
@@ -91,7 +91,7 @@ function Hero() {
               display: 'block',
               mx: 'auto',
               mt: 5,
-              maxWidth: '500px',
+              maxWidth: '50vh',
               width: "100%",
               zIndex: 1
             }}/>
@@ -129,7 +129,7 @@ function Hero() {
         height: ['100px', '100px', '100px', '200px'],
         left: ['-40px','-10px','-10px'],
         position: 'absolute',
-        bottom: '15vmin',
+        bottom: '22vh',
         width: ['100px', '100px', '100px', '200px'],
         zIndex: 2,
       }}>
@@ -138,26 +138,26 @@ function Hero() {
       <div sx={{
         animation: `${GlitchRotate} 9s infinite step-end`,
         color: 'black',
-        height: ['60px', '60px', '60px', '120px'],
-        left: '-30px',
+        height: ['120px','120px'],
+        left: '10%',
         position: 'absolute',
-        bottom: '2vmin',
-        width: ['60px', '60px', '60px', '120px'],
+        bottom: '-6vh',
+        width: ['30px','30px'],
         zIndex: 2,
       }}>
-        <Img fluid={xMark2.childImageSharp.fluid} alt="" />
+        <Img fluid={exclamation.childImageSharp.fluid} alt="" />
       </div>
       <div sx={{
-        animation: `${GlitchRotate} 14s infinite step-end`,
+        animation: `${GlitchRotate} 15s infinite step-end`,
         color: 'black',
-        height: ['80px', '80px', '80px', '160px'],
-        right: '20px',
+        height: ['120px', '160px', '200px', '240px'],
+        right: '5%',
         position: 'absolute',
-        top: '16vmin',
-        width: ['80px', '80px', '80px', '160px'],
+        top: '16vh',
+        width: ['30px','40px', '50px', '60px'],
         zIndex: 2,
       }}>
-        <Img fluid={xMark1.childImageSharp.fluid} alt="" />
+        <Img fluid={exclamation.childImageSharp.fluid} alt="" />
       </div>
     </div>
   )

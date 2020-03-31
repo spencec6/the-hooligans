@@ -20,7 +20,7 @@ const getOptions = () => {
       [BLOCKS.PARAGRAPH]: (_node, next) => {
         paragraphIndex++
         if(paragraphIndex > 1) {
-          return <p sx={{ variant: 'styles.p' }}>{next}</p>
+          return <p sx={{ variant: 'styles.p', fontFamily: 'sans', transform: `rotate(${randomize(-1,1)}deg) translateX(-10px)` }}>{next}</p>
         } else {
           return (
             <Heading
@@ -31,7 +31,7 @@ const getOptions = () => {
               smearTop="10%"
               sx={{
                 fontFamily: 'cursive',
-                fontSize:[4,5,6],
+                fontSize:[4,5,5],
                 lineHeight: theme => theme.leading.tight,
                 mb: 6,
                 transform: `rotate(${randomize(-2,0.3)}deg) translateX(-10px)`
@@ -67,7 +67,7 @@ const getOptions = () => {
             <li
               sx={{
                 color: 'primary',
-                pl: 3,
+                pl: 4,
               }}
             >
               {next}
@@ -134,10 +134,10 @@ function AboutPage({ location }) {
           {documentToReactComponents(about.pageContent.json, getOptions())}
         </div>
       </div>
+      <Bios/>
       <div sx={{ mt: [6,7] }}>
         <CallToAction/>
       </div>
-      <Bios/>
     </Layout>
   )
 }
