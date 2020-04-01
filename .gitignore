@@ -10,3 +10,6 @@ public
 # Environment variables
 .env.*
 !.env.example
+reduxcache*
+# Local Netlify folder
+.netlify
