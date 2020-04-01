@@ -18,14 +18,14 @@ const options = {
           sx={{
             color: 'white',
             fontFamily: 'cursive',
-            fontSize:[3,3,4],
+            fontSize:[3,4,5],
             fontWeight: 'book',
-            lineHeight: theme => theme.leading.tight,
+            lineHeight: '150%',
             textTransform: 'lowercase',
             '& b': {
               color: 'secondary',
               fontFamily: 'sans',
-              fontSize:[5,6,7],
+              fontSize:[6,7,8],
               fontWeight: 'black',
               variant: 'text.allcaps'
             }
@@ -124,7 +124,7 @@ const CallToAction = () => {
         }}
       >
         <Block
-          width={[1,2/3]}
+          width={[1,1,1,2/3]}
           sx={{
             // justifyContent: 'center'
             px: 0,

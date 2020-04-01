@@ -108,7 +108,7 @@ const Portfolio = ({ location }) => {
           <BorderSmear sx={{
             color: 'lime',
             height: '100%',
-            right: '-1%',
+            right: ['-3%','-1%'],
             pointerEvents: 'none',
             position: 'absolute',
             top: '-2%',
@@ -123,7 +123,7 @@ const Portfolio = ({ location }) => {
             left: '-1%',
             pointerEvents: 'none',
             position: 'absolute',
-            top: '1%',
+            top: ['4%','1%'],
             transform: 'rotate(270deg)',
             transformOrigin: 'top left',
             width: '20px',
@@ -133,7 +133,7 @@ const Portfolio = ({ location }) => {
           <BorderSmear sx={{
             color: 'lime',
             height: '100%',
-            left: '-1%',
+            left: ['-3%','-1%'],
             pointerEvents: 'none',
             position: 'absolute',
             bottom: '-2%',
@@ -145,7 +145,7 @@ const Portfolio = ({ location }) => {
           <BorderSmear sx={{
             color: 'lime',
             height: '185%', // inverse of 54% ratio
-            right: '50%',
+            right: ['45%','50%'],
             pointerEvents: 'none',
             position: 'absolute',
             top: '7.5%',
