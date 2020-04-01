@@ -125,8 +125,10 @@ export default {
   fonts: {
     sans:
       "'Barlow', sans-serif",
+    cursive:
+      "'Beth Ellen', cursive",
     serif:
-      '"Eczar", serif',
+      '"Georgia", serif',
     monospace:
       'SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace',
   },
@@ -137,10 +139,10 @@ export default {
     black: 900
   },
   leading: {
-    none: 1,
-    tight: 1.25,
-    normal: 1.75,
-    loose: 2,
+    none: "100%",
+    tight: "125%",
+    normal: "175%",
+    loose: "200%",
   },
   tracking: {
     tight: '0.5px',
@@ -155,16 +157,18 @@ export default {
     lg: '0 10px 40px 0 rgba(0,0,0,0.06), 0 5px 15px 0 rgba(0,0,0,0.04)',
     xl: '0 20px 40px 0 rgba(0,0,0,0.06), 0 25px 50px 0 rgba(0, 0, 0, 0.25)',
     inner: 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
-    outline: `0 0 0 3px ${colors.teal}`,
+    outline: `0 0 0 1px ${colors.teal}`,
     error: `0 0 0 3px ${colors.magenta}`,
     link: `inset 0 -2px ${colors.magenta}`,
     linkHover: `inset 0 -2px ${colors.yellow}`,
   },
   breakpoints: ['576px', '768px', '992px', '1200px'],
   maxWidths: {
+    none: 'none',
     md: '540px',
     lg: '720px',
-    xl: '1080px'
+    xl: '1080px',
+    xxl: '1400px'
   },
   boxes: {
     card: {
@@ -184,20 +188,38 @@ export default {
   buttons: {
     primary: {
       color: 'white',
-      backgroundColor: 'primary',
-      fontWeight: 'black',
-      variant: 'text.allcaps',
+      '& .button-bgSmear': {
+        color: 'black'
+      },
       '&:hover': {
-        backgroundColor: 'black',
+        color: 'white',
+      },
+      '&:hover .button-bgSmear': {
+        color: 'primary',
       },
     },
     secondary: {
       color: 'primary',
-      backgroundColor: 'secondary',
-      fontWeight: 'black',
-      variant: 'text.allcaps',
+      '& .button-bgSmear': {
+        color: 'secondary'
+      },
       '&:hover': {
-        backgroundColor: 'secondary_dk',
+        color: 'primary',
+      },
+      '&:hover .button-bgSmear': {
+        color: 'lime',
+      },
+    },
+    tertiary: {
+      color: 'primary',
+      '& .button-bgSmear': {
+        color: 'teal'
+      },
+      '&:hover': {
+        color: 'primary',
+      },
+      '&:hover .button-bgSmear': {
+        color: 'secondary',
       },
     },
   },
@@ -205,12 +227,15 @@ export default {
     label: {
       fontFamily: 'sans',
       fontSize: 1,
+      fontWeight: 'bold',
+      lineHeight: "100%",
       mb: 1,
+      variant: 'text.allcaps'
     },
     field: {
       appearance: 'none',
       backgroundColor: 'greys.100',
-      borderColor: 'greys.300',
+      borderColor: 'secondary',
       borderStyle: 'solid',
       borderWidth: 2,
       borderRadius: 0,
@@ -219,9 +244,16 @@ export default {
       fontSize: [1,2],
       p: 3,
       width: '100%',
+      '& ~ .input-bgSmear': {
+        color: 'secondary'
+      },
       '&:focus': {
+        borderColor: 'teal',
         boxShadow: theme => theme.shadows.outline,
         outline: 'none'
+      },
+      '&:focus ~ .input-bgSmear': {
+        color: 'teal'
       },
       '&::placeholder': {
         color: 'greys.500'
@@ -260,8 +292,8 @@ export default {
     h5: { variant: 'text.heading', fontSize: [4,5,6] },
     h6: { variant: 'text.heading', fontSize: [3,4,5] },
     p: {
-      fontFamily: 'sans',
-      fontSize: [1,2,3],
+      fontFamily: 'inherit',
+      fontSize: [2,3],
       lineHeight: theme => theme.leading.normal,
       '&:first-of-type': {
         mt: 0,
@@ -278,15 +310,29 @@ export default {
         whiteSpace: 'nowrap',
       },
       nav: {
-        color: 'black',
+        color: 'primary',
+        cursor: 'pointer',
         fontFamily: 'sans',
         fontSize: 4,
-        fontWeight: 'black',
-        lineHeight: theme => `${theme.leading.loose}`,
+        fontWeight: 'bold',
+        mb: 0,
+        textDeocration: 'none',
+        transition: 'transform 0.25s ease-in-out',
         variant: 'text.allcaps',
+        '&.is-active ~ .linkSmear': {
+          opacity: 1,
+          transform: 'rotate(0deg)',
+        },
         '&:hover': {
+          fontSize: 4,
           color: 'black',
-          textDecoration: 'none',
+          fontFamily: 'cursive',
+          transform: 'translateY(-1px)',
+          textTransform: 'lowercase',
+        },
+        '&:hover ~ .linkSmear': {
+          opacity: 1,
+          transform: 'rotate(0deg)',
         }
       },
     }

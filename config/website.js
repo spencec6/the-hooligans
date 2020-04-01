@@ -1,10 +1,11 @@
 module.exports = {
   pathPrefix: `/`,
-  url: `https://www.the-hooligans.com`,
-  email: `hello@the-hooligans.com`,
+  url: `https://www.thehooligansagency.com`,
+  email: `info@thehooligansagency.com`,
   title: `The Hooligans`,
-  description: `Mindful and creative agency`,
-  // image: `/images/ubiquity-hero-temp.png`, // TO DO
+  description: `Uniquely poised to meet the moment`,
+  address: `825 16th St NW, 4th Floor, Washington, DC 20009`,
+  image: `/images/og-hooligans-hero.jpg`,
   siteLanguage: `en`, // Language tag on <html> element
 
   // // Web App Manifest
@@ -17,13 +18,16 @@ module.exports = {
   googleAnalyticsId: `UA-XXXXX`, // Google Analytics ID
   socialMedia: {
     facebook: {
-      url: `the_hooligans_an_agency`,
+      url: "https://www.facebook.com/thehooligansagency/",
      },
      instagram: {
-      url: `the_hooligans_an_agency`,
+      url: "https://www.instagram.com/thehooligansagency",
      },
      twitter: {
-      url: `the_hooligans_an_agency`,
+      url: "https://www.twitter.com/HooligansAgency/",
+     },
+     linkedin: {
+      url: "https://www.linkedin.com/company/the-hooligans-agency/?viewAsMember=true",
      }
   }
 }

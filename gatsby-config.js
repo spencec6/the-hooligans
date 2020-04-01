@@ -23,8 +23,14 @@ if (!spaceId || !accessToken) {
 
 const website = require('./config/website')
 
-const siteUrl =
-  process.env.URL || process.env.DEPLOY_URL || website.url
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = website.url + website.pathPrefix,
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV
+} = process.env;
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 const pathPrefix = website.pathPrefix === `/` ? `` : website.pathPrefix
 
@@ -32,20 +38,21 @@ module.exports = {
   siteMetadata: {
     pathPrefix: pathPrefix,
     siteUrl: siteUrl + pathPrefix,
+    siteLanguage: website.siteLanguage,
     title: website.title,
     description: website.description,
     email: website.email,
+    address: website.address,
     social: {
       ...website.socialMedia
     }
   },
   plugins: [
-    // `gatsby-plugin-offline`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-theme-ui`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
@@ -80,12 +87,12 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Eczar`,
-            variants: [`500`, `700`],
-          },
-          {
             family: `Barlow`,
             variants: [`300`, `500`, `700`, `900`],
+          },
+          {
+            family: `Beth Ellen`,
+            variants: [`400`],
           }
         ],
       },
@@ -101,30 +108,33 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
-        output: `/sitemap.xml`,
-        // Exclude specific pages or groups of pages using glob parameters
-        // See: https://github.com/isaacs/minimatch
-        // The example below will exclude the single `path/to/page` and all routes beginning with `category`
-        exclude: ['/category/*', `/tag/*`],
-        query: `
-        {
-          site {
-            siteMetadata {
-              siteUrl
-            }
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*' }]
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
           }
-
-          allSitePage {
-            edges {
-              node {
-                path
-              }
-            }
-          }
-        }`,
-      },
+        }
+      }
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.inline\.svg$/ // See below to configure properly
+        }
+      }
     },
     {
       resolve: `gatsby-source-contentful`,

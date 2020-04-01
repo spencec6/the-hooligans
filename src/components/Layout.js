@@ -5,6 +5,8 @@ import { node } from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
 import GlobalStyles from './GlobalStyles'
+import Footer from '../sections/Footer'
+import Header from '../sections/Header'
 
 function Layout({ children, path }) {
   const data = useStaticQuery(graphql`
@@ -13,12 +15,13 @@ function Layout({ children, path }) {
         siteMetadata {
           title
           description
+          siteLanguage
         }
       }
     }
   `)
 
-  const { title, description } = data.site.siteMetadata
+  const { title, description, siteLanguage } = data.site.siteMetadata
 
   return (
     <React.Fragment>
@@ -28,6 +31,7 @@ function Layout({ children, path }) {
           { name: 'description', content: description }
         ]}
       >
+        <html lang={siteLanguage} />
       </Helmet>
       <GlobalStyles />
       <div sx={{
@@ -36,10 +40,10 @@ function Layout({ children, path }) {
         height: '100vh'
       }}>
         <div sx={{ flexGrow: 1 }}>
-          {/* <Header path={path}/> */}
+          <Header path={path}/>
           <main>{children}</main>
         </div>
-        {/* <Footer path={path} sx={{ flexShrink: 0 }}/> */}
+        <Footer path={path} sx={{ flexShrink: 0 }}/>
       </div>
     </React.Fragment>
   )

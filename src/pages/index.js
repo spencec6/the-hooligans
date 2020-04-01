@@ -1,13 +1,20 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import Layout from '../components/Layout'
-import UnderConstruction from '../sections/UnderConstruction'
+import Hero from '../sections/Hero'
+import Portfolio from '../sections/Portfolio'
+import Services from '../sections/Services'
+// import Testimonials from '../sections/Testimonials'
+import CallToAction from '../sections/CallToAction'
 
 
 function IndexPage({ location }) {
   return (
     <Layout path={location.pathname}>
-      <UnderConstruction/>
+      <Hero/>
+      <Portfolio location={location.pathname}/>
+      <Services/>
+      <CallToAction/>
     </Layout>
   )
 }

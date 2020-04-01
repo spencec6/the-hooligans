@@ -9,7 +9,10 @@ function SEO({ description, lang, image, meta, title, pathname }) {
       query={detailsQuery}
       render={data => {
         const metaDescription =
-          description || data.site.siteMetadata.description
+        description || data.site.siteMetadata.description
+        const canonical = pathname
+        ? `${data.site.siteMetadata.siteUrl}${pathname}`
+        : null
         const metaImage = image && image.src ? `${image.src}` : null
         const metaUrl = `${data.site.siteMetadata.siteUrl}${pathname}`
         return (
@@ -19,6 +22,16 @@ function SEO({ description, lang, image, meta, title, pathname }) {
             }}
             title={title}
             titleTemplate={`%s`} // | ${data.site.siteMetadata.title}`}
+            link={
+              canonical
+                ? [
+                    {
+                      rel: "canonical",
+                      href: canonical,
+                    },
+                  ]
+                : []
+            }
             meta={[
               {
                 name: `description`,
