@@ -121,7 +121,7 @@ function ContactPage({ location }) {
                       key={service} 
                       aria-label={service}
                       as={OutboundLink} 
-                      to={service.url}
+                      to={social[service].url}
                       target="_blank" 
                       bare={true} 
                       sx={{

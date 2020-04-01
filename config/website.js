@@ -21,10 +21,10 @@ module.exports = {
       url: "https://www.facebook.com/thehooligansagency/",
      },
      instagram: {
-      url: "www.instagram.com/thehooligansagency",
+      url: "https://www.instagram.com/thehooligansagency",
      },
      twitter: {
-      url: "https://www.twitter.com/thehooligansagency/",
+      url: "https://www.twitter.com/HooligansAgency/",
      }
   }
 }

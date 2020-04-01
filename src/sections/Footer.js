@@ -127,7 +127,7 @@ const Footer = ({ path, ...props }) => {
                   key={service} 
                   aria-label={service}
                   as={OutboundLink} 
-                  to={`https://www.${service}.com/${social[service].url}`} 
+                  to={social[service].url}
                   target="_blank" 
                   bare={true} 
                   sx={{
