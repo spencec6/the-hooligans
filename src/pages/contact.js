@@ -6,7 +6,7 @@ import Block from '../components/Block'
 // import Button from '../components/Button'
 import ContactForm from '../components/ContactForm'
 import Heading from '../components/Heading'
-import Icon from '../components/Icon'
+import SocialMedia from '../components/SocialMedia'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import OutboundLink from '../components/OutboundLink'
@@ -53,22 +53,11 @@ function ContactPage({ location }) {
           address
           email
           description
-          social {
-            facebook {
-              url
-            }
-            twitter {
-              url
-            }
-            instagram {
-              url
-            }
-          }
         }
       }
     }
   `)
-  const { title, description, address, email, social } = data.site.siteMetadata
+  const { title, description, address, email } = data.site.siteMetadata
   return (
     <Layout path={location.pathname}>
       <SEO
@@ -94,48 +83,18 @@ function ContactPage({ location }) {
             }}>
             Let’s build something amazing together.
           </Heading>
-          {/* <div sx={{ variant: 'styles.h5', fontWeight: 'bold', fontFamily: 'cursive', lineHeight: theme => theme.leading.tight, my: 4, textTransform: 'unset' }}>
-            Let’s build something amazing together.
-          </div> */}
           <div sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', mx: -4, }}>
             <Block width={[1,1,2/3]} sx={{ mt: 7, pr: [4,4,10] }}>
-              {/* <p sx={{ my: 4 }}>
-                Please fill out the form below, and tell us what your biggest challenge or obstacle is. We’ll tell you how we can help you solve it.
-              </p> */}
               <ContactForm/>
             </Block>
             <Block width={[1,2/3,1/3]} sx={{ mt: 7, textAlign: ['center','center','left'] }}>
-              <h2 sx={{ variant: 'styles.h5', fontFamily: 'cursive', textTransform: 'lowercase', mb: 3 }}>Contact Information</h2>
+              <h2 sx={{ variant: 'styles.h5', fontFamily: 'cursive', textTransform: 'lowercase', mb: 3 }}>
+                Contact Information
+              </h2>
               <div sx={{ color: 'greys.600', fontFamily: 'sans', mt: 3, }}>
                 {address}
               </div>
-              <div sx={{
-                justifyContent: ['center', 'center', 'flex-start'],
-                display: 'flex',
-                mt: 3,
-                width: '100%',
-              }}>
-                {Object.keys(social).map((service, index) => {
-                  return (
-                    <Link 
-                      key={service} 
-                      aria-label={service}
-                      as={OutboundLink} 
-                      to={social[service].url}
-                      target="_blank" 
-                      bare={true} 
-                      sx={{
-                        mr: 3,
-                        '&:last-of-type': {
-                          mr: 0
-                        }
-                      }}
-                    >
-                      <Icon name={service}></Icon>
-                    </Link>
-                  )
-                })}
-              </div>
+              <SocialMedia sx={{ mt: 3 }} />
               <ContactGroup title={`Media Requests`} email={`media@thehooligansagency.com`}/>
               <ContactGroup title={`General Inquiries`} email={email}/>
               <ContactGroup title={`Careers`} email={`careers@thehooligansagency.com`}/>

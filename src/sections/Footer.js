@@ -4,9 +4,9 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { Link as GatsbyLink, navigate } from 'gatsby-link'
 import Block from '../components/Block'
 import Button from '../components/Button'
-import Icon from '../components/Icon'
 import Link from '../components/Link'
 import Logo from "-!svg-react-loader!../images/SVGs/TheHooligans-Logo.inline.svg";
+import SocialMedia from '../components/SocialMedia'
 import OutboundLink from '../components/OutboundLink'
 
 const year = new Date().getFullYear()
@@ -33,23 +33,12 @@ const Footer = ({ path, ...props }) => {
           title
           address
           email
-          social {
-            facebook {
-              url
-            }
-            twitter {
-              url
-            }
-            instagram {
-              url
-            }
-          }
         }
       }
     }
   `)
   const { mobileBg, desktopBg } = data
-  const { title, address, email, social } = data.site.siteMetadata
+  const { title, address, email } = data.site.siteMetadata
   return (
     <footer sx={{
       backgroundBlendMode: 'color-burn',
@@ -115,33 +104,7 @@ const Footer = ({ path, ...props }) => {
             </Link>
             <div sx={{ fontSize: 0, fontFamily: 'cursive',}}> ( from Canada )</div>
           </p> */}
-          <div sx={{
-            justifyContent: ['center', 'flex-start'],
-            display: 'flex',
-            mt: 4,
-            width: '100%',
-          }}>
-            {Object.keys(social).map((service, index) => {
-              return (
-                <Link 
-                  key={service} 
-                  aria-label={service}
-                  as={OutboundLink} 
-                  to={social[service].url}
-                  target="_blank" 
-                  bare={true} 
-                  sx={{
-                    mr: 3,
-                    '&:last-of-type': {
-                      mr: 0
-                    }
-                  }}
-                >
-                  <Icon name={service}></Icon>
-                </Link>
-              )
-            })}
-          </div>
+          <SocialMedia sx={{ mt: 4}}/>
         </Block>
         <Block width={[1,1/2]}>
           <h2 sx={{ variant: 'styles.h6', fontFamily: 'cursive', textTransform: 'lowercase', color: 'white' }}>

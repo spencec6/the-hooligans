@@ -25,6 +25,9 @@ module.exports = {
      },
      twitter: {
       url: "https://www.twitter.com/HooligansAgency/",
+     },
+     linkedin: {
+      url: "https://www.linkedin.com/company/the-hooligans-agency/?viewAsMember=true",
      }
   }
 }

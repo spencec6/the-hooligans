@@ -5,32 +5,16 @@ import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby'
 import { GlitchRotate } from '../components/Animations'
 import Button from '../components/Button'
 import Hamburger from '../components/Hamburger'
-import Icon from '../components/Icon'
 import Link from '../components/Link'
-import OutboundLink from '../components/OutboundLink'
 import Logo from "-!svg-react-loader!../images/SVGs/TheHooligans-Logo.inline.svg";
 import LinkSmearYellow from '../images/SVGs/LinkSmearYellow.svg'
 import MobileHeader from '../components/MobileHeader'
+import SocialMedia from '../components/SocialMedia'
 import { randomize } from '../utils/helpers'
 
 function Header({path}) {
   const data = useStaticQuery(graphql`
     query {
-      site {
-        siteMetadata {
-          social {
-            facebook {
-              url
-            }
-            instagram {
-              url
-            }
-            twitter {
-              url
-            }
-          }
-        }
-      }
       menu: allContentfulMenu {
         nodes {
           menuItem {
@@ -59,7 +43,6 @@ function Header({path}) {
       }
     }
   `)
-  const social = data.site.siteMetadata.social
 
   const mainMenuItems = []
   mainMenuItems.push({main: 'logo', slug: '', title: 'Home'})
@@ -186,29 +169,7 @@ function Header({path}) {
             display: 'flex',
             alignItems: 'center'
           }}>
-            {Object.keys(social).map((service, index) => {
-              return (
-                <li
-                  key={service}
-                  sx={{
-                    ml: index === 0 ? 0 : 4,
-                  }}
-                >
-                  <Link 
-                    aria-label={service}
-                    as={OutboundLink} 
-                    to={social[service].url} 
-                    target="_blank" 
-                    bare={true} 
-                    sx={{
-                      color: isOpen ? 'secondary' : 'primary',
-                    }}
-                  >
-                    <Icon name={service}></Icon>
-                  </Link>
-                </li>
-              )
-            })}
+            <SocialMedia/>
             <li
               sx={{animation: `${GlitchRotate} 20s infinite step-end`,}}
             >
@@ -222,7 +183,8 @@ function Header({path}) {
                   ml: 5,
                   transform: `rotate(${randomize(-1,1)}deg)`,
                   px: [4,4,4,5],
-                  variant: isOpen ? 'buttons.secondary' : 'buttons.primary'
+                  variant: isOpen ? 'buttons.secondary' : 'buttons.primary',
+                  whiteSpace: 'nowrap'
                 }}
               >
                 Contact Us
