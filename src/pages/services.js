@@ -2,6 +2,8 @@
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS } from '@contentful/rich-text-types'
 import { randomize } from '../utils/helpers'
 import RoundSmear1 from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.svg";
 import RoundSmear2 from "-!svg-react-loader!../images/SVGs/round-smear-2.inline.svg";
@@ -18,23 +20,22 @@ const smearComponents = [
   RoundSmear3
 ]
 
-export const services = [
-  {
-    slug: 'branding',
-    title: 'Branding',
-    description: `We'll dig deep to understand and accurately represent the essence of your campaign. We'll build you a memorable brand that communicates clearly and sets you apart.`
-  },
-  {
-    slug: 'web',
-    title: 'Web',
-    description: `Your website is your digital home base. We'll craft a web presence that works great on desktop and mobile devices and make sure it's easy for you to keep up-to-date.`
-  },
-  {
-    slug: 'marketing',
-    title: 'Marketing',
-    description: `Even if you have the best policies and messaging, it doesn't matter if people don't know about you. We will help make sure your message is heard far and wide.`
+const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (_node, next) => {
+      return (
+        <p
+          sx={{
+            variant: 'styles.p',
+            fontFamily: 'sans',
+            transform: `rotate(${randomize(-1,1)}deg)`,
+          }}>
+          {next}
+        </p>
+      )
+    }
   }
-]
+}
 
 function ServicesPage({ location }) {
   const data = useStaticQuery(graphql`
@@ -52,7 +53,9 @@ function ServicesPage({ location }) {
         services {
           slug
           title
-          excerpt
+          description {
+            json
+          }
           icon {
             fixed(width: 150, quality: 50) {
               ...GatsbyContentfulFixed_tracedSVG
@@ -127,7 +130,7 @@ function ServicesPage({ location }) {
                 </div>
                 <div sx={{ flexGrow: 1, pl: 5, }}>
                   <h3 className="service-heading" sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
-                  <p sx={{ variant: 'styles.p', fontFamily: 'sans', transform: `rotate(${randomize(-1,1)}deg)`, }}>{service.excerpt}</p>
+                  {documentToReactComponents(service.description.json, options)}
                 </div>
               </div>
             )

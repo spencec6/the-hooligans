@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
 import Img from 'gatsby-image'
-import { randomize } from '../utils/helpers'
+import { randomize, orphanKill } from '../utils/helpers'
 import RoundSmear1 from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.svg";
 import RoundSmear2 from "-!svg-react-loader!../images/SVGs/round-smear-2.inline.svg";
 import RoundSmear3 from "-!svg-react-loader!../images/SVGs/round-smear-3.inline.svg";
@@ -143,7 +143,9 @@ const Services = () => {
                   <Heading classes="service-heading" as="h3" variant="styles.h6" smear={false} smearColor="secondary" sx={{ justifyContent: 'center', width: '100%', textAlign: 'center' }}>
                     {service.title}
                   </Heading>
-                  <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center' }}>{service.excerpt}</p>
+                  <p sx={{ fontSize: [1,2,2], fontFamily: 'sans', textAlign: 'center', }}>
+                    {orphanKill(service.excerpt)}
+                    </p>
                   <div sx={{textAlign: 'center', mt: 4, variant: 'text.allcaps' }}>
                     <div className="service-link" sx={{ fontSize: [1,2], variant: 'styles.links.link', display: 'inline-block' }}>
                       Read More...

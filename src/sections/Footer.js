@@ -99,10 +99,26 @@ const Footer = ({ path, ...props }) => {
             />
           </Link>
           <p sx={{ fontSize: 1, fontFamily: 'sans', mt: 3 }}>{year} © {title}</p>
+          {/* <p
+            sx={{ color: 'greys.500', fontSize: 0, fontFamily: 'sans', mt: 2, }}
+          >
+            Website by 
+            <Link
+              as={OutboundLink}
+              to="https://www.dribbble.com/colinspencedesign"
+              from="footer"
+              target="_blank"
+              bare={1}
+              sx={{ color: 'teal', ml: 1, textTransform: 'uppercase' }}
+            >
+              Colin Spence Design
+            </Link>
+            <div sx={{ fontSize: 0, fontFamily: 'cursive',}}> ( from Canada )</div>
+          </p> */}
           <div sx={{
             justifyContent: ['center', 'flex-start'],
             display: 'flex',
-            mt: 3,
+            mt: 4,
             width: '100%',
           }}>
             {Object.keys(social).map((service, index) => {

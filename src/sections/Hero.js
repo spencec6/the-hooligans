@@ -36,10 +36,21 @@ function Hero() {
           }
         }
       }
-      exclamation: file(relativePath: { eq: "exclamation-mark.png" }) {
+      circle: file(relativePath: { eq: "circle-smear.png" }) {
         childImageSharp {
           fluid(
-            maxWidth: 81,
+            maxWidth: 220,
+            quality: 20,
+            traceSVG: { color: "#252627" }
+            ) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      triangle: file(relativePath: { eq: "triangle1.png" }) {
+        childImageSharp {
+          fluid(
+            maxWidth: 120,
             quality: 20,
             traceSVG: { color: "#252627" }
             ) {
@@ -49,7 +60,8 @@ function Hero() {
       }
     }
   `)
-  const { logoMark, xMark1, exclamation } = data
+  const { logoMark } = data
+  // const { logoMark, xMark1, circle, triangle } = data
   return (
     <div sx={{ px: [6,8,10], position: 'relative' }}>
       <div sx={{
@@ -123,14 +135,14 @@ function Hero() {
             </div>
         </div>
       </div>
-      <div sx={{
+      {/* <div sx={{
         animation: `${GlitchRotate} 6s infinite step-end`,
         color: 'black',
-        height: ['100px', '100px', '100px', '200px'],
-        left: ['-40px','-10px','-10px'],
+        height: ['50px', '60px', '70px', '130px'],
+        left: '5%',
         position: 'absolute',
         bottom: '22vh',
-        width: ['100px', '100px', '100px', '200px'],
+        width: ['50px', '60px', '70px', '130px'],
         zIndex: 2,
       }}>
         <Img fluid={xMark1.childImageSharp.fluid} alt="" />
@@ -138,27 +150,27 @@ function Hero() {
       <div sx={{
         animation: `${GlitchRotate} 9s infinite step-end`,
         color: 'black',
-        height: ['120px','120px'],
+        height: ['30px','70px'],
         left: '10%',
         position: 'absolute',
-        bottom: '-6vh',
-        width: ['30px','30px'],
+        bottom: '-5vh',
+        width: ['30px','70px'],
         zIndex: 2,
       }}>
-        <Img fluid={exclamation.childImageSharp.fluid} alt="" />
+        <Img fluid={triangle.childImageSharp.fluid} alt="" />
       </div>
       <div sx={{
         animation: `${GlitchRotate} 15s infinite step-end`,
         color: 'black',
-        height: ['120px', '160px', '200px', '240px'],
+        height: ['60px', '70px', '80px', '165px'],
         right: '5%',
         position: 'absolute',
         top: '16vh',
-        width: ['30px','40px', '50px', '60px'],
+        width: ['60px', '70px', '80px', '165px'],
         zIndex: 2,
       }}>
-        <Img fluid={exclamation.childImageSharp.fluid} alt="" />
-      </div>
+        <Img fluid={circle.childImageSharp.fluid} alt="" />
+      </div> */}
     </div>
   )
 }
