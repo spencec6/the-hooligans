@@ -9,6 +9,7 @@ import RoundSmear1 from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.
 import RoundSmear2 from "-!svg-react-loader!../images/SVGs/round-smear-2.inline.svg";
 import RoundSmear3 from "-!svg-react-loader!../images/SVGs/round-smear-3.inline.svg";
 import { GlitchRotate } from '../components/Animations'
+import Block from '../components/Block'
 import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
@@ -101,6 +102,7 @@ function ServicesPage({ location }) {
                 id={service.slug}
                 sx={{
                   display: 'flex',
+                  flexWrap: 'wrap',
                   mt: index === 0 ? 6 : 8,
                   '&:hover .service-bgSmear': {
                     color: 'lime'
@@ -112,7 +114,7 @@ function ServicesPage({ location }) {
                   },
                 }}
               >
-                <div sx={{ width: "170px" }}>
+                <Block width={[1,'170px']}>
                   <div sx={{ display: 'block', flexShrink: 0, mx: 'auto',  position: 'relative', width: "100%"}}>
                     <RoundSmear
                       className="service-bgSmear"
@@ -127,11 +129,11 @@ function ServicesPage({ location }) {
                     />
                     <Img alt={service.title} fixed={service.icon.fixed} sx={{ animation: `${GlitchRotate} ${(index+1) * randomize(5,15)}s infinite step-end` }}/>
                   </div>
-                </div>
-                <div sx={{ flexGrow: 1, pl: 5, }}>
+                </Block>
+                <Block width={[1,1/2]}>
                   <h3 className="service-heading" sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
                   {documentToReactComponents(service.description.json, options)}
-                </div>
+                </Block>
               </div>
             )
           })}

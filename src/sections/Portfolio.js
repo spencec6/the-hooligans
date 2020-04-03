@@ -7,7 +7,7 @@ import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
 import Exclamation from "-!svg-react-loader!../images/SVGs/exclamation-mark.inline.svg";
 // import Question from "-!svg-react-loader!../images/SVGs/question-mark.inline.svg";
 import Heading from '../components/Heading'
-import { randomize } from '../utils/helpers'
+import { randomize, YouTubeGetID } from '../utils/helpers'
 
 const Portfolio = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -16,6 +16,7 @@ const Portfolio = ({ location }) => {
         slug
         title
         excerpt
+        sizzlerUrl
       }
     }
   `)
@@ -90,7 +91,7 @@ const Portfolio = ({ location }) => {
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/kISSd8XKzKo?rel=0"
+              src={`https://www.youtube.com/embed/${YouTubeGetID(portfolio.sizzlerUrl)}?rel=0`}
               frameBorder="0"
               title="sizzler"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
