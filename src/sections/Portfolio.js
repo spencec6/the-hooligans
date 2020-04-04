@@ -1,11 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
 import BorderSmear from "-!svg-react-loader!../images/SVGs/border-smear-1.inline.svg";
-import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
-import Exclamation from "-!svg-react-loader!../images/SVGs/exclamation-mark.inline.svg";
-// import Question from "-!svg-react-loader!../images/SVGs/question-mark.inline.svg";
 import Heading from '../components/Heading'
 import { randomize, YouTubeGetID } from '../utils/helpers'
 
@@ -17,6 +15,39 @@ const Portfolio = ({ location }) => {
         title
         excerpt
         sizzlerUrl
+      }
+      xPrimary: file(relativePath: { eq: "x-primary.png" }) {
+        childImageSharp {
+          fluid(
+            maxWidth: 110,
+            quality: 20,
+            traceSVG: { color: "#ef336c" }
+            ) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      exclaimTeal: file(relativePath: { eq: "exclaim-teal.png" }) {
+        childImageSharp {
+          fluid(
+            maxWidth: 35,
+            quality: 20,
+            traceSVG: { color: "#64FFDA" }
+            ) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      exclaimPrimary: file(relativePath: { eq: "exclaim-primary.png" }) {
+        childImageSharp {
+          fluid(
+            maxWidth: 50,
+            quality: 20,
+            traceSVG: { color: "#D4FF59" }
+            ) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
       }
     }
   `)
@@ -106,89 +137,98 @@ const Portfolio = ({ location }) => {
                 width: '100%',
               }}
             ></iframe>
-          <BorderSmear sx={{
-            color: 'lime',
-            height: '100%',
-            right: ['-3%','-1%'],
-            pointerEvents: 'none',
-            position: 'absolute',
-            top: '-2%',
-            transform: 'rotate(0deg)',
-            width: '20px',
-            zIndex: 1,
-            }}
-          />
-          <BorderSmear sx={{
-            color: 'lime',
-            height: '185%', // inverse of 54% ratio
-            left: '-1%',
-            pointerEvents: 'none',
-            position: 'absolute',
-            top: ['4%','1%'],
-            transform: 'rotate(270deg)',
-            transformOrigin: 'top left',
-            width: '20px',
-            zIndex: 1,
-            }}
-          />
-          <BorderSmear sx={{
-            color: 'lime',
-            height: '100%',
-            left: ['-3%','-1%'],
-            pointerEvents: 'none',
-            position: 'absolute',
-            bottom: '-2%',
-            transform: 'rotate(180deg)',
-            width: '20px',
-            zIndex: 1,
-            }}
-          />
-          <BorderSmear sx={{
-            color: 'lime',
-            height: '185%', // inverse of 54% ratio
-            right: ['45%','50%'],
-            pointerEvents: 'none',
-            position: 'absolute',
-            top: '7.5%',
-            transform: 'rotate(90deg)',
-            transformOrigin: '50%',
-            width: '20px',
-            zIndex: 1,
-            }}
-          />
-          <Exclamation sx={{
-            color: 'primary',
-            height: ['75px', '150px'],
-            left: ['1%','1%','1%','1%','-3%'],
-            position: 'absolute',
-            bottom: '5%',
-            transform: 'rotate(0deg)',
-            width: ['25px', '50px'],
-            zIndex: 2,
-            }}
-          />
-          <X1 sx={{
-            color: 'primary',
-            height: ['65px', '130px'],
-            right: ['-5%','-5%','-5%','-4%','-8%'],
-            position: 'absolute',
-            bottom: '36%',
-            transform: 'rotate(273deg)',
-            width: ['56px', '110px'],
-            zIndex: 2,
-            }}
-          />
-          <Exclamation sx={{
-            color: 'teal',
-            height: ['50px', '100px'],
-            right: '3%',
-            position: 'absolute',
-            bottom: '65%',
-            transform: 'rotate(7deg)',
-            width: ['17px', '35px'],
-            zIndex: 2,
-            }}
-          />
+            <BorderSmear sx={{
+              color: 'lime',
+              height: '100%',
+              right: ['-3%','-1%'],
+              pointerEvents: 'none',
+              position: 'absolute',
+              top: '-2%',
+              transform: 'rotate(0deg)',
+              width: '20px',
+              zIndex: 1,
+              }}
+            />
+            <BorderSmear sx={{
+              color: 'lime',
+              height: '185%', // inverse of 54% ratio
+              left: '-1%',
+              pointerEvents: 'none',
+              position: 'absolute',
+              top: ['4%','1%'],
+              transform: 'rotate(270deg)',
+              transformOrigin: 'top left',
+              width: '20px',
+              zIndex: 1,
+              }}
+            />
+            <BorderSmear sx={{
+              color: 'lime',
+              height: '100%',
+              left: ['-3%','-1%'],
+              pointerEvents: 'none',
+              position: 'absolute',
+              bottom: '-2%',
+              transform: 'rotate(180deg)',
+              width: '20px',
+              zIndex: 1,
+              }}
+            />
+            <BorderSmear sx={{
+              color: 'lime',
+              height: '185%', // inverse of 54% ratio
+              right: ['45%','50%'],
+              pointerEvents: 'none',
+              position: 'absolute',
+              top: '7.5%',
+              transform: 'rotate(90deg)',
+              transformOrigin: '50%',
+              width: '20px',
+              zIndex: 1,
+              }}
+            />
+            <div sx={{
+              height: 'auto',
+              left: ['1%','1%','1%','1%','-3%'],
+              position: 'absolute',
+              top: '65%',
+              transform: 'rotate(0deg)',
+              width: ['25px', '50px'],
+              zIndex: 2,
+            }}>
+              <Img 
+                alt=""
+                fluid={data.exclaimPrimary.childImageSharp.fluid}
+              />
+            </div>
+            <div sx={{
+              height: 'auto',
+              right: ['-5%','-5%','-5%','-4%','-8%'],
+              position: 'absolute',
+              bottom: '36%',
+              transform: 'rotate(273deg)',
+              width: ['56px', '110px'],
+              zIndex: 2,
+            }}>
+              <Img 
+                alt=""
+                fluid={data.xPrimary.childImageSharp.fluid}
+              />
+            </div>
+            <div sx={{
+              height: 'auto',
+              right: '3%',
+              position: 'absolute',
+              bottom: '65%',
+              transform: 'rotate(7deg)',
+              width: ['17px', '35px'],
+              zIndex: 2,
+            }}>
+              <Img 
+                alt=""
+              fluid={data.exclaimTeal.childImageSharp.fluid}
+              />
+            </div>
           </div>
         </div>
       </div>

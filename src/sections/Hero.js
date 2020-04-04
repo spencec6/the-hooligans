@@ -25,39 +25,6 @@ function Hero() {
           }
         }
       }
-      xMark1: file(relativePath: { eq: "x1.png" }) {
-        childImageSharp {
-          fluid(
-            maxWidth: 210,
-            quality: 20,
-            traceSVG: { color: "#252627" }
-            ) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      circle: file(relativePath: { eq: "circle-smear.png" }) {
-        childImageSharp {
-          fluid(
-            maxWidth: 220,
-            quality: 20,
-            traceSVG: { color: "#252627" }
-            ) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
-      triangle: file(relativePath: { eq: "triangle1.png" }) {
-        childImageSharp {
-          fluid(
-            maxWidth: 120,
-            quality: 20,
-            traceSVG: { color: "#252627" }
-            ) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
-      }
     }
   `)
   const { logoMark } = data
@@ -135,42 +102,6 @@ function Hero() {
             </div>
         </div>
       </div>
-      {/* <div sx={{
-        animation: `${GlitchRotate} 6s infinite step-end`,
-        color: 'black',
-        height: ['50px', '60px', '70px', '130px'],
-        left: '5%',
-        position: 'absolute',
-        bottom: '22vh',
-        width: ['50px', '60px', '70px', '130px'],
-        zIndex: 2,
-      }}>
-        <Img fluid={xMark1.childImageSharp.fluid} alt="" />
-      </div>
-      <div sx={{
-        animation: `${GlitchRotate} 9s infinite step-end`,
-        color: 'black',
-        height: ['30px','70px'],
-        left: '10%',
-        position: 'absolute',
-        bottom: '-5vh',
-        width: ['30px','70px'],
-        zIndex: 2,
-      }}>
-        <Img fluid={triangle.childImageSharp.fluid} alt="" />
-      </div>
-      <div sx={{
-        animation: `${GlitchRotate} 15s infinite step-end`,
-        color: 'black',
-        height: ['60px', '70px', '80px', '165px'],
-        right: '5%',
-        position: 'absolute',
-        top: '16vh',
-        width: ['60px', '70px', '80px', '165px'],
-        zIndex: 2,
-      }}>
-        <Img fluid={circle.childImageSharp.fluid} alt="" />
-      </div> */}
     </div>
   )
 }
