@@ -127,7 +127,7 @@ const Footer = ({ path, ...props }) => {
           </div>
           <Button
             as={GatsbyLink}
-            to="/contact"
+            to="/contact#header"
             from="footer"
             onClick={() => { navigate('/contact') }}
             sx={{ variant: 'buttons.secondary', mt: 3, px: 4, py: 2, }}

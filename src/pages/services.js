@@ -33,6 +33,13 @@ const options = {
           {next}
         </p>
       )
+    },
+    [BLOCKS.HEADING_1]: (_node, next) => {
+      return (
+        <h4 sx={{ variant: 'styles.h5', color: 'primary', }}>
+          {next}
+        </h4>
+      )
     }
   }
 }
@@ -50,6 +57,9 @@ function ServicesPage({ location }) {
         title
         slug
         introduction
+        bespokeCreativeTeams {
+          json
+        }
         services {
           slug
           title
@@ -101,6 +111,7 @@ function ServicesPage({ location }) {
                 id={service.slug}
                 sx={{
                   display: 'flex',
+                  flexWrap: 'wrap',
                   mt: index === 0 ? 6 : 8,
                   '&:hover .service-bgSmear': {
                     color: 'lime'
@@ -112,8 +123,8 @@ function ServicesPage({ location }) {
                   },
                 }}
               >
-                <div sx={{ width: "170px" }}>
-                  <div sx={{ display: 'block', flexShrink: 0, mx: 'auto',  position: 'relative', width: "100%"}}>
+                <div sx={{ flexShrink: 0, width: "170px" }}>
+                  <div sx={{ display: 'block', mx: 'auto',  position: 'relative', width: "100%"}}>
                     <RoundSmear
                       className="service-bgSmear"
                       sx={{
@@ -128,16 +139,21 @@ function ServicesPage({ location }) {
                     <Img alt={service.title} fixed={service.icon.fixed} sx={{ animation: `${GlitchRotate} ${(index+1) * randomize(5,15)}s infinite step-end` }}/>
                   </div>
                 </div>
-                <div sx={{ flexGrow: 1, pl: 5, }}>
+                <div sx={{ flexGrow: 1, pl: [0,5], minWidth: 0, maxWidth: '100%', mt: [3, 0], width: ['100%',0,]}}>
                   <h3 className="service-heading" sx={{ variant: 'styles.h4', color: 'primary', }}>{service.title}</h3>
                   {documentToReactComponents(service.description.json, options)}
                 </div>
               </div>
             )
           })}
+          <div sx={{ mt: 9, }}>
+            {documentToReactComponents(serviceContent.bespokeCreativeTeams.json, options)}
+          </div>
         </div>
       </div>
-      <div sx={{ mt: [6,7] }}>
+      <div sx={{
+        mt: [6,7],
+      }}>
         <CallToAction/>
       </div>
     </Layout>

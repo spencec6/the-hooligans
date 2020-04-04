@@ -1,12 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery, Link as GatsbyLink } from 'gatsby'
+import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg";
-// import X1 from "-!svg-react-loader!../images/SVGs/x1.inline.svg";
-import Exclamation from "-!svg-react-loader!../images/SVGs/exclamation-mark.inline.svg";
-import Question from "-!svg-react-loader!../images/SVGs/question-mark.inline.svg";
 import Block from '../components/Block'
 import Button from '../components/Button'
 
@@ -54,6 +52,28 @@ const CallToAction = () => {
           }
         }
       }
+      exclaimLime: file(relativePath: { eq: "exclaim-lime.png" }) {
+        childImageSharp {
+          fluid(
+            maxWidth: 30,
+            quality: 20,
+            traceSVG: { color: "#D4FF59" }
+            ) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      questionMark: file(relativePath: { eq: "question-mark.png" }) {
+        childImageSharp {
+          fluid(
+            maxWidth: 30,
+            quality: 20,
+            traceSVG: { color: "#252627" }
+            ) {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
       callToAction: contentfulCallToAction {
         title {
           json
@@ -92,28 +112,34 @@ const CallToAction = () => {
         zIndex: 1,
         }}
       />
-      <Question sx={{
-        color: 'black',
-        height: '60px',
+      <div sx={{
+        height: 'auto',
         right: '10%',
         position: 'absolute',
         top: '-15%',
         transform: 'rotate(8deg)',
         width: '40px',
         zIndex: 2,
-        }}
-      />
-      <Exclamation sx={{
-        color: 'lime',
-        height: '130px',
+      }}>
+        <Img 
+          alt=""
+          fluid={data.questionMark.childImageSharp.fluid}
+        />
+      </div>
+      <div sx={{
+        height: 'auto',
         left: '3%',
         position: 'absolute',
         bottom: '-15%',
         transform: 'rotate(-4deg)',
         width: '30px',
         zIndex: 2,
-        }}
-      />
+      }}>
+        <Img 
+          alt=""
+          fluid={data.exclaimLime.childImageSharp.fluid}
+        />
+      </div>
       <div 
         sx={{
           display: 'flex',
