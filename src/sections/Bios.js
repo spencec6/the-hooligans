@@ -163,6 +163,10 @@ function BioImage({bio, image, index, ...props}) {
           opacity: 0.9,
           '&:hover': {
             opacity: 1
+          },
+          '& img': {
+            userDrag: 'none',
+            userSelect: 'none',
           }
         }}
         {...props}

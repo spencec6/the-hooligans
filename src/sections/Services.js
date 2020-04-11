@@ -6,7 +6,6 @@ import { randomize, orphanKill } from '../utils/helpers'
 import RoundSmear1 from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.svg";
 import RoundSmear2 from "-!svg-react-loader!../images/SVGs/round-smear-2.inline.svg";
 import RoundSmear3 from "-!svg-react-loader!../images/SVGs/round-smear-3.inline.svg";
-import { GlitchRotate } from '../components/Animations'
 import Block from '../components/Block'
 import Heading from '../components/Heading'
 import Link from '../components/Link'
@@ -135,7 +134,7 @@ const Services = () => {
                       alt={service.title}
                       fixed={service.icon.fixed}
                       sx={{
-                        animation: `${GlitchRotate} ${(index+1) * randomize(5,15)}s infinite step-end`,
+                        transform: `rotate(${randomize(-8,8)}deg)`,
                         pointerEvents: 'none'
                         }}
                       />
