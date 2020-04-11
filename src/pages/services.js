@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { randomize } from '../utils/helpers'
+import BgSmear from "-!svg-react-loader!../images/SVGs/smear.inline.svg"
 import RoundSmear1 from "-!svg-react-loader!../images/SVGs/round-smear-1.inline.svg";
 import RoundSmear2 from "-!svg-react-loader!../images/SVGs/round-smear-2.inline.svg";
 import RoundSmear3 from "-!svg-react-loader!../images/SVGs/round-smear-3.inline.svg";
@@ -83,7 +84,7 @@ function ServicesPage({ location }) {
         title={`${serviceContent.title} - ${title}`}
         description={description}
       />
-      <div sx={{ px:4, mb: [10,11], mt: [6,7] }}>
+      <div sx={{ px:4, mb: [10,12], mt: [6,7] }}>
         <div sx={{ variant: 'boxes.cell', maxWidth: theme => theme.maxWidths.lg }}>
           <Heading as="h1" variant="styles.h2" smearColor="secondary" sx={{ color: 'black', mb: 5  }}>
             {serviceContent.title}
@@ -146,7 +147,18 @@ function ServicesPage({ location }) {
               </div>
             )
           })}
-          <div sx={{ mt: 9, }}>
+          <div sx={{ mt: [9,10], position: 'relative', }}>
+            <BgSmear sx={{
+              color: 'teal',
+              height: '125%',
+              left: `-10%`,
+              opacity: 0.9,
+              position: 'absolute',
+              top: '-9%',
+              width: `120%`,
+              zIndex: -1,
+              }}
+            />
             {documentToReactComponents(serviceContent.bespokeCreativeTeams.json, options)}
           </div>
         </div>
