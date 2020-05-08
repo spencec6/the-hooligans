@@ -11,6 +11,7 @@ import CallToAction from '../sections/CallToAction'
 // import Testimonials from '../sections/Testimonials'
 import Heading from '../components/Heading'
 import Layout from '../components/Layout'
+import OriginStory from '../sections/OriginStory'
 import SEO from '../components/Seo'
 
 const getOptions = () => {
@@ -134,6 +135,7 @@ function AboutPage({ location }) {
           {documentToReactComponents(about.pageContent.json, getOptions())}
         </div>
       </div>
+      <OriginStory/>
       <Bios/>
       <div sx={{ mt: [6,7] }}>
         <CallToAction/>
