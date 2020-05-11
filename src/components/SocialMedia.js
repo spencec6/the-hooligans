@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import Icon from '../components/Icon'
 import Link from '../components/Link'
 import OutboundLink from '../components/OutboundLink'
+import { GrFacebook, GrInstagram, GrLinkedin, GrPinterest, GrTwitter } from 'react-icons/gr'
 
 export default function SocialMedia({...props}) {
   const data = useStaticQuery(graphql`
@@ -23,12 +23,22 @@ export default function SocialMedia({...props}) {
             linkedin {
               url
             }
+            pinterest {
+              url
+            }
           }
         }
       }
     }
   `)
   const { social } = data.site.siteMetadata
+  const socialMediaIcons = {
+    facebook: <GrFacebook/>,
+    instagram: <GrInstagram/>,
+    linkedin: <GrLinkedin/>,
+    pinterest: <GrPinterest/>,
+    twitter: <GrTwitter/>,
+  }
   return (
     <div sx={{
       alignItems: 'center',
@@ -54,7 +64,7 @@ export default function SocialMedia({...props}) {
               }
             }}
           >
-            <Icon name={service}></Icon>
+            {socialMediaIcons[service]}
           </Link>
         )
       })}
