@@ -28,6 +28,9 @@ module.exports = {
      },
      linkedin: {
       url: "https://www.linkedin.com/company/the-hooligans-agency/?viewAsMember=true",
+     },
+     pinterest: {
+      url: "https://www.pinterest.com/shannonhooliganagency/",
      }
   }
 }
