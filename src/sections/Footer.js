@@ -31,14 +31,17 @@ const Footer = ({ path, ...props }) => {
       site {
         siteMetadata {
           title
-          address
           email
         }
+      }
+      contentfulGlobalInformation {
+        address
       }
     }
   `)
   const { mobileBg, desktopBg } = data
-  const { title, address, email } = data.site.siteMetadata
+  const { title, email } = data.site.siteMetadata
+  const { address } = data.contentfulGlobalInformation
   return (
     <footer sx={{
       backgroundBlendMode: 'color-burn',

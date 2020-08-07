@@ -50,14 +50,17 @@ function ContactPage({ location }) {
       site {
         siteMetadata {
           title
-          address
           email
           description
         }
       }
+      contentfulGlobalInformation {
+        address
+      }
     }
   `)
-  const { title, description, address, email } = data.site.siteMetadata
+  const { title, description, email } = data.site.siteMetadata;
+  const { address } = data.contentfulGlobalInformation;
   return (
     <Layout path={location.pathname}>
       <SEO
