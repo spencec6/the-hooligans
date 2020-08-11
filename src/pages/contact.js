@@ -98,41 +98,7 @@ function ContactPage({ location }) {
                 {address}
               </div>
               <SocialMedia sx={{ mt: 3 }} />
-              <ContactGroup title={`Media Requests`} email={`media@thehooligansagency.com`}/>
               <ContactGroup title={`General Inquiries`} email={email}/>
-              <ContactGroup title={`Careers`} email={`careers@thehooligansagency.com`}/>
-              {/* <div sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
-                <p sx={{ display: 'inline-block', fontFamily: 'sans', fontSize: [1,2], mb: 1 }}>
-                  Psst. We're always looking for new Hooligans.
-                </p>
-                <div>
-                  <Button
-                    as="button"
-                    from={'contact'}
-                    onClick={() => navigate('/careers')}
-                    sx={{
-                      variant: 'buttons.primary',
-  
-                      fontSize: [0,1],
-                      mb: 3,
-                      px: 3,
-                      py: 1,
-                    }}
-                  >
-                    See Careers
-                  </Button>
-                </div>
-                <BgSmear sx={{
-                  color: 'secondary',
-                  height: '120%',
-                  left: `-10%`,
-                  position: 'absolute',
-                  top: '-9%',
-                  width: `120%`,
-                  zIndex: -1,
-                  }}
-                />
-              </div> */}
             </Block>
           </div>
         </div>
