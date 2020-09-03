@@ -23,6 +23,7 @@ const getOptions = (color) => {
           return <p sx={{ fontFamily: 'sans', transform: `rotate(${randomize(-2,2)}deg)`, mt: 4, position: 'relative' }}>
             <BgSmear sx={{
               color: color,
+              opacity: (color === 'black') ? 0.25 : (color === 'primary') ? 0.75 : null,
               height: '120%',
               left: `${randomize(-12,-7)}%`,
               position: 'absolute',
@@ -62,7 +63,7 @@ const getOptions = (color) => {
   return introOptions
 }
 
-const colors = ['primary', 'secondary', 'lime', 'teal', 'black']
+const colors = ['primary', 'secondary', 'lime', 'teal', 'primary', 'black']
 
 function BiosPage({ location }) {
   const data = useStaticQuery(graphql`
@@ -182,17 +183,6 @@ function BioImage({bio, image, index, ...props}) {
         zIndex: -1,
         }}
       />
-      {/* <HoverArrow sx={{
-        animation: isHovering ? null : `${Blink} 12s ${(index+1) * 0.2}s infinite linear forwards`,
-        height: 'auto',
-        left: '-45%',
-        opacity: '0',
-        position: 'absolute',
-        top: `${randomize(40,80)}%`,
-        transform: `rotate(${randomize(-15,15)}deg)`,
-        width: '82px',
-        }}
-      /> */}
     </div>
   )
 }
