@@ -63,7 +63,7 @@ const getOptions = (color) => {
   return introOptions
 }
 
-const colors = ['primary', 'secondary', 'lime', 'teal', 'primary', 'black']
+const colors = ['primary', 'secondary', 'lime', 'teal', 'secondary', 'lime', 'teal']
 
 function BiosPage({ location }) {
   const data = useStaticQuery(graphql`
